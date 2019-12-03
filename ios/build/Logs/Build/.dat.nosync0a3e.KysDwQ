@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>4F799B86-7303-4D5C-998F-CD3CDB1CBD9D</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>4F799B86-7303-4D5C-998F-CD3CDB1CBD9D.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>W</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>rnSupnuevo project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>rnSupnuevo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project rnSupnuevo with scheme rnSupnuevo and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>583287354.97904003</real>
+			<key>timeStoppedRecording</key>
+			<real>583287356.28816295</real>
+			<key>title</key>
+			<string>Building project rnSupnuevo with scheme rnSupnuevo and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>4F799B86-7303-4D5C-998F-CD3CDB1CBD9D</string>
+		</dict>
+		<key>CCFA1ADF-4C60-4CF0-AE13-C4AFE003993E</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CCFA1ADF-4C60-4CF0-AE13-C4AFE003993E.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>W</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>rnSupnuevo project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>rnSupnuevo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project rnSupnuevo with scheme rnSupnuevo and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>583287697.64740098</real>
+			<key>timeStoppedRecording</key>
+			<real>583287699.09884596</real>
+			<key>title</key>
+			<string>Building project rnSupnuevo with scheme rnSupnuevo and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>CCFA1ADF-4C60-4CF0-AE13-C4AFE003993E</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

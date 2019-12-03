@@ -1,0 +1,99 @@
+[
+    {
+        "memberId": 1,
+        "address":"Laprida 2843",
+        "lng":"-58.493737",
+        "lat":"-34.542982",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 2,
+        "address":"Laprida 2160",
+        "lng":"-58.485472",
+        "lat":"-34.539198",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588689099&di=9367f40d0493d045ceeb489214f33d4d&imgtype=0&src=http%3A%2F%2Fpic51.huitu.com%2Fres%2F20160113%2F748431_20160113214715237154_1.jpg"
+    },
+    {
+        "memberId": 3,
+        "address":"Agustín Álvarez 2240",
+        "lng":"-58.48792",
+        "lat":"-34.537993",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566183453&di=b9c86c293fb91a7fa7c340f7b7fb1621&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140321%2F20140321164720-1118388445.jpg"
+    },
+    {
+        "memberId": 4,
+        "address":"Yrigoyen 2440",
+        "lng":"-58.497182",
+        "lat":"-34.526931",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 5,
+        "address":"Borges 2698",
+        "lng":"-58.485472",
+        "lat":"-34.539198",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 6,
+        "address":"Pelliza 2723",
+        "lng":"-58.48792",
+        "lat":"-34.537993",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 7,
+        "address":"San Lorenzo 2032",
+        "lng":"-58.49949",
+        "lat":"-34.506966",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 8,
+        "address":"Uzal 3911",
+        "lng":"-58.514236",
+        "lat":"-34.509263",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 9,
+        "address":"Gutierrez 1880",
+        "lng":"-58.49508",
+        "lat":"-34.513681",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 10,
+        "address":"Paraná 3156",
+        "lng":"-58.497182",
+        "lat":"-34.505712",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 11,
+        "address":"Paraná 2694",
+        "lng":"-58.510036",
+        "lat":"-34.503518",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 12,
+        "address":"Jonas Salk 3667",
+        "lng":"-58.505765",
+        "lat":"-34.507921",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "address":"Fray Sarmiento 3515",
+        "lng":"-58.509776",
+        "lat":"-34.511271",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    },
+    {
+        "memberId": 13,
+        "address":"Fray Sarmiento 3606",
+        "lng":"-58.497815",
+        "lat":"-34.504928",
+        "pictureurl":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565588660652&di=cef1536086d510f3bea110c493692eeb&imgtype=0&src=http%3A%2F%2Fp0.meituan.net%2Fdpdeal%2Faab95a686f6accabb4bd553f7672c234136375.jpg%2540640w_1024h_1e_1l%257Cwatermark%3D1%26%26r%3D1%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20"
+    }
+]

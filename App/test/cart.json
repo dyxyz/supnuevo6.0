@@ -1,0 +1,47 @@
+[
+    {
+        "id":"2",
+        "name":"红酒",
+        "brief":"好喝的红酒",
+        "price": 88,
+        "imgsurl": "http://www.sportshot.cn/file/testPic/2/1.jpeg",
+        "thumburl": "http://www.sportshot.cn/file/testPic/2/0.jpeg",
+        "updatetime": "2019-07-27 19:22:29",
+        "rubro": "1",
+        "presentacion": "",
+        "marca": "",
+        "tamano": "",
+        "codigo": "42414124",
+        "discount": 5
+    },
+    {
+        "id":"27",
+        "name":"雨伞",
+        "brief":"超级大的雨伞",
+        "price": 14,
+        "imgsurl": "http://www.sportshot.cn/file/testPic/27/1.jpeg",
+        "thumburl": "http://www.sportshot.cn/file/testPic/27/0.jpeg",
+        "updatetime": "2019-07-27 19:22:29",
+        "rubro": "1",
+        "presentacion": "",
+        "marca": "",
+        "tamano": "",
+        "codigo": "231142441",
+        "discount": 2
+    },
+    {
+        "id":"28",
+        "name":"帽子",
+        "brief":"帽子帽子",
+        "price": 14,
+        "imgsurl": "",
+        "thumburl": "http://www.sportshot.cn/file/testPic/28/0.jpeg",
+        "updatetime": "2019-07-27 19:22:29",
+        "rubro": "1",
+        "presentacion": "",
+        "marca": "",
+        "tamano": "",
+        "codigo": "231142441",
+        "discount": 9
+    },
+]
