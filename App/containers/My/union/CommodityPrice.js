@@ -70,6 +70,7 @@ class CommodityPrice extends Component {
             selectedPrice: null,
             isSearchStatus: false,
             allClass:[],
+            ratio:null,
         };
     }
 
@@ -103,15 +104,20 @@ class CommodityPrice extends Component {
                                       }}>
                         <Icon name="angle-left" color="#fff" size={40}></Icon>
                     </TouchableOpacity>
-                    <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        Supnuevo(6.0)-{this.props.username}
-                    </Text>
+                    <View>
+                        <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
+                            Supnuevo(6.0)-{this.props.username}
+                        </Text>
+                    </View>
                     <View style={{flex:1}}>
 
                     </View>
                 </View>
                 {/* body */}
                 <View style={{padding:3,justifyContent:'center',alignItems:'center'}}>
+                    <View style={{width:width,height:height*0.05,alignItems:"center",justifyContent:"center",borderBottomWidth:1}}>
+                        <Text style={{fontSize:18}}>本店基础价位</Text>
+                    </View>
                     <View style={{flex:1}}>
                         <ScrollView>
                             <ListView
@@ -127,27 +133,65 @@ class CommodityPrice extends Component {
     }
 
     renderRow(rowData) {
-        var row =
-            <TouchableOpacity onPress={() => {this.navigatorCommodity(rowData.taxId,rowData.taxName)}}>
-                <View style={{
-                    flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
-                    justifyContent: 'flex-start', backgroundColor: '#fff',width:width
+        if(this.props.unionMemberType==2) {
+            var row =
+                <TouchableOpacity onPress={() => {
+                    this.navigatorCommodity(rowData.taxId, rowData.taxName)
                 }}>
+                    <View style={{
+                        flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
+                        justifyContent: 'center', backgroundColor: '#fff', width: width
+                    }}>
 
-                    <View style={{paddingTop: 5, flexDirection: 'row'}}>
-                        {/*<Text style={styles.renderText}>ID：</Text>*/}
-                        <Text style={styles.renderText}>{rowData.taxId}-{rowData.taxName}({rowData.ratio})</Text>
+                        <View style={{ flexDirection: 'row',width:width,justifyContent:"space-between"}}>
+                            <View style={{alignItems:"flex-end",justifyContent:"center",width:width*0.45}}>
+                                <View>
+                                <Text style={[styles.renderText,{fontSize:16}]}>{rowData.taxName}</Text>
+                                </View>
+                            </View>
+                            <View style={{width:width*0.55,alignItems:"center",flexDirection:"row",justifyContent:"flex-start"}}>
+                                <View><Text style={[styles.renderText,{fontSize:18}]}>建议价 - </Text></View>
+                                <View>
+                                    <TextInput
+                                        style={{height:height*0.07,width:width*0.13}}
+                                        defaultValue={rowData.ratio.toString()}
+                                        onChangeText={(value) => {
+                                            this.setState({ratio:value})
+                                        }}
+                                    />
+                                </View>
+                                <View style={{marginLeft:5}}>
+                                    <Text> % </Text>
+                                </View>
+                                <TouchableOpacity
+                                    onPress={()=>{this.updateSupnuevoBuyerUnionPriceRatio(rowData.taxId)}}
+                                >
+                                    <View style={{backgroundColor:"#387ef5",height:height*0.04,width:width*0.15,borderRadius:width*0.05,alignItems:"center",justifyContent:"center"}}>
+                                        <Text style={{color:"white"}}>修改</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
                     </View>
-                    {/*<View style={{paddingTop: 5, flexDirection: 'row'}}>*/}
-                        {/*<Text style={styles.renderText}>ClassName：</Text>*/}
-                        {/*<Text style={styles.renderText}>{rowData.taxName}</Text>*/}
-                    {/*</View>*/}
-                    {/*<View style={{paddingTop: 5, flexDirection: 'row'}}>*/}
-                        {/*<Text style={styles.renderText}>descripcion：</Text>*/}
-                        {/*<Text style={styles.renderText}>{rowData.ratio}</Text>*/}
-                    {/*</View>*/}
-                </View>
-            </TouchableOpacity>;
+                </TouchableOpacity>;
+        }
+        else{
+            var row =
+                <TouchableOpacity onPress={() => {
+                    this.navigatorCommodity(rowData.taxId, rowData.taxName)
+                }}>
+                    <View style={{
+                        flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
+                        justifyContent: 'flex-start', backgroundColor: '#fff', width: width
+                    }}>
+
+                        <View style={{paddingTop: 5, flexDirection: 'row'}}>
+                            <Text style={[styles.renderText,{fontSize:18}]}>{rowData.taxName}建议价-{rowData.ratio}%</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>;
+        }
         return row;
     }
 
@@ -184,6 +228,31 @@ class CommodityPrice extends Component {
             }
         }).catch((err)=>{alert(err);});
     }
+    updateSupnuevoBuyerUnionPriceRatio(taxId){
+        if(this.state.ratio==null || this.state.ratio==undefined){
+            Alert.alert("请输入建议价")
+        }
+        else {
+            proxy.postes({
+                url: Config.server + "/func/union/updateSupnuevoBuyerUnionPriceRatio",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: {
+                    unionId: this.props.unionId,
+                    taxId: taxId,
+                    ratio: parseFloat(this.state.ratio),
+                }
+            }).then((json) => {
+                if (json.re === 1) {
+                    alert('修改成功');
+                    this.getSupnuevoBuyerUnionPriceClass();
+                }
+            }).catch((err) => {
+                alert(err);
+            });
+        }
+    }
 }
 
 
@@ -199,7 +268,6 @@ var styles = StyleSheet.create({
         marginTop: 10,
     },
     renderText: {
-        fontSize: setSpText(18),
         alignItems: 'center'
     },
 });
@@ -208,6 +276,7 @@ var styles = StyleSheet.create({
 module.exports = connect(state => ({
         unionId: state.user.unionId,
         username: state.user.username,
+        unionMemberType:state.user.unionMemberType,
     })
 )(CommodityPrice);
 

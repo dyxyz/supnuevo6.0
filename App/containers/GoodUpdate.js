@@ -103,6 +103,7 @@ class GoodUpdate extends Component {
                     taxId: this.state.selectedCodeInfo.taxId,
                     supnuevoMerchantId: this.state.merchantId,
                     codigo: this.state.selectedCodeInfo.codigo,
+                    commodityName:this.state.selectedCodeInfo.commodityName,
                     nombre: this.state.selectedCodeInfo.nombre.toUpperCase(),
                     sizeValue: this.state.selectedCodeInfo.setSizeValue,
                     sizeUnited: this.state.selectedCodeInfo.sizeUnit,
@@ -233,7 +234,7 @@ class GoodUpdate extends Component {
         }
 
         var codigo = selectedCodeInfo.codigo;
-        var name = selectedCodeInfo.nombre;
+        var name = selectedCodeInfo.commodityName;
         var sizeValue = selectedCodeInfo.setSizeValue;
 
         var sizeUnit = selectedCodeInfo.sizeUnit;
@@ -355,7 +356,7 @@ class GoodUpdate extends Component {
                     }]}>
 
                         <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                            <Text >商品名称:</Text>
+                            <Text >商品简称:</Text>
                         </View>
                         <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
 
@@ -367,6 +368,38 @@ class GoodUpdate extends Component {
                                     this.setState({selectedCodeInfo: selectedCodeInfo});
                                 }}
                                 value={this.state.selectedCodeInfo.nombre}
+                                placeholder={name}
+                                placeholderTextColor="#aaa"
+                                underlineColorAndroid="transparent"
+                            />
+                        </View>
+                    </View>
+
+                    <View style={[styles.row, {
+                        borderTopWidth: 1,
+                        borderLeftWidth: 1,
+                        borderRightWidth: 1,
+                        borderBottomWidth: 0,
+                        borderColor: '#aaa',
+                        borderBottomColor: '#aaa'
+                        ,
+                        paddingLeft: 12,
+                        paddingRight: 12
+                    }]}>
+
+                        <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                            <Text >商品全名:</Text>
+                        </View>
+                        <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
+
+                            <TextInput
+                                style={{height: 40}}
+                                onChangeText={(commodityName) => {
+                                    this.state.selectedCodeInfo.commodityName = commodityName;
+                                    var selectedCodeInfo = this.state.selectedCodeInfo;
+                                    this.setState({selectedCodeInfo: selectedCodeInfo});
+                                }}
+                                value={this.state.selectedCodeInfo.commodityName}
                                 placeholder={name}
                                 placeholderTextColor="#aaa"
                                 underlineColorAndroid="transparent"
@@ -569,7 +602,7 @@ class GoodUpdate extends Component {
                         </View>
                         <View style={{marginTop:50}}>
                             {this.state.bigPicUrl == null || this.state.bigPicUrl=="" ?
-                                <Icon name="photo" size={140} color="#222"/>
+                                <Icon name="photo" size={140} color='rgb(112,112,112)'/>
                                 :
                                 <Image resizeMode="contain" style={{
                                     width: 200,

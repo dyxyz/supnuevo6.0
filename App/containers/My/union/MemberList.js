@@ -89,7 +89,9 @@ class MemberList extends Component {
                             style={styles.listView}
                             automaticallyAdjustContentInsets={false}
                             dataSource={ds.cloneWithRows(memberList)}
+                            enableEmptySections={true}
                             renderRow={this.renderRow.bind(this)}/>
+
                     </View>
                 </View>
             </View>
@@ -104,7 +106,7 @@ class MemberList extends Component {
                     <View style={{flex:2,alignItems:"center",justifyContent:"center"}}>
                         {
                             rowData.urlAddress==null?
-                                <Icon name="photo" size={90} color="#222"/>
+                                <Icon name="photo" size={90} color='rgb(112, 112, 112)'/>
                                 :
                                 <Image source={{uri:imageUri}} resizeMode={"contain"} style={styles.image}/>
                         }

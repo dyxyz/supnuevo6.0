@@ -1843,10 +1843,7 @@ containing a value of this type.
         public static final int node_modules_reactnativecheckbox_img_ic_check_box=0x7f02004c;
         public static final int node_modules_reactnativecheckbox_img_ic_check_box_outline_blank=0x7f02004d;
         public static final int node_modules_reactnativedatepicker_date_icon=0x7f02004e;
-        public static final int node_modules_reactnativeradiomaster_components_imgs_selt=0x7f02004f;
-        public static final int node_modules_reactnativeradiomaster_components_imgs_selted=0x7f020050;
-        public static final int node_modules_reactnativeradiomaster_components_imgs_seltnone=0x7f020051;
-        public static final int notification_template_icon_bg=0x7f020052;
+        public static final int notification_template_icon_bg=0x7f02004f;
     }
     public static final class id {
         public static final int action0=0x7f0d0059;

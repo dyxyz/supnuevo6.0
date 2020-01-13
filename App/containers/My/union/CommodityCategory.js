@@ -13,6 +13,7 @@ import {
     Alert,
     Modal,
     TouchableOpacity,
+    FlatList,
     KeyboardAvoidingView, ListView, ActivityIndicator,
 } from 'react-native';
 
@@ -23,7 +24,7 @@ import SelectorTableView from "../../../components/SelectorTableView";
 import {setSpText} from "../../../utils/ScreenUtil";
 import Config from "../../../../config";
 import {loginAction} from "../../../action/actionCreator";
-import CodesModal from '../../../components/modal/CodesModal';
+import JumpMode from '../../../components/modal/JumpFront';
 import RNCamera from "react-native-camera";
 
 import MyUnion from '../MyUnion.js';
@@ -47,18 +48,30 @@ class CommodityCategory extends Component {
 
 
 
+    // goBack() {
+    //     const {navigator} = this.props;
+    //     if (navigator) {
+    //         navigator.push({
+    //             name: 'MyUnion',
+    //             component: MyUnion,
+    //             params: {
+    //                 // taxId:taxId,
+    //                 // taxName:taxName,
+    //                 // getSupnuevoBuyerUnionPriceClass: this.getSupnuevoBuyerUnionPriceClass.bind(this),
+    //                 selectedIdx:this.state.selectedIdx,
+    //             }
+    //         })
+    //     }
+    // }
+
     goBack() {
         const {navigator} = this.props;
+        if(this.props.getUser) {
+            this.props.getUser(this.state.priceClassList);
+        }
         if (navigator) {
-            navigator.push({
-                name: 'MyUnion',
-                component: MyUnion,
-                params: {
-                    // taxId:taxId,
-                    // taxName:taxName,
-                    // getSupnuevoBuyerUnionPriceClass: this.getSupnuevoBuyerUnionPriceClass.bind(this),
-                }
-            })
+            navigator.pop();
+
         }
     }
 
@@ -81,7 +94,7 @@ class CommodityCategory extends Component {
             isAlive:true,
             commodityList:[true],
             selected:null,
-            selectedIdx:null,
+            selectedIdx:this.props.selectedIdx,
             currentRow:0,
 
         };
@@ -98,7 +111,7 @@ class CommodityCategory extends Component {
         // 获取联盟价格种类表
         this.getSupnuevoBuyerUnionPriceClassList();
         this.checkSelect();
-
+        // this.getSupnuevoBuyerUnionPriceListByPriceCount(this.state.selectedIdx);
 
 
     }
@@ -110,13 +123,14 @@ class CommodityCategory extends Component {
 
         var priceListView=
             goodsList ?
-            <ScrollView>
-                <ListView
-                    ref={(scrollView) => { _scrollView = scrollView; }}
-                    automaticallyAdjustContentInsets={false}
-                    dataSource={ds.cloneWithRows(goodsList)}
-                    renderRow={this.renderRow.bind(this)}
-                />
+            <ScrollView ref={(scrollView) => { _scrollView = scrollView; }}>
+                {/*<ListView*/}
+
+                    {/*automaticallyAdjustContentInsets={false}*/}
+                    {/*dataSource={ds.cloneWithRows(goodsList)}*/}
+                    {/*renderRow={this.renderRow.bind(this)}*/}
+                {/*/>*/}
+                <FlatList data={this.state.goodsList} renderItem={this.renderRow} />
             </ScrollView>:null;
 
         return (
@@ -140,9 +154,11 @@ class CommodityCategory extends Component {
                                       }}>
                         <Icon name="angle-left" color="#fff" size={40}></Icon>
                     </TouchableOpacity>
-                    <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        Supnuevo(6.0)-{this.props.username}
-                    </Text>
+                    <View>
+                        <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
+                            Supnuevo(6.0)-{this.props.username}
+                        </Text>
+                    </View>
                     <View style={{flex:1}}>
 
                     </View>
@@ -162,20 +178,31 @@ class CommodityCategory extends Component {
                         </ScrollView>
                     </View>
                     {this._renderSearchBar()}
-                    <View style={{flexDirection:"row"}}>
-                        <TouchableOpacity onPress={()=>{
-                            this.setState({showProgress:true});
-                            this.setAllCommodityIsAlive();
-                        }}>
-                            <View style={styles.button}>
-                                <Text style={{fontSize:18, margin:15,}}>全部置为可用</Text>
-                            </View>
-                        </TouchableOpacity>
+                    {this.props.unionMemberType==2?
+                        <View style={{flexDirection:"row"}}>
+                            <TouchableOpacity onPress={()=>{
+                                this.setState({showProgress:true});
+                                this.setAllCommodityIsAlive();
+                            }}>
+                                <View style={styles.button}>
+                                    <Text style={{fontSize:18, margin:15,}}>全部置为可用</Text>
+                                </View>
+                            </TouchableOpacity>
 
-                    </View>
-                    <View style={{marginTop:10,height:height*0.4,borderTopWidth:1, borderColor: '#ddd'}}>
-                    {priceListView}
-                    </View>
+                        </View>
+                        :
+                        null
+                    }
+                    {this.props.unionMemberType==2?
+                        <View style={{marginTop:10,height:height*0.4,borderTopWidth:1, borderColor: '#ddd'}}>
+                            {priceListView}
+                        </View>
+                        :
+                        <View style={{marginTop:5,height:height*0.45,borderTopWidth:1, borderColor: '#ddd'}}>
+                            {priceListView}
+                        </View>
+                    }
+
                 </View>
                 {/*条码*/}
                 <Modal
@@ -185,7 +212,7 @@ class CommodityCategory extends Component {
                     onRequestClose={() => {
                         this.setState({codesModalVisible: false})
                     }}>
-                    <CodesModal
+                    <JumpMode
                         onClose={() => {
                             this.closeCodesModal(!this.state.codesModalVisible)
                         }}
@@ -320,29 +347,51 @@ class CommodityCategory extends Component {
             const dataRow = dataListItem;
             var dataRowList = [];
             if(dataRow){
-                dataRowList.push(
-                    <TouchableOpacity
-                        // style={styles.tableItemStyle}
-                        style={{flexDirection:"row"}}
-                        // onPress={()=>{
-                        //     this.setState({selectedIdx:dataRow.priceCount,showProgress:true});
-                        //     this.setUnionCurrentMerchantCount(dataRow.priceCount);
-                        //     // this._onTableItemSelected(i)
-                        // }}
-                        onPress={()=>{
-                            Alert.alert('提示','是否更改维护种类',
-                                [
-                                    {text:"确定", onPress:()=>this.setUnionCurrentMerchantCount(dataRow.priceCount)},
-                                    {text:"取消"},
-                                ]
-                            );
-                        }}
-                    >
-                        <View style={styles.tableItemStyle}>{dataRow.select == 1?checkedIcon:uncheckedIcon}</View>
-                        <View style={styles.tableItemStyle}><Text style={styles.headerItemTextStyle}>{dataRow.priceCount}</Text></View>
-                        <View style={styles.tableItemStyle}><Text style={styles.headerItemTextStyle}>{dataRow.count}</Text></View>
-                    </TouchableOpacity>
-                )
+                if(this.props.unionMemberType==2) {
+                    dataRowList.push(
+                        <TouchableOpacity
+                            // style={styles.tableItemStyle}
+                            style={{flexDirection: "row"}}
+                            // onPress={()=>{
+                            //     this.setState({selectedIdx:dataRow.priceCount,showProgress:true});
+                            //     this.setUnionCurrentMerchantCount(dataRow.priceCount);
+                            //     // this._onTableItemSelected(i)
+                            // }}
+                            onPress={() => {
+                                Alert.alert('提示', '是否更改维护种类',
+                                    [
+                                        {
+                                            text: "确定",
+                                            onPress: () => this.setUnionCurrentMerchantCount(dataRow.priceCount)
+                                        },
+                                        {text: "取消"},
+                                    ]
+                                );
+                            }}
+                        >
+                            <View
+                                style={styles.tableItemStyle}>{dataRow.select == 1 ? checkedIcon : uncheckedIcon}</View>
+                            <View style={styles.tableItemStyle}><Text
+                                style={styles.headerItemTextStyle}>{dataRow.priceCount}</Text></View>
+                            <View style={styles.tableItemStyle}><Text
+                                style={styles.headerItemTextStyle}>{dataRow.count}</Text></View>
+                        </TouchableOpacity>
+                    )
+                }
+                else{
+                    dataRowList.push(
+                        <View
+                            style={{flexDirection: "row"}}
+                        >
+                            <View
+                                style={styles.tableItemStyle}>{dataRow.select == 1 ? checkedIcon : uncheckedIcon}</View>
+                            <View style={styles.tableItemStyle}><Text
+                                style={styles.headerItemTextStyle}>{dataRow.priceCount}</Text></View>
+                            <View style={styles.tableItemStyle}><Text
+                                style={styles.headerItemTextStyle}>{dataRow.count}</Text></View>
+                        </View>
+                    )
+                }
                 ;
 
                 dataListView.push(
@@ -352,31 +401,80 @@ class CommodityCategory extends Component {
         return dataListView;
     }
 
-    renderRow(rowData,sectionID,rowID) {
+    renderRow=({item})=> {
+        if(this.props.unionMemberType==2) {
             var row =
-                    <TouchableOpacity onPress={()=>{
-                        this.setState({showProgress:true})
-                        this.checkAlive(rowData.isAlive,rowData.commodityId)
+                <TouchableOpacity onPress={() => {
+                    this.setState({showProgress: true})
+                    this.checkAlive(item.isAlive, item.commodityId)
+                }}>
+                    <View style={{
+                        height: lacateBase,
+                        flexDirection: "row",
+                        padding: 10,
+                        borderBottomWidth: 1,
+                        borderColor: '#ddd',
+                        justifyContent: 'flex-start',
+                        backgroundColor: '#fff',
+                        width: width
                     }}>
-                        <View style={{
-                            height:lacateBase,flexDirection:"row", padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
-                            justifyContent: 'flex-start', backgroundColor: '#fff',width:width
-                        }}>
-                            <View style={{flex:6,justifyContent:"center"}}>
-                                <View style={{flexDirection: 'row'}}>
-                                    <Text style={styles.renderText}>codigo：</Text>
-                                    <Text style={styles.renderText}>{rowData.codigo}</Text>
-                                </View>
-                                <View style={{flexDirection: 'row'}}>
-                                    <Text style={styles.renderText}>descripcion：</Text>
-                                    <Text style={styles.renderText}>{rowData.nombre}</Text>
-                                </View>
+                        <View style={{flex: 6, justifyContent: "center"}}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.renderText}>codigo：</Text>
+                                <Text style={styles.renderText}>{item.codigo}</Text>
                             </View>
-                            <View style={{flex:1,paddingTop: 5, flexDirection: 'row',alignItems:"center",justifyContent:'center'}}>
-                                {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.renderText}>descripcion：</Text>
+                                <Text style={styles.renderText}>{item.nombre}</Text>
                             </View>
                         </View>
-                    </TouchableOpacity>;
+                        <View style={{
+                            flex: 1,
+                            paddingTop: 5,
+                            flexDirection: 'row',
+                            alignItems: "center",
+                            justifyContent: 'center'
+                        }}>
+                            {item.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
+                        </View>
+                    </View>
+                </TouchableOpacity>;
+        }
+        else{
+            var row=
+                <View>
+                    <View style={{
+                        height: lacateBase,
+                        flexDirection: "row",
+                        padding: 10,
+                        borderBottomWidth: 1,
+                        borderColor: '#ddd',
+                        justifyContent: 'flex-start',
+                        backgroundColor: '#fff',
+                        width: width
+                    }}>
+                        <View style={{flex: 6, justifyContent: "center"}}>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.renderText}>codigo：</Text>
+                                <Text style={styles.renderText}>{rowData.codigo}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.renderText}>descripcion：</Text>
+                                <Text style={styles.renderText}>{rowData.nombre}</Text>
+                            </View>
+                        </View>
+                        <View style={{
+                            flex: 1,
+                            paddingTop: 5,
+                            flexDirection: 'row',
+                            alignItems: "center",
+                            justifyContent: 'center'
+                        }}>
+                            {rowData.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
+                        </View>
+                    </View>
+                </View>;
+        }
         return row;
     }
 
@@ -557,7 +655,8 @@ class CommodityCategory extends Component {
     }
 
     setUnionCurrentMerchantCount(merchantCount){
-        this.setState({showProgress:true})
+        this.setState({showProgress:true});
+        this.setState({selectedIdx:merchantCount});
         proxy.postes({
             url: Config.server + "/func/union/setUnionCurrentMerchantCount",
             headers: {
@@ -597,17 +696,67 @@ class CommodityCategory extends Component {
         }).catch((err)=>{alert(err);});
     }
 
+    checkSelect(){
+
+        var dataList =this.state.priceClassList;
+        dataList.map((dataListItem,i)=>{
+            if(dataListItem.select==1){
+                var selected=dataListItem.priceCount;
+                this.getSupnuevoBuyerUnionPriceListByPriceCount(selected);
+                this.setState({selectedIdx:selected})
+            }
+        });
+    }
+
+    // queryGoodsCode(codeNum) {
+    //     const {merchantId} = this.props;
+    //     proxy.postes({
+    //         url: Config.server + '/func/commodity/getQueryDataListByInputStringMobile',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             //'Cookie': sessionId,
+    //         },
+    //         body: {
+    //             codigo: codeNum,
+    //             merchantId: merchantId
+    //         }
+    //     }).then((json) => {
+    //
+    //         if(json.re == -2){
+    //             this.props.dispatch(loginAction(username, password))
+    //         }
+    //
+    //         var errorMsg = json.message;
+    //         if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+    //             alert(errorMsg);
+    //         } else {
+    //             // this.reset();
+    //             if (json.array !== undefined && json.array !== null && json.array.length > 0) {
+    //                 var codes = json.array;
+    //                 this.setState({codes: codes, codesModalVisible: true});
+    //             }
+    //             else {
+    //                 var code = {codigo: json.object.codigo, commodityId: json.object.commodityId}
+    //                 this.onCodigoSelect(code);
+    //             }
+    //         }
+    //     }).catch((err) => {
+    //         alert(err);
+    //     });
+    // }
+
     queryGoodsCode(codeNum) {
         const {merchantId} = this.props;
         proxy.postes({
-            url: Config.server + '/func/commodity/getQueryDataListByInputStringMobile',
+            url: Config.server + '/func/union/getUnionQueryDataListByInputString',
             headers: {
                 'Content-Type': 'application/json',
                 //'Cookie': sessionId,
             },
             body: {
                 codigo: codeNum,
-                merchantId: merchantId
+                merchantId: merchantId,
+                merchantCount:this.state.selectedIdx,
             }
         }).then((json) => {
 
@@ -725,17 +874,7 @@ class CommodityCategory extends Component {
         });
     }
 
-    checkSelect(){
 
-        var dataList =this.state.priceClassList;
-        dataList.map((dataListItem,i)=>{
-            if(dataListItem.select==1){
-                var selected=dataListItem.priceCount;
-                this.getSupnuevoBuyerUnionPriceListByPriceCount(selected);
-                this.setState({selectedIdx:selected})
-            }
-        });
-    }
     //确定所查商品的rowID
     confirmRowID(codigo){
         const{goodsList}=this.state;
@@ -837,6 +976,7 @@ module.exports = connect(state => ({
         password: state.user.password,
         unionId: state.user.unionId,
         merchantId: state.user.merchantId,
+        unionMemberType:state.user.unionMemberType,
     })
 )(CommodityCategory);
 

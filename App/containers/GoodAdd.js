@@ -72,7 +72,7 @@ class GoodAdd extends Component {
             return false;
         }
         if (this.state.newGoodInfo.codigo !== null || this.state.newGoodInfo.codigo !== undefined || this.state.newGoodInfo.codigo !== '') {
-            if (this.state.newGoodInfo.codigo.length !== 8 && this.state.newGoodInfo.codigo.length !== 13 && this.state.newGoodInfo.codigo.length !== 12) {
+            if (this.state.newGoodInfo.codigo.length < 6 || this.state.newGoodInfo.codigo.length > 15) {
                 alert("商品条码位数错误");
                 return false;
             }
@@ -128,7 +128,8 @@ class GoodAdd extends Component {
                         taxId: this.state.newGoodInfo.taxId,
                         supnuevoMerchantId: this.state.merchantId,
                         codigo: this.state.newGoodInfo.codigo,
-                        nombre: this.state.newGoodInfo.nombre.toUpperCase(),
+                        nombre: this.state.newGoodInfo.nombre,
+                        commodityName:this.state.newGoodInfo.commodityName,
                         sizeValue: this.state.newGoodInfo.setSizeValue,
                         sizeUnited: this.state.newGoodInfo.sizeUnit,
                         scaleUnited: this.state.newGoodInfo.scaleUnit
@@ -239,6 +240,7 @@ class GoodAdd extends Component {
             newGoodInfo: {
                 codigo: '',
                 nombre: '',
+                commodityName:'',
                 setSizeValue: '',
                 sizeUnit: '',
                 scaleUnit: '',
@@ -511,7 +513,7 @@ class GoodAdd extends Component {
                     }]}>
 
                         <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                            <Text>商品名称:</Text>
+                            <Text>商品简称:</Text>
                         </View>
                         <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
 
@@ -523,6 +525,38 @@ class GoodAdd extends Component {
                                     this.setState({newGoodInfo: newGoodInfo});
                                 }}
                                 value={this.state.newGoodInfo.nombre}
+                                placeholder=''
+                                placeholderTextColor="#aaa"
+                                underlineColorAndroid="transparent"
+                            />
+                        </View>
+                    </View>
+
+                    <View style={[styles.row, {
+                        borderTopWidth: 1,
+                        borderLeftWidth: 1,
+                        borderRightWidth: 1,
+                        borderBottomWidth: 0,
+                        borderColor: '#aaa',
+                        borderBottomColor: '#aaa'
+                        ,
+                        paddingLeft: 12,
+                        paddingRight: 12
+                    }]}>
+
+                        <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                            <Text>商品全名:</Text>
+                        </View>
+                        <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
+
+                            <TextInput
+                                style={{height: 40}}
+                                onChangeText={(commodityName) => {
+                                    this.state.newGoodInfo.commodityName = commodityName;
+                                    var newGoodInfo = this.state.newGoodInfo;
+                                    this.setState({newGoodInfo: newGoodInfo});
+                                }}
+                                value={this.state.newGoodInfo.commodityName}
                                 placeholder=''
                                 placeholderTextColor="#aaa"
                                 underlineColorAndroid="transparent"
@@ -709,7 +743,7 @@ class GoodAdd extends Component {
                         </View>
                         <View style={{marginTop:10}}>
                             {this.state.bigPicUrl == null || this.state.bigPicUrl=="" ?
-                                <Icon name="photo" size={140} color="#222"/>
+                                <Icon name="photo" size={140} color='rgb(112, 112, 112)'/>
                                 :
                                 <Image resizeMode="contain" style={{
                                     width: 200,

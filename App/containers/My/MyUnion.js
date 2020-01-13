@@ -29,6 +29,7 @@ class MyUnion extends Component {
         // 获取联盟价格种类表
 
         this.getSupnuevoBuyerUnionPriceClassList();
+
     }
 
     cancel() {
@@ -42,9 +43,12 @@ class MyUnion extends Component {
         super(props);
         this.state = {
             priceClassList:this.props.priceClassList,
+            selectedIdx:this.props.selectedIdx,
         }
 
     }
+
+
 
     navigateUnionRule() {
         var unionRule = require('./union/UnionRule');
@@ -56,13 +60,20 @@ class MyUnion extends Component {
     }
 
     navigateCommodityCategory() {
+        let _this = this;
         var commodityCategory = require('./union/CommodityCategory');
         this.getSupnuevoBuyerUnionPriceClassList();
         this.props.navigator.push({
             name: 'commodityCategory',
             component: commodityCategory,
             params: {
-                priceClassList:this.state.priceClassList
+                getUser: function(priceClassList) {
+                    _this.setState({
+                        priceClassList: priceClassList
+                    })
+                },
+                priceClassList:this.state.priceClassList,
+                // selectedIdx:this.state.selectedIdx,
             }
         })
     }
@@ -111,6 +122,14 @@ class MyUnion extends Component {
             params: {}
         })
     }
+    navigateAuditCustomer() {
+        var auditCustomer = require('./union/AuditCustomer');
+        this.props.navigator.push({
+            name: 'auditCustomer',
+            component: auditCustomer,
+            params: {}
+        })
+    }
 
     updatePriceList(){
         proxy.postes({
@@ -155,7 +174,7 @@ class MyUnion extends Component {
                     <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
                         <View style={{flex:1,paddingLeft:10}}>
                             <TouchableOpacity
-                                style={{flexDirection:'row',height:40,alignItems:'flex-end'}}
+                                style={{flexDirection:'row',height:40,paddingTop:3}}
                                 onPress={
                                     ()=>{
                                         this.cancel();
@@ -164,9 +183,11 @@ class MyUnion extends Component {
                                 <Icon name="arrow-left" size={20} color="#fff" />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
-                            Supnuevo(6.0)-{this.props.username}
-                        </Text>
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                Supnuevo(6.0)-{this.props.username}
+                            </Text>
+                        </View>
                         <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                         </View>
                     </View>
@@ -215,6 +236,12 @@ class MyUnion extends Component {
                                                    this.navigateUnionOrder()
                                               }}>
                                 <Text style={styles.text}>我的超市联盟订单</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.touch}
+                                              onPress={() => {
+                                                  this.navigateAuditCustomer()
+                                              }}>
+                                <Text style={styles.text}>审核注册用户</Text>
                             </TouchableOpacity>
                             {this.props.unionMemberType == 2?
                                 <TouchableOpacity style={styles.touch}

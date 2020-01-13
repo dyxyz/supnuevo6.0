@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet, TextInput, ViewPropTypes, Text, TouchableOpacity,Dimensions} from 'react-native';
 import PropTypes from 'prop-types';
+
 var {height, width} = Dimensions.get('window');
 
 export default class TableView extends React.PureComponent {
@@ -14,6 +15,10 @@ export default class TableView extends React.PureComponent {
     discountFee:PropTypes.string,
     totalFeeFinal:PropTypes.string,
   };
+
+  navigatorToDetail(){
+      this.props.navigatorToDetail();
+  }
 
   render() {
 
@@ -52,6 +57,7 @@ export default class TableView extends React.PureComponent {
   }
 
   _renderInfoList(dataList){
+    var j=2;
     if(!dataList || dataList.length<=0) return;
     var dataListView = [];
     dataList.map((dataListItem,i)=>{
@@ -60,11 +66,16 @@ export default class TableView extends React.PureComponent {
       if(dataRow && dataRow.length>0){
         dataRow.map((dataRowItem,i)=>{
           dataRowList.push(
-            <View style={styles.tableItemStyle}><Text style={styles.headerItemTextStyle}>{dataRowItem}</Text></View>
+                <View style={styles.tableItemStyle}><Text style={styles.headerItemTextStyle}>{dataRowItem}</Text></View>
+
           );
         });
         dataListView.push(
-            <View style={styles.tableWrapperStyle}>{dataRowList}</View>
+            <TouchableOpacity
+                onPress={()=>{this.navigatorToDetail(2)}}
+            >
+              <View style={styles.tableWrapperStyle}>{dataRowList}</View>
+            </TouchableOpacity>
         );}});
 
     return dataListView;

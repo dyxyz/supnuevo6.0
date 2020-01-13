@@ -4,9 +4,9 @@ ADDED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/
 INJECTED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12
 INJECTED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12
 INJECTED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12
+MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-fs] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-20:12
-MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-sensitive-info] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-sensitive-info/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-cookies] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-cookies/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.44.0] /Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/304352bb6ed76510c102bcc68dfce16f/AndroidManifest.xml:2:1-15:12
@@ -66,12 +66,12 @@ uses-sdk
 ADDED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:12:5-14:41
+MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-fs] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-fs] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sensitive-info] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-sensitive-info/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sensitive-info] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-sensitive-info/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-cookies] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-cookies/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
@@ -160,6 +160,8 @@ uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from [:react-native-fs] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-81
 	android:name
 		ADDED from [:react-native-fs] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: com.rnfs requested WRITE_EXTERNAL_STORAGE
 uses-feature#android.hardware.camera
 ADDED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-15:36
 	android:required
@@ -174,5 +176,3 @@ ADDED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifit
 		ADDED from [:react-native-camera] /Users/lli/Documents/newspace/rnSupnuevo_fifith/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:9-57
 uses-permission#android.permission.READ_PHONE_STATE
 IMPLIED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
-uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

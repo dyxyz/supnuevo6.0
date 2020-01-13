@@ -1,4 +1,4 @@
-#Thu Nov 21 09:21:41 CST 2019
+#Sun Jan 12 16:44:25 CST 2020
 base.0=/Users/lli/Documents/newspace/rnSupnuevo_fifith/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

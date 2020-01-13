@@ -35,12 +35,8 @@ class CodesModal extends Component{
     }
 
     onCodigoSelect(code){
-            this.props.onCodigoSelect(code);
-            this.close()
-    }
-
-    confirmRowID(codigo){
-        this.props.confirmRowID(codigo);
+        this.props.onCodigoSelect(code);
+        this.close()
     }
 
     renderRow(rowData){
@@ -50,11 +46,10 @@ class CodesModal extends Component{
                 <TouchableOpacity
                     onPress={()=>{
                         //TODO:close this modal
-                        this.confirmRowID(rowData);
+                        this.onCodigoSelect(rowData);
                     }}>
                     <View style={{flex:1,flexDirection:'row',padding:13,borderBottomWidth:1,borderColor:'#ddd',justifyContent:'flex-start'}}>
                         <Text style={{fontSize:setSpText(18),color:'#323232'}}>{rowData.codigo}</Text>
-                        <Text style={{fontSize:setSpText(18),color:'#323232'}}>{rowData.nombre}</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -69,7 +64,7 @@ class CodesModal extends Component{
         super(props);
         const {codes}=this.props;
         this.state={
-            codes:codes,
+            codes:codes
         }
     }
 
@@ -84,13 +79,13 @@ class CodesModal extends Component{
             var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
             listView=
-                    <ListView
-                        automaticallyAdjustContentInsets={false}
-                        keyboardShouldPersistTaps={true}
-                        dataSource={ds.cloneWithRows(data)}
-                        renderRow={this.renderRow.bind(this)}
+                <ListView
+                    automaticallyAdjustContentInsets={false}
+                    keyboardShouldPersistTaps={true}
+                    dataSource={ds.cloneWithRows(data)}
+                    renderRow={this.renderRow.bind(this)}
 
-                    />;
+                />;
         }else{}
 
 

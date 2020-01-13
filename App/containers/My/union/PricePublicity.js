@@ -98,21 +98,27 @@ class PricePublicity extends Component {
                     <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
                         {this.props.username}
                     </Text>
-                    <TouchableOpacity
-                        style={{
-                            position:"absolute",
-                            right:15,
-                            top:18,
-                            height: 30,
-                        }}
-                                      onPress={() => {
-                                          this.addPromotion();
-                                      }}>
-                        <View
-                        >
-                            <IconI name="ios-add-circle-outline" color="#fff" size={30}/>
-                        </View>
-                    </TouchableOpacity>
+                    {this.props.unionMemberType==2?
+                        <TouchableOpacity
+                            style={{
+                                position:"absolute",
+                                right:15,
+                                top:18,
+                                height: 30,
+                            }}
+                            onPress={() => {
+                                this.addPromotion();
+                            }}>
+                            <View
+                            >
+                                <IconI name="ios-add-circle-outline" color="#fff" size={30}/>
+                            </View>
+                        </TouchableOpacity>
+                        :
+                        null
+                    }
+
+
                     <View style={{flex:1}}>
 
                     </View>
@@ -185,21 +191,38 @@ class PricePublicity extends Component {
         var imageuri ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ rowData.urlAddress;
         // const image = rowData.url?{uri:rowData.image}:require('../../../img/img_logo.png');
         // var isAlive=rowData.isAlive
-        var row =
-            <TouchableOpacity
-                onPress={()=>this.checkAlive(rowData.isAlive,rowData.advertisementId)}
-                onLongPress={()=>{this.deleteAdvertisement(rowData.advertisementId)}}
-            >
-                <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>
-                    {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+        if(this.props.unionMemberType==2){
+            var row =
+                <TouchableOpacity
+                    onPress={()=>this.checkAlive(rowData.isAlive,rowData.advertisementId)}
+                    onLongPress={()=>{this.deleteAdvertisement(rowData.advertisementId)}}
+                >
+                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>
+                        {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+                    </View>
+                    <View style={{
+                        flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
+                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width
+                    }}>
+                        <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                    </View>
+                </TouchableOpacity>;
+        }
+        else{
+            var row=
+                <View>
+                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>
+                        {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+                    </View>
+                    <View style={{
+                        flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
+                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width
+                    }}>
+                        <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                    </View>
                 </View>
-                <View style={{
-                    flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
-                    justifyContent: 'flex-start', backgroundColor: '#fff',width:width
-                }}>
-                    <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
-                </View>
-            </TouchableOpacity>;
+        }
+
         return row;
     }
 
@@ -423,7 +446,7 @@ var styles = StyleSheet.create({
 module.exports = connect(state => ({
         unionId: state.user.unionId,
         username: state.user.username,
-
+        unionMemberType:state.user.unionMemberType,
     })
 )(PricePublicity);
 

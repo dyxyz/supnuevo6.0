@@ -83,7 +83,7 @@ class PricePromotion extends Component {
                     <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
                         <View style={{flex:1,paddingLeft:10}}>
                             <TouchableOpacity
-                                style={{flexDirection:'row',height:40,alignItems:'flex-end'}}
+                                style={{flexDirection:'row',height:40,paddingTop:5}}
                                 onPress={
                                     ()=>{
                                         this.cancel();
@@ -92,9 +92,11 @@ class PricePromotion extends Component {
                                 <Icon name="arrow-left" size={20} color="#fff" />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
-                            Supnuevo(6.0)-{this.props.username}
-                        </Text>
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                Supnuevo(6.0)-{this.props.username}
+                            </Text>
+                        </View>
                         <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                         </View>
                     </View>

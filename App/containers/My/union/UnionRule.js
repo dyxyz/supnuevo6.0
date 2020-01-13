@@ -276,11 +276,14 @@ class UnionRule extends Component {
                         </View>
 
                         <View style={[{borderTopWidth: 1}, styles.readonly]}>
-                            <Text style={styles.text}>本店其他关于购买及送货的文字说明为（西语）：</Text>
-                            <View style={[{borderWidth: 1}, styles.textInput]}>
-                                <Text style={styles.text}>{this.state.regulation} </Text>
-                            </View>
+                                <Text style={styles.text}>本店其他关于购买及送货的文字说明为（西语）：</Text>
+
+                                    <ScrollView style={[{borderWidth: 1}, styles.textInput]}>
+                                        <Text style={styles.text}>{this.state.regulation} </Text>
+                                    </ScrollView>
+
                         </View>
+
                     </ScrollView>
                 }
             </View>

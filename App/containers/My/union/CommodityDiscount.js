@@ -105,7 +105,7 @@ class CommodityDiscount extends Component {
                     <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
                         <View style={{flex:1,paddingLeft:10}}>
                             <TouchableOpacity
-                                style={{flexDirection:'row',height:40,alignItems:'flex-end'}}
+                                style={{flexDirection:'row',height:40,paddingTop:5}}
                                 onPress={
                                     ()=>{
                                         this.cancel();
@@ -114,19 +114,29 @@ class CommodityDiscount extends Component {
                                 <Icon name="arrow-left" size={20} color="#fff" />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
-                            Supnuevo(6.0)-{this.props.username}
-                        </Text>
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                Supnuevo(6.0)-{this.props.username}
+                            </Text>
+                        </View>
                         <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                         </View>
                     </View>
-
+                    {this.props.unionMemberType==2?
                         <View style={{flex: 1}}>
                             {this._renderDiscountSelector()}
                             {this._renderDateSelector()}
                             {this._renderBaseCommodity()}
                             {this._renderAuxCommodity()}
                         </View>
+                        :
+                        <View style={{flex: 1}}>
+                            {this._renderDiscountSelector()}
+                            {this._renderBaseCommodity()}
+                            {this._renderAuxCommodity()}
+                        </View>
+                    }
+
 
                     {/*条码*/}
                     <Modal
@@ -227,30 +237,30 @@ class CommodityDiscount extends Component {
 
         return(
             <View style={{flex:1,flexDirection:'column'}}>
-                <View style={{flexDirection:'row', padding:10}}>
-                    <TouchableOpacity
-                        style={{borderWidth:1,padding:3,paddingHorizontal:8,borderRadius:3,backgroundColor:'#8bb3f4'}}
-                        onPress={()=>{
-                            this.createOrUpdateSupnuevoBuyerUnionCommodityDiscount();
-                        }}
+                {this.props.unionMemberType==2?
+                    <View style={{flexDirection:'row', padding:10}}>
+                        <TouchableOpacity
+                            style={{borderWidth:1,padding:3,paddingHorizontal:8,borderRadius:3,backgroundColor:'#8bb3f4'}}
+                            onPress={()=>{
+                                this.createOrUpdateSupnuevoBuyerUnionCommodityDiscount();
+                            }}
                         ><Text>提交</Text>
-                    </TouchableOpacity>
-                    {/*<TouchableOpacity*/}
-                        {/*style={{borderWidth:1,padding:3,paddingHorizontal:8,borderRadius:3,backgroundColor:'#8bb3f4',marginLeft:10}}*/}
-                        {/*onPress={()=>{*/}
-                            {/*this.createOrUpdateSupnuevoBuyerUnionCommodityDiscount();*/}
-                        {/*}}><Text>提交</Text></TouchableOpacity>*/}
-                    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:18}}>{discountName}</Text></View>
-                    <TouchableOpacity
-                        onPress={()=>{this.ckeckAlive(this.state.isAlive)}}
-                        style={{position:"absolute",right:5}}
-                    >
-                        <View style={{flexDirection:"row",marginTop:8}}>
-                            <View style={{paddingTop:5,marginRight:5}}><Text>是否启用</Text></View>
-                            <View>{this.state.isAlive === 1?is_alive_icon:is_not_alive_icon}</View>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                        </TouchableOpacity>
+                        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:18}}>{discountName}</Text></View>
+                        <TouchableOpacity
+                            onPress={()=>{this.ckeckAlive(this.state.isAlive)}}
+                            style={{position:"absolute",right:5}}
+                        >
+                            <View style={{flexDirection:"row",marginTop:8}}>
+                                <View style={{paddingTop:5,marginRight:5}}><Text>是否启用</Text></View>
+                                <View>{this.state.isAlive === 1?is_alive_icon:is_not_alive_icon}</View>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                    :
+                    <View style={{height:height*0.04,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:18}}>{discountName}</Text></View>
+                }
+
 
                 <View style={{flexDirection:'row',marginLeft:10}}>
                     <ModalDropdown
@@ -275,27 +285,39 @@ class CommodityDiscount extends Component {
                             {isDropDown?dropupIcon:dropdownIcon}
                         </View>
                     </ModalDropdown>
-                    <View style={{flex:1,flexDirection:'row'}}>
-                    <View style={{flex:1,paddingHorizontal:10}}>
-                        <TouchableOpacity style={{
-                            alignItems: 'center',
-                            borderRadius: 4,
-                            backgroundColor: '#8bb3f4'
-                        }} onPress={() => {this.addSupnuevoBuyerUnionCommodityDiscount()}}>
-                            <Text style={{padding: 5, color: '#fff', fontSize: setSpText(22)}}>+</Text>
-                        </TouchableOpacity>
-                    </View>
+                    {this.props.unionMemberType==2?
+                        <View style={{flex:1,flexDirection:'row'}}>
+                            <View style={{flex:1,paddingHorizontal:10}}>
+                                <TouchableOpacity style={{
+                                    alignItems: 'center',
+                                    borderRadius: 4,
+                                    backgroundColor: '#8bb3f4'
+                                }} onPress={() => {this.addSupnuevoBuyerUnionCommodityDiscount()}}>
+                                    <Text style={{padding: 5, color: '#fff', fontSize: setSpText(22)}}>+</Text>
+                                </TouchableOpacity>
+                            </View>
 
-                        <View style={{flex:1,paddingHorizontal:10}}>
-                        <TouchableOpacity style={{
-                            alignItems: 'center',
-                            borderRadius: 4,
-                            backgroundColor: '#8bb3f4'
-                        }} onPress={() => {this.deleteSupnuevoBuyerUnionCommodityDiscount(this.state.discountId)}}>
-                            <Text style={{padding: 5, color: '#fff', fontSize: setSpText(22)}}>-</Text>
-                        </TouchableOpacity>
-                    </View>
-                    </View>
+                            <View style={{flex:1,paddingHorizontal:10}}>
+                                <TouchableOpacity style={{
+                                    alignItems: 'center',
+                                    borderRadius: 4,
+                                    backgroundColor: '#8bb3f4'
+                                }} onPress={() => {this.deleteSupnuevoBuyerUnionCommodityDiscount(this.state.discountId)}}>
+                                    <Text style={{padding: 5, color: '#fff', fontSize: setSpText(22)}}>-</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        :
+                        <View style={{flex:1,flexDirection:'row', padding:10}}>
+
+                            <View style={{flexDirection:"row",marginTop:8,position:"absolute",right:5}}>
+                                <View style={{paddingTop:5,marginRight:5}}><Text>是否启用</Text></View>
+                                <View>{this.state.isAlive === 1?is_alive_icon:is_not_alive_icon}</View>
+                            </View>
+                        </View>
+
+                    }
+
                 </View>
             </View>
         );
@@ -327,7 +349,7 @@ class CommodityDiscount extends Component {
         var list1=this.state.goodsList1
 
         let baseCommodityListView =
-            list1 ?
+            this.props.unionMemberType==2 ?
                 <View style={{alignItems:"center",justifyContent:"center"}}>
                     <SwipeListView
                         onContentSizeChange={(contentWidth, contentHeight) => {
@@ -352,10 +374,18 @@ class CommodityDiscount extends Component {
                         leftOpenValue={0.5}
                         rightOpenValue={-0.5}
                     />
-                </View>:null;
+                </View>
+                :
+                <View style={{alignItems:"center",justifyContent:"center",height:height*0.4}}>
+                    <ListView
+                        dataSource={ds.cloneWithRows(list1)}
+                        renderRow={this.renderBaseCommodityRow.bind(this)}
+                    />
+                </View>
+        ;
 
         return(
-            <View style={{flex:3,height:200}}>
+            <View style={{flex:3,height:height*0.3}}>
                 <View style={{padding: 10}}>
                     <View style={[styles.row, {borderBottomWidth: 0}]}>
 
@@ -485,7 +515,7 @@ class CommodityDiscount extends Component {
         var list2=this.state.goodsList2;
 
         let auxCommodityListView =
-            list2 ?
+            this.props.unionMemberType==2 ?
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:5}}>
                     <SwipeListView
                         onContentSizeChange={(contentWidth, contentHeight) => {
@@ -510,10 +540,18 @@ class CommodityDiscount extends Component {
                         leftOpenValue={0.5}
                         rightOpenValue={-0.5}
                     />
-                </View>:null;
+                </View>
+                :
+                <View style={{alignItems:"center",justifyContent:"center",marginTop:5,height:height*0.4}}>
+                    <ListView
+                        dataSource={ds.cloneWithRows(list2)}
+                        renderRow={this.renderAuxCommodityRow.bind(this)}
+                    />
+                </View>
+        ;
 
         return(
-            <View style={{flex:3,height:height*0.35,borderWidth:1}}>
+            <View style={{flex:3,height:height*0.35}}>
                 <View style={{padding: 10}}>
                     <View style={[styles.row, {borderBottomWidth: 0}]}>
 
@@ -632,16 +670,23 @@ class CommodityDiscount extends Component {
                 </View>
                 <View style={{flexDirection:"row",justifyContent:"center"}}>
                     <View style={{paddingTop:8}}><Text style={{fontSize: setSpText(15)}}>优惠商品价格：</Text></View>
-                    <TextInput
-                        style={styles.priInput}
-                        // placeholder={this.state.ratio}
-                        // placeholderTextColor={"black"}
-                        defaultValue={this.state.discountPrice.toString()}
-                        underlineColorAndroid={"transparent"}
-                        onChangeText={(value) => {
-                            this.setState({discountPrice: value})
-                        }}
-                    />
+                    {this.props.unionMemberType==2?
+                        <TextInput
+                            style={styles.priInput}
+                            // placeholder={this.state.ratio}
+                            // placeholderTextColor={"black"}
+                            defaultValue={this.state.discountPrice.toString()}
+                            underlineColorAndroid={"transparent"}
+                            onChangeText={(value) => {
+                                this.setState({discountPrice: value})
+                            }}
+                        />
+                        :
+                        <View style={{justifyContent:"center",width:width*0.6, height:height*0.045}}>
+                            <Text style={{fontSize:16}}>{this.state.discountPrice}</Text>
+                        </View>
+                    }
+
                 </View>
                 <View style={{flex:2}}>
                     {auxCommodityListView}
@@ -654,7 +699,7 @@ class CommodityDiscount extends Component {
     renderBaseCommodityRow(rowData) {
         var row =
             <TouchableOpacity onPress={() => {}}>
-                <View style={styles.comcell}>
+                <View style={[styles.comcell,{marginTop:10}]}>
                     {/*<View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>*/}
                         {/*<View style={{borderWidth:1,padding:3,marginRight:10}}><Text style={{fontSize:18}}>amount：{rowData.amount}</Text></View>*/}
 
@@ -1052,6 +1097,7 @@ var styles = StyleSheet.create
         justifyContent: 'flex-start',
         backgroundColor: '#fff',
         width:width*0.9,
+        height:height*0.15,
     },
     touch: {
         flex: 1,
@@ -1198,6 +1244,7 @@ module.exports = connect(state => ({
         username: state.user.username,
         sessionId: state.user.sessionId,
         unionId: state.user.unionId,
+        unionMemberType:state.user.unionMemberType,
     })
 )(CommodityDiscount);
 

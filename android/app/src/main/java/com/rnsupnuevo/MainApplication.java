@@ -33,7 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
                     new MainReactPackage(),
             new VectorIconsPackage(),
             new RNFSPackage(),
-                    new VectorIconsPackage(),
+
                     new RCTCameraPackage(),
                     new RNSensitiveInfoPackage(),
                     new CookieManagerPackage(),

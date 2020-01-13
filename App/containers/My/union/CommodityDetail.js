@@ -84,44 +84,53 @@ class CommodityDetailInfo extends Component{
                         <View style={styles.all}><Text style={styles.text}>商品基础价：{this.props.basePrice}</Text></View>
                         <View style={styles.all}><Text style={styles.text}>商品比例：{this.props.ratio}</Text></View>
 
-                        <View style={styles.ratio}>
-                            <View style={{marginLeft:5}}>
-                                <Text style={styles.text}>比例1：</Text>
-                            </View>
-                            <View style={styles.ratioInput}>
-
-                                {this.state.ratioOnly==null?
-                                    <TextInput
-                                        style={{height:height*0.06,width:width*0.15,paddingLeft:width*0.05}}
-                                        //placeholder={this.state.ratioOnly.toString()}
-                                        placeholderTextColor={"black"}
-                                        underlineColorAndroid={"transparent"}
-                                        onChangeText={(value) => {
-                                            this.setState({ratioOnly: value})
-                                        }}
-                                    />
-                                    :
-                                    <TextInput
-                                        style={{height:height*0.06,width:width*0.15,paddingLeft:width*0.05}}
-                                        placeholder={this.state.ratioOnly.toString()}
-                                        placeholderTextColor={"black"}
-                                        underlineColorAndroid={"transparent"}
-                                        onChangeText={(value) => {
-                                            this.setState({ratioOnly: value})
-                                        }}
-                                    />
-                                }
-                            </View>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    this.updateSupnuevoBuyerUnionPriceRatio1()
-                                }}
-                            >
-                                <View style={styles.button}>
-                                    <Text style={{color:"white"}}>保存</Text>
+                        {this.props.unionMemberType==2?
+                            <View style={styles.ratio}>
+                                <View style={{marginLeft:5}}>
+                                    <Text style={styles.text}>比例1：</Text>
                                 </View>
-                            </TouchableOpacity>
-                        </View>
+
+                                <View style={styles.ratioInput}>
+                                    <View>
+
+                                    {this.state.ratioOnly==null?
+                                        <TextInput
+                                            style={{height:height*0.05,width:width*0.13,paddingLeft:width*0.05}}
+                                            //placeholder={this.state.ratioOnly.toString()}
+                                            placeholderTextColor={"black"}
+                                            underlineColorAndroid={"transparent"}
+                                            onChangeText={(value) => {
+                                                this.setState({ratioOnly: value})
+                                            }}
+                                        />
+                                        :
+                                        <TextInput
+                                            style={{height:height*0.05,width:width*0.13,paddingLeft:width*0.05}}
+                                            placeholder={this.state.ratioOnly.toString()}
+                                            placeholderTextColor={"black"}
+                                            underlineColorAndroid={"transparent"}
+                                            onChangeText={(value) => {
+                                                this.setState({ratioOnly: value})
+                                            }}
+                                        />
+                                    }
+                                    </View>
+                                </View>
+                                <Text>%</Text>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.updateSupnuevoBuyerUnionPriceRatio1()
+                                    }}
+                                >
+                                    <View style={styles.button}>
+                                        <Text style={{color:"white"}}>保存</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                            :
+                            <View style={styles.all}><Text style={styles.text}>比例1：{this.state.ratioOnly}</Text></View>
+                        }
+
                     </View>
                 </View>
 
@@ -158,7 +167,7 @@ const styles=StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         borderBottomWidth:1,
-        width:width*0.2,
+        width:width*0.18,
         marginLeft:width*0.03,
         // borderColor:"red",
         // marginRight:10,
@@ -195,5 +204,6 @@ const styles=StyleSheet.create({
 module.exports = connect(state => ({
         unionId: state.user.unionId,
         username: state.user.username,
+        unionMemberType:state.user.unionMemberType,
     })
 )(CommodityDetailInfo);

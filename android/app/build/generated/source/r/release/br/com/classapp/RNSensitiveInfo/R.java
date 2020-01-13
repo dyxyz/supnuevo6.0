@@ -20,10 +20,6 @@ public final class R {
         public static final int abc_slide_out_top = 0x7f050009;
         public static final int catalyst_push_up_in = 0x7f05000a;
         public static final int catalyst_push_up_out = 0x7f05000b;
-        public static final int fade_in = 0x7f05000c;
-        public static final int fade_out = 0x7f05000d;
-        public static final int slide_down = 0x7f05000e;
-        public static final int slide_up = 0x7f05000f;
     }
     public static final class attr {
         public static final int actionBarDivider = 0x7f01007d;
@@ -61,7 +57,6 @@ public final class R {
         public static final int actionViewClass = 0x7f01004e;
         public static final int activityChooserViewStyle = 0x7f01009f;
         public static final int actualImageScaleType = 0x7f01003b;
-        public static final int actualImageUri = 0x7f010060;
         public static final int alertDialogButtonGroupStyle = 0x7f0100c2;
         public static final int alertDialogCenterButtons = 0x7f0100c3;
         public static final int alertDialogStyle = 0x7f0100c1;
@@ -193,7 +188,6 @@ public final class R {
         public static final int roundWithOverlayColor = 0x7f010045;
         public static final int roundedCornerRadius = 0x7f010040;
         public static final int roundingBorderColor = 0x7f010047;
-        public static final int roundingBorderPadding = 0x7f010048;
         public static final int roundingBorderWidth = 0x7f010046;
         public static final int searchHintIcon = 0x7f01005a;
         public static final int searchIcon = 0x7f010059;
@@ -471,7 +465,7 @@ public final class R {
         public static final int abc_textfield_search_activated_mtrl_alpha = 0x7f020042;
         public static final int abc_textfield_search_default_mtrl_alpha = 0x7f020043;
         public static final int abc_textfield_search_material = 0x7f020044;
-        public static final int notification_template_icon_bg = 0x7f020052;
+        public static final int notification_template_icon_bg = 0x7f02004f;
     }
     public static final class id {
         public static final int action0 = 0x7f0d0059;
@@ -541,13 +535,6 @@ public final class R {
         public static final int radio = 0x7f0d0043;
         public static final int rn_frame_file = 0x7f0d0067;
         public static final int rn_frame_method = 0x7f0d0066;
-        public static final int rn_redbox_copy_button = 0x7f0d006f;
-        public static final int rn_redbox_dismiss_button = 0x7f0d006d;
-        public static final int rn_redbox_line_separator = 0x7f0d006a;
-        public static final int rn_redbox_loading_indicator = 0x7f0d006b;
-        public static final int rn_redbox_reload_button = 0x7f0d006e;
-        public static final int rn_redbox_report_button = 0x7f0d0070;
-        public static final int rn_redbox_report_label = 0x7f0d006c;
         public static final int rn_redbox_stack = 0x7f0d0069;
         public static final int screen = 0x7f0d0014;
         public static final int scrollView = 0x7f0d003b;
@@ -617,7 +604,6 @@ public final class R {
         public static final int abc_search_dropdown_item_icons_2line = 0x7f040016;
         public static final int abc_search_view = 0x7f040017;
         public static final int abc_select_dialog_material = 0x7f040018;
-        public static final int dev_loading_view = 0x7f040019;
         public static final int fps_view = 0x7f04001a;
         public static final int notification_media_action = 0x7f04001b;
         public static final int notification_media_cancel_action = 0x7f04001c;
@@ -653,26 +639,19 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 0x7f070010;
         public static final int abc_shareactionprovider_share_with_application = 0x7f070011;
         public static final int abc_toolbar_collapse_description = 0x7f070012;
-        public static final int catalyst_copy_button = 0x7f070015;
         public static final int catalyst_debugjs = 0x7f070016;
         public static final int catalyst_debugjs_off = 0x7f070017;
-        public static final int catalyst_dismiss_button = 0x7f070018;
         public static final int catalyst_element_inspector = 0x7f070019;
-        public static final int catalyst_heap_capture = 0x7f07001a;
         public static final int catalyst_hot_module_replacement = 0x7f07001b;
         public static final int catalyst_hot_module_replacement_off = 0x7f07001c;
         public static final int catalyst_jsload_error = 0x7f07001d;
         public static final int catalyst_live_reload = 0x7f07001e;
         public static final int catalyst_live_reload_off = 0x7f07001f;
-        public static final int catalyst_loading_from_url = 0x7f070020;
         public static final int catalyst_perf_monitor = 0x7f070021;
         public static final int catalyst_perf_monitor_off = 0x7f070022;
-        public static final int catalyst_poke_sampling_profiler = 0x7f070023;
-        public static final int catalyst_reload_button = 0x7f070024;
         public static final int catalyst_reloadjs = 0x7f070025;
         public static final int catalyst_remotedbg_error = 0x7f070026;
         public static final int catalyst_remotedbg_message = 0x7f070027;
-        public static final int catalyst_report_button = 0x7f070028;
         public static final int catalyst_settings = 0x7f070029;
         public static final int catalyst_settings_title = 0x7f07002a;
         public static final int status_bar_notification_info_overflow = 0x7f070013;
@@ -821,10 +800,6 @@ public final class R {
         public static final int Base_Widget_AppCompat_TextView_SpinnerItem = 0x7f0a0072;
         public static final int Base_Widget_AppCompat_Toolbar = 0x7f0a00ae;
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation = 0x7f0a0073;
-        public static final int CalendarDatePickerDialog = 0x7f0a00af;
-        public static final int CalendarDatePickerStyle = 0x7f0a00b0;
-        public static final int DialogAnimationFade = 0x7f0a00b1;
-        public static final int DialogAnimationSlide = 0x7f0a00b2;
         public static final int Platform_AppCompat = 0x7f0a0010;
         public static final int Platform_AppCompat_Light = 0x7f0a0011;
         public static final int Platform_ThemeOverlay_AppCompat = 0x7f0a0074;
@@ -847,8 +822,6 @@ public final class R {
         public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 0x7f0a0029;
         public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 0x7f0a002a;
         public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 0x7f0a002b;
-        public static final int SpinnerDatePickerDialog = 0x7f0a00b3;
-        public static final int SpinnerDatePickerStyle = 0x7f0a00b4;
         public static final int TextAppearance_AppCompat = 0x7f0a00b5;
         public static final int TextAppearance_AppCompat_Body1 = 0x7f0a00b6;
         public static final int TextAppearance_AppCompat_Body2 = 0x7f0a00b7;
@@ -923,9 +896,6 @@ public final class R {
         public static final int Theme_AppCompat_NoActionBar = 0x7f0a00f2;
         public static final int Theme_Catalyst = 0x7f0a00f3;
         public static final int Theme_Catalyst_RedBox = 0x7f0a00f4;
-        public static final int Theme_FullScreenDialog = 0x7f0a00f5;
-        public static final int Theme_FullScreenDialogAnimatedFade = 0x7f0a00f6;
-        public static final int Theme_FullScreenDialogAnimatedSlide = 0x7f0a00f7;
         public static final int Theme_ReactNative_AppCompat_Light = 0x7f0a00f8;
         public static final int Theme_ReactNative_AppCompat_Light_NoActionBar_FullScreen = 0x7f0a00f9;
         public static final int Widget_AppCompat_ActionBar = 0x7f0a00ff;
@@ -1061,32 +1031,6 @@ public final class R {
         public static final int DrawerArrowToggle_arrowShaftLength = 5;
         public static final int DrawerArrowToggle_barLength = 6;
         public static final int DrawerArrowToggle_thickness = 7;
-        public static final int[] GenericDraweeHierarchy = { 0x7f010030, 0x7f010031, 0x7f010032, 0x7f010033, 0x7f010034, 0x7f010035, 0x7f010036, 0x7f010037, 0x7f010038, 0x7f010039, 0x7f01003a, 0x7f01003b, 0x7f01003c, 0x7f01003d, 0x7f01003e, 0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042, 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048 };
-        public static final int GenericDraweeHierarchy_fadeDuration = 0;
-        public static final int GenericDraweeHierarchy_viewAspectRatio = 1;
-        public static final int GenericDraweeHierarchy_placeholderImage = 2;
-        public static final int GenericDraweeHierarchy_placeholderImageScaleType = 3;
-        public static final int GenericDraweeHierarchy_retryImage = 4;
-        public static final int GenericDraweeHierarchy_retryImageScaleType = 5;
-        public static final int GenericDraweeHierarchy_failureImage = 6;
-        public static final int GenericDraweeHierarchy_failureImageScaleType = 7;
-        public static final int GenericDraweeHierarchy_progressBarImage = 8;
-        public static final int GenericDraweeHierarchy_progressBarImageScaleType = 9;
-        public static final int GenericDraweeHierarchy_progressBarAutoRotateInterval = 10;
-        public static final int GenericDraweeHierarchy_actualImageScaleType = 11;
-        public static final int GenericDraweeHierarchy_backgroundImage = 12;
-        public static final int GenericDraweeHierarchy_overlayImage = 13;
-        public static final int GenericDraweeHierarchy_pressedStateOverlayImage = 14;
-        public static final int GenericDraweeHierarchy_roundAsCircle = 15;
-        public static final int GenericDraweeHierarchy_roundedCornerRadius = 16;
-        public static final int GenericDraweeHierarchy_roundTopLeft = 17;
-        public static final int GenericDraweeHierarchy_roundTopRight = 18;
-        public static final int GenericDraweeHierarchy_roundBottomRight = 19;
-        public static final int GenericDraweeHierarchy_roundBottomLeft = 20;
-        public static final int GenericDraweeHierarchy_roundWithOverlayColor = 21;
-        public static final int GenericDraweeHierarchy_roundingBorderWidth = 22;
-        public static final int GenericDraweeHierarchy_roundingBorderColor = 23;
-        public static final int GenericDraweeHierarchy_roundingBorderPadding = 24;
         public static final int[] LinearLayoutCompat = { 0x010100af, 0x010100c4, 0x01010126, 0x01010127, 0x01010128, 0x7f01000b, 0x7f010049, 0x7f01004a, 0x7f01004b };
         public static final int LinearLayoutCompat_android_gravity = 0;
         public static final int LinearLayoutCompat_android_orientation = 1;
@@ -1162,8 +1106,6 @@ public final class R {
         public static final int SearchView_suggestionRowLayout = 14;
         public static final int SearchView_queryBackground = 15;
         public static final int SearchView_submitBackground = 16;
-        public static final int[] SimpleDraweeView = { 0x7f010060 };
-        public static final int SimpleDraweeView_actualImageUri = 0;
         public static final int[] Spinner = { 0x01010176, 0x0101017b, 0x01010262, 0x7f01001b };
         public static final int Spinner_android_popupBackground = 0;
         public static final int Spinner_android_prompt = 1;
@@ -1190,18 +1132,6 @@ public final class R {
         public static final int TextAppearance_android_shadowDy = 6;
         public static final int TextAppearance_android_shadowRadius = 7;
         public static final int TextAppearance_textAllCaps = 8;
-        public static final int[] TextStyle = { 0x01010034, 0x01010095, 0x01010097, 0x01010098, 0x010100ab, 0x01010153, 0x0101015d, 0x01010161, 0x01010162, 0x01010163, 0x01010164 };
-        public static final int TextStyle_android_textAppearance = 0;
-        public static final int TextStyle_android_textSize = 1;
-        public static final int TextStyle_android_textStyle = 2;
-        public static final int TextStyle_android_textColor = 3;
-        public static final int TextStyle_android_ellipsize = 4;
-        public static final int TextStyle_android_maxLines = 5;
-        public static final int TextStyle_android_singleLine = 6;
-        public static final int TextStyle_android_shadowColor = 7;
-        public static final int TextStyle_android_shadowDx = 8;
-        public static final int TextStyle_android_shadowDy = 9;
-        public static final int TextStyle_android_shadowRadius = 10;
         public static final int[] Theme = { 0x01010057, 0x010100ae, 0x7f010068, 0x7f010069, 0x7f01006a, 0x7f01006b, 0x7f01006c, 0x7f01006d, 0x7f01006e, 0x7f01006f, 0x7f010070, 0x7f010071, 0x7f010072, 0x7f010073, 0x7f010074, 0x7f010075, 0x7f010076, 0x7f010077, 0x7f010078, 0x7f010079, 0x7f01007a, 0x7f01007b, 0x7f01007c, 0x7f01007d, 0x7f01007e, 0x7f01007f, 0x7f010080, 0x7f010081, 0x7f010082, 0x7f010083, 0x7f010084, 0x7f010085, 0x7f010086, 0x7f010087, 0x7f010088, 0x7f010089, 0x7f01008a, 0x7f01008b, 0x7f01008c, 0x7f01008d, 0x7f01008e, 0x7f01008f, 0x7f010090, 0x7f010091, 0x7f010092, 0x7f010093, 0x7f010094, 0x7f010095, 0x7f010096, 0x7f010097, 0x7f010098, 0x7f010099, 0x7f01009a, 0x7f01009b, 0x7f01009c, 0x7f01009d, 0x7f01009e, 0x7f01009f, 0x7f0100a0, 0x7f0100a1, 0x7f0100a2, 0x7f0100a3, 0x7f0100a4, 0x7f0100a5, 0x7f0100a6, 0x7f0100a7, 0x7f0100a8, 0x7f0100a9, 0x7f0100aa, 0x7f0100ab, 0x7f0100ac, 0x7f0100ad, 0x7f0100ae, 0x7f0100af, 0x7f0100b0, 0x7f0100b1, 0x7f0100b2, 0x7f0100b3, 0x7f0100b4, 0x7f0100b5, 0x7f0100b6, 0x7f0100b7, 0x7f0100b8, 0x7f0100b9, 0x7f0100ba, 0x7f0100bb, 0x7f0100bc, 0x7f0100bd, 0x7f0100be, 0x7f0100bf, 0x7f0100c0, 0x7f0100c1, 0x7f0100c2, 0x7f0100c3, 0x7f0100c4, 0x7f0100c5, 0x7f0100c6, 0x7f0100c7, 0x7f0100c8, 0x7f0100c9, 0x7f0100ca, 0x7f0100cb, 0x7f0100cc, 0x7f0100cd, 0x7f0100ce, 0x7f0100cf, 0x7f0100d0, 0x7f0100d1, 0x7f0100d2, 0x7f0100d3 };
         public static final int Theme_android_windowIsFloating = 0;
         public static final int Theme_android_windowAnimationStyle = 1;

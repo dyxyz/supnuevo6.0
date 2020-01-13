@@ -95,35 +95,35 @@ class AllCommoditybyTax extends Component{
                 </View>
 
                 {/*adjust*/}
-                <View style={styles.adjust}>
-                    <View style={[styles.middleall,{marginLeft:5}]}>
-                        <Text style={{fontSize:15}}>调整商品比例</Text>
-                    </View>
-                    <View style={styles.middleall}>
-                        <TextInput
-                            style={{height:height*0.06,width:width*0.5,borderWidth:1}}
-                            placeholder={this.state.ratio}
-                            placeholderTextColor={"black"}
-                            underlineColorAndroid={"transparent"}
-                            onChangeText={(value) => {
-                                this.setState({ratio: value})
-                            }}
-                        />
-                    </View>
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.updateSupnuevoBuyerUnionPriceRatio()
-                        }}
-                    >
-                        <View style={styles.button}>
-                            <Text style={{color:"white"}}>保存</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                {/*<View style={styles.adjust}>*/}
+                    {/*<View style={[styles.middleall,{marginLeft:5}]}>*/}
+                        {/*<Text style={{fontSize:15}}>调整商品比例</Text>*/}
+                    {/*</View>*/}
+                    {/*<View style={styles.middleall}>*/}
+                        {/*<TextInput*/}
+                            {/*style={{height:height*0.06,width:width*0.5,borderWidth:1}}*/}
+                            {/*placeholder={this.state.ratio}*/}
+                            {/*placeholderTextColor={"black"}*/}
+                            {/*underlineColorAndroid={"transparent"}*/}
+                            {/*onChangeText={(value) => {*/}
+                                {/*this.setState({ratio: value})*/}
+                            {/*}}*/}
+                        {/*/>*/}
+                    {/*</View>*/}
+                    {/*<TouchableOpacity*/}
+                        {/*onPress={() => {*/}
+                            {/*this.updateSupnuevoBuyerUnionPriceRatio()*/}
+                        {/*}}*/}
+                    {/*>*/}
+                        {/*<View style={styles.button}>*/}
+                            {/*<Text style={{color:"white"}}>保存</Text>*/}
+                        {/*</View>*/}
+                    {/*</TouchableOpacity>*/}
+                {/*</View>*/}
 
                 {/*body*/}
                 <View style={{padding:3,justifyContent:'center',alignItems:'center'}}>
-                    <ScrollView style={{height:height*0.73}}>
+                    <ScrollView style={{height:height*0.8}}>
                             <ListView
                                 automaticallyAdjustContentInsets={false}
                                 dataSource={ds.cloneWithRows(allCommodity)}
