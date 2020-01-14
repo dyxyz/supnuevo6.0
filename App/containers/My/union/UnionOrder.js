@@ -16,7 +16,8 @@ import  {
     TouchableOpacity,
     Dimensions,
     ListView,
-    WebView
+    WebView,
+    Platform,
 } from 'react-native';
 import {connect} from 'react-redux';
 import InputWithCalendar from '../../../components/InputWithCalendar';
@@ -26,6 +27,7 @@ import TableView from "../../../components/TableView";
 import Config from "../../../../config";
 import orderDetail from "./OrderDetail";
 var proxy = require('../../../proxy/Proxy');
+import {setSpText} from "../../../utils/ScreenUtil";
 
 var {height, width} = Dimensions.get('window');
 const orderHead = ["商品名称","数量","价格","小计"];
@@ -76,15 +78,24 @@ class UnionOrder extends Component {
 
         return (
             <View style={{flex: 1}}>
-                <View style={{backgroundColor: '#387ef5', height: 55, padding: 12, justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                    <TouchableOpacity style={{flex: 1, height: 45, marginRight: 10, marginTop:10}}
-                                      onPress={() => {this.goBack();}}>
-                        <Icon name="angle-left" color="#fff" size={40}></Icon>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        {this.props.username}
-                    </Text>
-                    <View style={{flex:1}}>
+                <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                    <View style={{flex:1,paddingLeft:10}}>
+                        <TouchableOpacity
+                            style={{flexDirection:'row',height:40,paddingTop:3}}
+                            onPress={
+                                ()=>{
+                                    this.goBack();
+                                }
+                            }>
+                            <Icon name="arrow-left" size={20} color="#fff" />
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                            Supnuevo(6.0)-{this.props.username}
+                        </Text>
+                    </View>
+                    <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                     </View>
                 </View>
                 {/* body */}
@@ -342,6 +353,7 @@ class UnionOrder extends Component {
                                     <InformationItem key={3} type={TYPE_TEXT} title="接货人电话"
                                                      content={orderInfo.receiverPhone}/>
                                     <InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>
+                                    <InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>
                                 </View>,
                                 <View style={styles.tableInfoCard}>
                                     <View style={styles.containers}>
@@ -382,6 +394,7 @@ class UnionOrder extends Component {
                                 <View style={styles.basicInfoContainer}>
                                     <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
                                     <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
+                                    <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
                                     {/*<InformationItem key={1} type={TYPE_TEXT} title="送货地址" content={orderInfo.receiverAddr}/>*/}
                                     {/*<InformationItem key={2} type={TYPE_TEXT} title="接货人电话" content={orderInfo.receiverPhone}/>*/}
                                     {/*<InformationItem key={3} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>*/}
@@ -428,6 +441,7 @@ class UnionOrder extends Component {
                                 <InformationItem key={3} type={TYPE_TEXT} title="接货人电话"
                                                  content={orderInfo.receiverPhone}/>
                                 <InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>
+                                <InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>
                             </View>,
                             <View style={styles.tableInfoCard}>
                                 <View style={styles.containers}>
@@ -455,6 +469,7 @@ class UnionOrder extends Component {
                                 <View style={styles.basicInfoContainer}>
                                     <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
                                     <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
+                                    <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
                                 </View>,
                                 <View style={styles.tableInfoCard}>
                                     <View style={styles.containers}>
@@ -796,7 +811,7 @@ var styles = StyleSheet.create({
         fontSize:16,
     },
     tableWrapperStyle:{
-        height:45,
+        // height:45,
         width:"100%",
         flexDirection:'row',
         justifyContent:'center',

@@ -180,10 +180,10 @@ const styles=StyleSheet.create({
         borderRightWidth:1,
         justifyContent:"center",
         alignItems:"center",
-        height:height*0.06,
+        height:height*0.05,
     },
     text:{
-        fontSize:10,
+        fontSize:12,
     }
 });
 

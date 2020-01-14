@@ -216,16 +216,25 @@ class My extends Component {
             <ScrollView>
                 <View style={{flex: 1}}>
                     {/* header bar */}
-                    <View style={[{
-                        backgroundColor: '#387ef5',
-                        paddingTop:Platform.OS=='ios'?40:10,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'row'
-                    }, styles.card]}>
-                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
-                            Supnuevo(6.0)-{this.props.username}
-                        </Text>
+                    <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                        <View style={{flex:1,paddingLeft:10}}>
+                            <TouchableOpacity
+                                style={{flexDirection:'row',height:40,paddingTop:3}}
+                                onPress={
+                                    ()=>{
+                                        this.goBack();
+                                    }
+                                }>
+                                <Icon name="arrow-left" size={20} color="#fff" />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                Supnuevo(6.0)-{this.props.username}
+                            </Text>
+                        </View>
+                        <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
+                        </View>
                     </View>
 
                     <View style={{height: height - 140,}}>

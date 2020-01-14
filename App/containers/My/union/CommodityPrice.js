@@ -13,7 +13,9 @@ import {
     Alert,
     Modal,
     TouchableOpacity,
-    KeyboardAvoidingView, ListView,
+    KeyboardAvoidingView,
+    ListView,
+    Platform,
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -85,32 +87,24 @@ class CommodityPrice extends Component {
 
         return (
             <View style={{flex: 1,alignItems:"center",justifyContents:'center'}}>
-                <View style={{
-                    backgroundColor: '#387ef5',
-                    height: 55,
-                    padding: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row'
-                }}>
-                    <TouchableOpacity style={{
-                        flex: 1,
-                        height: 45,
-                        marginRight: 10,
-                        marginTop:10
-                    }}
-                                      onPress={() => {
-                                          this.goBack();
-                                      }}>
-                        <Icon name="angle-left" color="#fff" size={40}></Icon>
-                    </TouchableOpacity>
+                <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                    <View style={{flex:1,paddingLeft:10}}>
+                        <TouchableOpacity
+                            style={{flexDirection:'row',height:40,paddingTop:3}}
+                            onPress={
+                                ()=>{
+                                    this.goBack();
+                                }
+                            }>
+                            <Icon name="arrow-left" size={20} color="#fff" />
+                        </TouchableOpacity>
+                    </View>
                     <View>
-                        <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
+                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
                             Supnuevo(6.0)-{this.props.username}
                         </Text>
                     </View>
-                    <View style={{flex:1}}>
-
+                    <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                     </View>
                 </View>
                 {/* body */}
@@ -153,14 +147,14 @@ class CommodityPrice extends Component {
                                 <View><Text style={[styles.renderText,{fontSize:18}]}>建议价 - </Text></View>
                                 <View>
                                     <TextInput
-                                        style={{height:height*0.07,width:width*0.13}}
+                                        style={{height:height*0.07,width:width*0.08}}
                                         defaultValue={rowData.ratio.toString()}
                                         onChangeText={(value) => {
                                             this.setState({ratio:value})
                                         }}
                                     />
                                 </View>
-                                <View style={{marginLeft:5}}>
+                                <View>
                                     <Text> % </Text>
                                 </View>
                                 <TouchableOpacity

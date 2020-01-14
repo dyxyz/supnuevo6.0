@@ -12,7 +12,9 @@ import {
     View,
     Alert,
     Modal,
-    TouchableOpacity, ListView
+    TouchableOpacity,
+    ListView,
+    Platform,
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -76,46 +78,40 @@ class PricePublicity extends Component {
             <View style={{flex: 1}}>
                 {/* header bar */}
 
-                <View style={{
-                    backgroundColor: '#387ef5',
-                    height: 55,
-                    padding: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                }}>
-                    <TouchableOpacity style={{
-                        flex: 1,
-                        height: 45,
-                        // marginRight: 10,
-                        marginTop:10
-                    }}
-                                      onPress={() => {
-                                          this.goBack();
-                                      }}>
-                        <Icon name="angle-left" color="#fff" size={40}/>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        {this.props.username}
-                    </Text>
+                <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                    <View style={{flex:1,paddingLeft:10}}>
+                        <TouchableOpacity
+                            style={{flexDirection:'row',height:40,paddingTop:3}}
+                            onPress={
+                                ()=>{
+                                    this.goBack();
+                                }
+                            }>
+                            <Icon name="arrow-left" size={20} color="#fff" />
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                            Supnuevo(6.0)-{this.props.username}
+                        </Text>
+                    </View>
                     {this.props.unionMemberType==2?
                         <TouchableOpacity
-                            style={{
-                                position:"absolute",
-                                right:15,
-                                top:18,
-                                height: 30,
-                            }}
-                            onPress={() => {
-                                this.addPromotion();
-                            }}>
-                            <View
-                            >
-                                <IconI name="ios-add-circle-outline" color="#fff" size={30}/>
-                            </View>
+                            style={{position:"absolute",
+                                    right:15,
+                                    top:38,
+                                    height: 30,}}
+                            onPress={
+                                ()=>{
+                                    this.addPromotion();
+                                }
+                            }>
+                            <IconI name="ios-add-circle-outline" size={30} color="#fff" />
                         </TouchableOpacity>
+
                         :
                         null
+
                     }
 
 

@@ -14,6 +14,7 @@ import  {
     Modal,
     TouchableOpacity,
     ListView,
+    Platform,
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -50,25 +51,24 @@ class orderDetail extends Component{
         return(
             <View style={{flex:1}}>
                 {/*head*/}
-                <View style={{
-                    backgroundColor: '#387ef5',
-                    height: height*0.1,
-                    padding: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row'
-                }}>
-                    <TouchableOpacity style={{flex: 1, height: 45, marginRight: 10, marginTop:10}}
-                                      onPress={() => {
-                                          this.goBack();
-                                      }}>
-                        <Icon name="angle-left" color="#fff" size={40}/>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: 22, marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        订单商品详情
-                    </Text>
-                    <View style={{flex:1}}>
-
+                <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                    <View style={{flex:1,paddingLeft:10}}>
+                        <TouchableOpacity
+                            style={{flexDirection:'row',height:40,paddingTop:3}}
+                            onPress={
+                                ()=>{
+                                    this.goBack();
+                                }
+                            }>
+                            <Icon name="arrow-left" size={20} color="#fff" />
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                            订单商品详情
+                        </Text>
+                    </View>
+                    <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                     </View>
                 </View>
 
