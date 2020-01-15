@@ -234,6 +234,7 @@ class CommodityCategory extends Component {
                             this.camera = cam;
                         }}
                         style={styles.preview}
+                        type={RNCamera.constants.Type.back}
                         permissionDialogTitle={'Permission to use camera'}
                         permissionDialogMessage={'We need your permission to use your camera phone'}
                         torchMode={openFlash ? RNCamera.constants.TorchMode.on:RNCamera.constants.TorchMode.off}
@@ -959,6 +960,36 @@ var styles = StyleSheet.create({
     dataItemTextStyle:{
         fontSize:14,
         color:'#888'
+    },
+    preview: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    overlay: {
+        position: 'absolute',
+        padding: 16,
+        right: 0,
+        left: 0,
+        alignItems: 'center',
+    },
+    box: {
+        position: 'absolute',
+        right: 1 / 2 * width - 100,
+        top: 1 / 2 * height - 100,
+        height: 200,
+        width: 200,
+        borderWidth: 1,
+        borderColor: '#387ef5',
+        backgroundColor: 'transparent'
+
+    },
+    bottomOverlay: {
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 

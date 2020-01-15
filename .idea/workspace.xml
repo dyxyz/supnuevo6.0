@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="a65a6f8d-995d-4386-8894-b01dea1a6ed6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/rnSupnuevo.xcodeproj/project.xcworkspace/xcuserdata/lli.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/ios/rnSupnuevo.xcodeproj/project.xcworkspace/xcuserdata/lli.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/Login.js" afterPath="$PROJECT_DIR$/App/containers/Login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/My.js" afterPath="$PROJECT_DIR$/App/containers/My/My.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js" afterPath="$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js" afterPath="$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/CommodityDetail.js" afterPath="$PROJECT_DIR$/App/containers/My/union/CommodityDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/CommodityPrice.js" afterPath="$PROJECT_DIR$/App/containers/My/union/CommodityPrice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js" afterPath="$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/MemberList.js" afterPath="$PROJECT_DIR$/App/containers/My/union/MemberList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/OrderDetail.js" afterPath="$PROJECT_DIR$/App/containers/My/union/OrderDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/PricePublicity.js" afterPath="$PROJECT_DIR$/App/containers/My/union/PricePublicity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/UnionOrder.js" afterPath="$PROJECT_DIR$/App/containers/My/union/UnionOrder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/containers/My/union/UnionRule.js" afterPath="$PROJECT_DIR$/App/containers/My/union/UnionRule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native-camera/ios/RCTCamera.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native-camera/ios/RCTCamera.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native-cookies/ios/RNCookieManagerIOS.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native-cookies/ios/RNCookieManagerIOS.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native-fs/RNFS.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native-fs/RNFS.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native-sensitive-info/ios/RNSensitiveInfo.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native-sensitive-info/ios/RNSensitiveInfo.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Image/RCTImage.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Image/RCTImage.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Text/RCTText.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Text/RCTText.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/react-native/React/React.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/node_modules/react-native/React/React.xcodeproj/xcuserdata/lli.xcuserdatad/xcschemes/xcschememanagement.plist" />
-    </list>
+    <list default="true" readonly="true" id="a65a6f8d-995d-4386-8894-b01dea1a6ed6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -51,12 +20,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="amap.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/amap.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1406">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MicrosoftMap.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/MicrosoftMap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,42 +65,8 @@
       <file leaf-file-name="CommodityPrice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityPrice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
+            <state relative-caret-position="-974">
               <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommodityDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityDetail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuditCustomer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="148" column="22" lean-forward="false" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommoditybytaxId.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="33" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -125,18 +92,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyUnion.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/MyUnion.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3216">
-              <caret line="184" column="31" lean-forward="false" selection-start-line="184" selection-start-column="31" selection-end-line="184" selection-end-column="31" />
-              <folding>
-                <element signature="e#1#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PricePublicity.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/containers/My/union/PricePublicity.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -149,29 +104,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommodityCategory.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js">
+      <file leaf-file-name="Query.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/containers/Query.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="137" column="179" lean-forward="false" selection-start-line="137" selection-start-column="179" selection-end-line="137" selection-end-column="179" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#_renderSearchBar#0;n#CommodityCategory#0" expanded="false" />
-                <element signature="n#!!block;n#queryGoodsCode#0;n#CommodityCategory#0" expanded="false" />
-                <element signature="n#!!block;n#onCodigoSelect#0;n#CommodityCategory#0" expanded="false" />
-                <element signature="n#!!block;n#checkAlive#0;n#CommodityCategory#0" expanded="false" />
-                <element signature="n#!!block;n#confirmRowID#0;n#CommodityCategory#0" expanded="false" />
-                <element signature="n#!!block;n#scroll#0;n#CommodityCategory#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="122">
+              <caret line="2046" column="21" lean-forward="true" selection-start-line="2046" selection-start-column="21" selection-end-line="2046" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderDiscount.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/containers/My/union/OrderDiscount.js">
+      <file leaf-file-name="My.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App/containers/My/My.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="68" column="84" lean-forward="false" selection-start-line="68" selection-start-column="84" selection-end-line="68" selection-end-column="84" />
+            <state relative-caret-position="397">
+              <caret line="394" column="31" lean-forward="true" selection-start-line="394" selection-start-column="31" selection-end-line="394" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -188,9 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>折扣名称</find>
-      <find>info</find>
-      <find>5.2</find>
       <find>商家登记</find>
       <find>dataRowItem</find>
       <find>selected</find>
@@ -218,6 +162,9 @@
       <find>leftOpenValue</find>
       <find>getSupnuevoBuyerUnionPriceListByPriceCount</find>
       <find>tableWrapperStyle</find>
+      <find>cameraModalVisible</find>
+      <find>扫码</find>
+      <find>preview</find>
     </findStrings>
     <replaceStrings>
       <replace>proxy.postes</replace>
@@ -264,7 +211,6 @@
         <option value="$PROJECT_DIR$/App/components/modal/VentasInfoModal.js" />
         <option value="$PROJECT_DIR$/App/containers/Stock/CoommodityInfo.js" />
         <option value="$PROJECT_DIR$/App/containers/My/union/CommodityDiscoutList.js" />
-        <option value="$PROJECT_DIR$/App/containers/Query.js" />
         <option value="$PROJECT_DIR$/App/containers/Stock/CompanyInfo.js" />
         <option value="$PROJECT_DIR$/App/components/SelectorTableView.js" />
         <option value="$PROJECT_DIR$/node_modules/react-native-elements/src/helpers/getIconType.js" />
@@ -281,10 +227,8 @@
         <option value="$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/mmap.html" />
         <option value="$PROJECT_DIR$/App/components/rnMap/js/amap.html" />
         <option value="$PROJECT_DIR$/App/containers/My/MyUnion.js" />
-        <option value="$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/MicrosoftMap.js" />
         <option value="$PROJECT_DIR$/App/containers/My/union/UnionRule.js" />
         <option value="$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js" />
-        <option value="$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js" />
         <option value="$PROJECT_DIR$/App/containers/Login.js" />
         <option value="$PROJECT_DIR$/App/containers/My/My.js" />
         <option value="$PROJECT_DIR$/App/containers/My/union/MemberList.js" />
@@ -295,6 +239,9 @@
         <option value="$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js" />
         <option value="$PROJECT_DIR$/App/containers/My/union/UnionOrder.js" />
         <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/MicrosoftMap.js" />
+        <option value="$PROJECT_DIR$/App/containers/Query.js" />
+        <option value="$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js" />
       </list>
     </option>
   </component>
@@ -321,7 +268,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
-    <option name="y" value="65" />
+    <option name="y" value="55" />
     <option name="width" value="1599" />
     <option name="height" value="1029" />
   </component>
@@ -343,55 +290,43 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="action" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="modal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="rnMap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="rnMap" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="rnMap" type="462c0819:PsiDirectoryNode" />
@@ -399,31 +334,22 @@
               <item name="MicrosoftMap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
+              <item name="supnuevo6.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supnuevo6.0" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="My" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rnSupnuevo_fifith" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rnSupnuevo_fifith" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="My" type="462c0819:PsiDirectoryNode" />
-              <item name="union" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
@@ -439,7 +365,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -886,11 +812,12 @@
       <workItem from="1577074367095" duration="3744000" />
       <workItem from="1578365080474" duration="22166000" />
       <workItem from="1578478188102" duration="54967000" />
+      <workItem from="1579066688504" duration="5897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1998415000" />
+    <option name="totallyTimeSpent" value="2004312000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -902,20 +829,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="65" width="1599" height="1029" extended-state="0" />
+    <frame x="4" y="55" width="1599" height="1029" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22067216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21413276" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -940,9 +867,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21413276" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -952,8 +879,8 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -970,20 +897,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/App/action/types.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityDiscoutList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="821">
@@ -992,13 +905,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-native-elements/src/helpers/getIconType.js" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/components/InputWithCalendar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1017,7 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="633">
           <caret line="301" column="27" lean-forward="false" selection-start-line="301" selection-start-column="27" selection-end-line="301" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,7 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="133" column="2" lean-forward="false" selection-start-line="133" selection-start-column="2" selection-end-line="133" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,17 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="890">
           <caret line="199" column="28" lean-forward="false" selection-start-line="199" selection-start-column="28" selection-end-line="199" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/Query.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="1990" column="69" lean-forward="false" selection-start-line="1990" selection-start-column="65" selection-end-line="1990" selection-end-column="69" />
-          <folding>
-            <element signature="e#43#82#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1065,7 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="136" column="4" lean-forward="false" selection-start-line="136" selection-start-column="4" selection-end-line="136" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,9 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1103,9 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3201">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1121,7 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,7 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
           <caret line="154" column="17" lean-forward="false" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,7 +1061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1251,37 +1134,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/MicrosoftMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="34" column="112" lean-forward="false" selection-start-line="34" selection-start-column="112" selection-end-line="34" selection-end-column="112" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/mmap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
           <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/amap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/My.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="214" column="16" lean-forward="true" selection-start-line="214" selection-start-column="16" selection-end-line="214" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="327" column="95" lean-forward="false" selection-start-line="327" selection-start-column="95" selection-end-line="327" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,7 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1327,25 +1181,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="137" column="179" lean-forward="false" selection-start-line="137" selection-start-column="179" selection-end-line="137" selection-end-column="179" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#_renderSearchBar#0;n#CommodityCategory#0" expanded="false" />
-            <element signature="n#!!block;n#queryGoodsCode#0;n#CommodityCategory#0" expanded="false" />
-            <element signature="n#!!block;n#onCodigoSelect#0;n#CommodityCategory#0" expanded="false" />
-            <element signature="n#!!block;n#checkAlive#0;n#CommodityCategory#0" expanded="false" />
-            <element signature="n#!!block;n#confirmRowID#0;n#CommodityCategory#0" expanded="false" />
-            <element signature="n#!!block;n#scroll#0;n#CommodityCategory#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/containers/My/union/OrderDiscount.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="855">
           <caret line="68" column="84" lean-forward="false" selection-start-line="68" selection-start-column="84" selection-end-line="68" selection-end-column="84" />
           <folding />
         </state>
@@ -1353,30 +1191,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App/containers/My/MyUnion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3216">
+        <state relative-caret-position="3135">
           <caret line="184" column="31" lean-forward="false" selection-start-line="184" selection-start-column="31" selection-end-line="184" selection-end-column="31" />
           <folding>
-            <element signature="e#1#40#0" expanded="true" />
+            <element signature="e#1#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/union/PricePublicity.js">
+    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="101" column="42" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
+        <state relative-caret-position="342">
+          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="33" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityPrice.js">
+    <entry file="file://$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="148" column="22" lean-forward="false" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1389,22 +1227,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/union/AuditCustomer.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="148" column="22" lean-forward="false" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="552">
+          <caret line="71" column="6" lean-forward="false" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommoditybytaxId.js">
+    <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/amap.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="33" />
+        <state relative-caret-position="1406">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/components/rnMap/js/MicrosoftMap/MicrosoftMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1425,10 +1285,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
+    <entry file="file://$PROJECT_DIR$/App/containers/My/union/PricePublicity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="448">
+          <caret line="101" column="42" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityPrice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-974">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/containers/My/union/CommodityCategory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="234" column="26" lean-forward="true" selection-start-line="234" selection-start-column="26" selection-end-line="234" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#_renderSearchBar#0;n#CommodityCategory#0" expanded="false" />
+            <element signature="n#!!block;n#queryGoodsCode#0;n#CommodityCategory#0" expanded="false" />
+            <element signature="n#!!block;n#onCodigoSelect#0;n#CommodityCategory#0" expanded="false" />
+            <element signature="n#!!block;n#checkAlive#0;n#CommodityCategory#0" expanded="false" />
+            <element signature="n#!!block;n#confirmRowID#0;n#CommodityCategory#0" expanded="false" />
+            <element signature="n#!!block;n#scroll#0;n#CommodityCategory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/containers/Query.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="2046" column="21" lean-forward="true" selection-start-line="2046" selection-start-column="21" selection-end-line="2046" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/containers/My/MySuggestion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-520">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/containers/My/My.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="394" column="31" lean-forward="true" selection-start-line="394" selection-start-column="31" selection-end-line="394" selection-end-column="31" />
           <folding />
         </state>
       </provider>

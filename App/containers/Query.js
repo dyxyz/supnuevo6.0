@@ -2050,6 +2050,7 @@ class Query extends Component {
                             this.camera = cam;
                         }}
                             style={styles.preview}
+                            type={RNCamera.constants.Type.back}
                             permissionDialogTitle={'Permission to use camera'}
                             permissionDialogMessage={'We need your permission to use your camera phone'}
                             torchMode={openFlash ? RNCamera.constants.TorchMode.on:RNCamera.constants.TorchMode.off}

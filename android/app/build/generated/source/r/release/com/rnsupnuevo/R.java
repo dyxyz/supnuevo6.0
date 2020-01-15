@@ -1834,16 +1834,15 @@ containing a value of this type.
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020043;
         public static final int abc_textfield_search_material=0x7f020044;
         public static final int app_components_rnmap_js_amap=0x7f020045;
-        public static final int app_components_rnmap_js_microsoftmap_mmap=0x7f020046;
-        public static final int app_img_cart=0x7f020047;
-        public static final int app_img_tt1=0x7f020048;
-        public static final int app_img_tt2=0x7f020049;
-        public static final int app_img_tt3=0x7f02004a;
-        public static final int app_img_tt4=0x7f02004b;
-        public static final int node_modules_reactnativecheckbox_img_ic_check_box=0x7f02004c;
-        public static final int node_modules_reactnativecheckbox_img_ic_check_box_outline_blank=0x7f02004d;
-        public static final int node_modules_reactnativedatepicker_date_icon=0x7f02004e;
-        public static final int notification_template_icon_bg=0x7f02004f;
+        public static final int app_img_cart=0x7f020046;
+        public static final int app_img_tt1=0x7f020047;
+        public static final int app_img_tt2=0x7f020048;
+        public static final int app_img_tt3=0x7f020049;
+        public static final int app_img_tt4=0x7f02004a;
+        public static final int node_modules_reactnativecheckbox_img_ic_check_box=0x7f02004b;
+        public static final int node_modules_reactnativecheckbox_img_ic_check_box_outline_blank=0x7f02004c;
+        public static final int node_modules_reactnativedatepicker_date_icon=0x7f02004d;
+        public static final int notification_template_icon_bg=0x7f02004e;
     }
     public static final class id {
         public static final int action0=0x7f0d0059;
