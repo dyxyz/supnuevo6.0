@@ -93,9 +93,9 @@ class My extends Component {
 
     }
 
-    componentDidMount(): void {
-        this.getSupnuevoMerchantInfo();
-    }
+    // componentDidMount(): void {
+    //     this.getSupnuevoMerchantInfo();
+    // }
 
     constructor(props) {
         super(props);
@@ -111,51 +111,12 @@ class My extends Component {
 
     }
 
-    //获取商户信息
-    getSupnuevoMerchantInfo() {
 
-        proxy.postes({
-            url: Config.server + "/func/merchant/getSupnuevoMerchantInfoMobile",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: {
-                merchantId:this.props.merchantId,
-            }
-        }).then((json) => {
-
-
-            var errMessage = json.errMessage;
-            if (errMessage !== null && errMessage !== undefined && errMessage !== "") {
-                alert(errMessage);
-
-            }
-            else {
-                var nickName = json.nickName;
-                var attachDataUrl = json.urlAddress;
-                var nubre = json.nubre;
-                var cuit = json.cuit;
-                var direccion = json.direccion;
-                var nomroDeTelePhono = json.nomroDeTelePhono;
-                var info = {
-                    nickName: nickName,
-                    nubre: nubre,
-                    cuit: cuit,
-                    direccion: direccion,
-                    nomroDeTelePhono: nomroDeTelePhono,
-
-                };
-                this.setState({info:info,attachDataUrl: attachDataUrl,})
-            }
-        }).catch((err) => {
-            alert(err);
-        });
-    }
 
 
 
     navigatemyinfo(){
-        this.getSupnuevoMerchantInfo();
+
         const {navigator} = this.props;
         var sessionId = this.props.sessionId;
 
@@ -165,9 +126,9 @@ class My extends Component {
                     name: 'Myinfo',
                     component: Myinfo,
                     params: {
-                        getSupnuevoMerchantInfo: this.getSupnuevoMerchantInfo.bind(this),
-                        info: this.state.info,
-                        attachDataUrl:this.state.attachDataUrl,
+                        // getSupnuevoMerchantInfo: this.getSupnuevoMerchantInfo.bind(this),
+                        // info: this.state.info,
+                        // attachDataUrl:this.state.attachDataUrl,
                     }
                 })
     }

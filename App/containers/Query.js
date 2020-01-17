@@ -45,6 +45,7 @@ import GroupManage from './GroupManage/index';
 import {changeAuth, setGoodsInfo, setScanTimerAction,loginAction} from "../action/actionCreator";
 import PriceSurvey from './PriceSurvey/PriceSurvey';
 import RNCamera from 'react-native-camera';
+import Camera from 'react-native-camera';
 import ReferencePrice from './ReferencePrice';
 import sale from './Sale/Sale';
 import CaluConfig from '../components/modal/CaluConfig';
@@ -89,6 +90,21 @@ class Query extends Component {
                 buttonRect: {x: px + 20, y: py + 40, width: 200, height: height}
             });
         });
+    }
+
+    startCamera(){
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible:true});
+                    });
+            }
+        }
     }
 
     closePopover() {
@@ -1296,7 +1312,7 @@ class Query extends Component {
                                     backgroundColor: 'rgba(17, 17, 17, 0.6)'
                                 }}
                                                   onPress={() => {
-                                                     this.setState({cameraModalVisible: true})
+                                                      this.startCamera();
                                                   }}>
 
                                     <View>
@@ -1425,7 +1441,7 @@ class Query extends Component {
                                                                             <Text style={{
                                                                                 fontSize: setSpText(16),
                                                                                 color: '#fff'
-                                                                            }}></Text>
+                                                                            }}/>
                                                                     }
                                                                 </View>
                                                         }
@@ -2045,15 +2061,15 @@ class Query extends Component {
                             this.closeCamera()
                         }}
                     >
-                        <RNCamera
+                        <Camera
                             ref={(cam) => {
                             this.camera = cam;
                         }}
                             style={styles.preview}
-                            type={RNCamera.constants.Type.back}
+                            type={Camera.constants.Type.back}
                             permissionDialogTitle={'Permission to use camera'}
                             permissionDialogMessage={'We need your permission to use your camera phone'}
-                            torchMode={openFlash ? RNCamera.constants.TorchMode.on:RNCamera.constants.TorchMode.off}
+                            torchMode={openFlash ? Camera.constants.TorchMode.on:Camera.constants.TorchMode.off}
                             onBarCodeRead={(barcode) => {
                                 this.closeCamera();
                                 var {type, data, bounds} = barcode;

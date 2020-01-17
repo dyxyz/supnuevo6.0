@@ -238,6 +238,21 @@ class Sale extends Component {
         }
     }
 
+    startCamera(){
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible:true});
+                    });
+            }
+        }
+    }
+
     navigateCommodityClass() {
 
 
@@ -690,9 +705,7 @@ class Sale extends Component {
                                 backgroundColor: '#CAE1FF'
                             }}
                                               onPress={() => {
-                                                  this.setState({cameraModalVisible: true})
-                                                  //this.codeQuery('2100010132257 ');
-                                                  //this.codeMatch('2100010132257 ');
+                                                  this.startCamera();
                                               }}>
                                 <View style={{padding: 10}}>
                                     <Text style={{color: '#343434', fontSize: setSpText(16)}}>扫码</Text>

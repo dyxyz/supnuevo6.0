@@ -18,7 +18,9 @@ import {
     View,
     Alert,
     Modal,
-    TouchableOpacity, ListView
+    TouchableOpacity,
+    ListView,
+    Platform
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -46,10 +48,15 @@ class Myinfo extends Component {
         }
     }
 
+    componentDidMount(): void {
+        this.getSupnuevoMerchantInfo();
+
+    }
+
     constructor(props) {
         super(props);
         this.state = {
-            info: this.props.info,
+            info: null,
             nickName:this.props.nickName,
             nubre:this.props.nubre,
             cuit:this.props.cuit,
@@ -57,173 +64,241 @@ class Myinfo extends Component {
             nomroDeTelePhono:this.props.nomroDeTelePhono,
             cameraModalVisible:false,
             pictureUri:null,
-            attachDataUrl:this.props.attachDataUrl,
-
+            attachDataUrl:null,
+            isLoading:true,
         };
     }
 
+    //获取商户信息
+    getSupnuevoMerchantInfo() {
+
+        proxy.postes({
+            url: Config.server + "/func/merchant/getSupnuevoMerchantInfoMobile",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                merchantId:this.props.merchantId,
+            }
+        }).then((json) => {
+
+
+            var errMessage = json.errMessage;
+            if (errMessage !== null && errMessage !== undefined && errMessage !== "") {
+                alert(errMessage);
+
+            }
+            else {
+                var nickName = json.nickName;
+                var attachDataUrl = json.urlAddress;
+                var nubre = json.nubre;
+                var cuit = json.cuit;
+                var direccion = json.direccion;
+                var nomroDeTelePhono = json.nomroDeTelePhono;
+                var info = {
+                    nickName: nickName,
+                    nubre: nubre,
+                    cuit: cuit,
+                    direccion: direccion,
+                    nomroDeTelePhono: nomroDeTelePhono,
+
+                };
+                this.setState({info:info,attachDataUrl: attachDataUrl,isLoading:false})
+            }
+        }).catch((err) => {
+            alert(err);
+        });
+    }
+
     render() {
-        var info = this.state.info;
-        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl;
+        // var info = this.state.info;
+        var ts=new Date().getTime();
+        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl+"?"+ts;
         return (
-            <View style={{flex: 1}}>
-                {/* header bar */}
+                <View style={{flex: 1}}>
+                    {/* header bar */}
 
-                <View style={{
-                    backgroundColor: '#387ef5',
-                    height: 55,
-                    padding: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row'
-                }}>
-                    <TouchableOpacity style={{
-                        flex: 1,
-                        height: 45,
-                        marginRight: 10,
-                        marginTop:10
-                    }}
-                                      onPress={() => {
-                                          this.goBack();
-                                      }}>
-                        <Icon name="angle-left" color="#fff" size={40}></Icon>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: setSpText(22), marginTop:7,flex: 3, textAlign: 'center',color: '#fff'}}>
-                        {this.props.username}
-                    </Text>
-                    <View style={{flex:1}}>
-
-                    </View>
-                </View>
-
-                {/*相机组件*/}
-                <Modal
-                    animationType={"slide"}
-                    transparent={false}
-                    visible={this.state.cameraModalVisible}
-                    onRequestClose={() => {
-                        this.setState({cameraModalVisible: false});
-                    }}
-                >
-                    <Camera
-                        ref={(ref) => {
-                            this.camera = ref;
-                        }}
-                        style={styles.preview}
-                        playSoundOnCapture={false}
-                        fixOrientation={true}
-                        captureQuality="medium"
-                        captureTarget={Camera.constants.CaptureTarget.temp}
-                        aspect={Camera.constants.Aspect.fill}
-                        permissionDialogTitle={'Permission to use camera'}
-                        permissionDialogMessage={'We need your permission to use your camera phone'}
-                    />
                     <View style={{
-                        height: 100,
-                        flexDirection: 'row',
-                        backgroundColor: 'transparent',
+                        backgroundColor: '#387ef5',
+                        height: 55,
+                        padding: 12,
                         justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'row'
                     }}>
-                        <TouchableOpacity
-                            onPress={() => this.takePicture()}
-                            style={[styles.capture, {
-                                backgroundColor: 'transparent',
-                            }]}
-                        >
-                            <IconE name="camera" color="#222" size={30}/>
-
+                        <TouchableOpacity style={{
+                            flex: 1,
+                            height: 45,
+                            marginRight: 10,
+                            marginTop: 10
+                        }}
+                                          onPress={() => {
+                                              this.goBack();
+                                          }}>
+                            <Icon name="angle-left" color="#fff" size={40}></Icon>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => {
-                                this.setState({cameraModalVisible: false})
+                        <Text style={{
+                            fontSize: setSpText(22),
+                            marginTop: 7,
+                            flex: 3,
+                            textAlign: 'center',
+                            color: '#fff'
+                        }}>
+                            {this.props.username}
+                        </Text>
+                        <View style={{flex: 1}}>
+
+                        </View>
+                    </View>
+
+                    {/*相机组件*/}
+                    <Modal
+                        animationType={"slide"}
+                        transparent={false}
+                        visible={this.state.cameraModalVisible}
+                        onRequestClose={() => {
+                            this.setState({cameraModalVisible: false});
+                        }}
+                    >
+                        <Camera
+                            ref={(ref) => {
+                                this.camera = ref;
                             }}
-                            style={[styles.capture, {
-                                backgroundColor: 'transparent',
-                            }]}
-                        >
-                            <IconE name="circle-with-cross" color="#222" size={30}/>
-
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-
-                {/* body */}
-                <View style={{padding: 10, marginTop: 20}}>
-
-                    <View style={styles.row}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>昵称：</Text>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Text style={styles.popoverText}>{info.nickName}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>商户名称：</Text>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Text style={styles.popoverText}>{info.nubre}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>税号：</Text>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Text style={styles.popoverText}>{info.cuit}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>地址：</Text>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Text style={styles.popoverText}>{info.direccion}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>telephone：</Text>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Text style={styles.popoverText}>{info.nomroDeTelePhono}</Text>
-                        </View>
-                    </View>
-                    <View style={[styles.row,{height:height*0.2}]}>
-                        <View style={{flex:1}}>
-                            <Text style={styles.popoverText}>商户LOGO：</Text>
-                        </View>
-                        <View style={{flex:2}}>
+                            style={styles.preview}
+                            playSoundOnCapture={false}
+                            fixOrientation={true}
+                            captureQuality="medium"
+                            captureTarget={Camera.constants.CaptureTarget.temp}
+                            aspect={Camera.constants.Aspect.fill}
+                            permissionDialogTitle={'Permission to use camera'}
+                            permissionDialogMessage={'We need your permission to use your camera phone'}
+                        />
+                        <View style={{
+                            height: 100,
+                            flexDirection: 'row',
+                            backgroundColor: 'transparent',
+                            justifyContent: 'center',
+                        }}>
                             <TouchableOpacity
-                                //ref="picture1"
-                                onPress={() => {
-                                    this.startCamera();
-                                }}
+                                onPress={() => this.takePicture()}
+                                style={[styles.capture, {
+                                    backgroundColor: 'transparent',
+                                }]}
                             >
-                                <View style={styles.picstyle}>
-                                    {this.state.attachDataUrl == null ?
-                                        <IconI name="ios-add" size={40} color="#222"/>
-                                        :
-                                        <Image resizeMode="contain" style={{
-                                            width: 120,
-                                            height: 120,
-                                        }}
-                                               source={{uri:imageurl}}
-                                        />
+                                <IconE name="camera" color="#222" size={30}/>
 
-                                    }
-                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.setState({cameraModalVisible: false})
+                                }}
+                                style={[styles.capture, {
+                                    backgroundColor: 'transparent',
+                                }]}
+                            >
+                                <IconE name="circle-with-cross" color="#222" size={30}/>
+
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </Modal>
+
+                    {/* body */}
+                    {this.state.isLoading == true ?
+                        null
+                        :
+                        <View style={{padding: 10, marginTop: 20}}>
+
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>昵称：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <Text style={styles.popoverText}>{this.state.info.nickName}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>商户名称：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <Text style={styles.popoverText}>{this.state.info.nubre}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>税号：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <Text style={styles.popoverText}>{this.state.info.cuit}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>地址：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <Text style={styles.popoverText}>{this.state.info.direccion}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>telephone：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <Text style={styles.popoverText}>{this.state.info.nomroDeTelePhono}</Text>
+                                </View>
+                            </View>
+                            <View style={[styles.row,{height:height*0.2}]}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>商户LOGO：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <TouchableOpacity
+                                        //ref="picture1"
+                                        onPress={() => {
+                                            this.startCamera();
+                                        }}
+                                    >
+                                        <View style={styles.picstyle}>
+                                            {this.state.attachDataUrl == null ?
+                                                <IconI name="ios-add" size={40} color="#222"/>
+                                                :
+                                                <Image resizeMode="contain" style={{
+                                                    width: 120,
+                                                    height: 120,
+                                                }}
+                                                       source={{uri:imageurl}}
+                                                />
+
+                                            }
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    }
+
                 </View>
-            </View>
+
+
         )
     }
 
+
+
     startCamera(){
-        this.setState({cameraModalVisible:true})
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible:true});
+                    });
+            }
+        }
     }
 
     takePicture = async function () {
@@ -248,13 +323,13 @@ class Myinfo extends Component {
                         alert("unloading error: " + err);
                     });
                 // this.show("22");
-                var flag = this.uploadMerchantImage(base64S);
+                this.bridge(base64S);
 
-                if(flag==0){_this.setState({cameraModalVisible: false});return;}
+                // if(flag==0){_this.getSupnuevoMerchantInfo();return;}
 
 
 
-                {_this.setState({cameraModalVisible: false});return;}
+                // {_this.setState({cameraModalVisible: false});return;}
 
                 this.setState({pictureUri: path, cameraModalVisible: false});
                 _this.setState({cameraModalVisible: false});
@@ -267,6 +342,11 @@ class Myinfo extends Component {
 
         }
     };
+
+    bridge(fileData){
+        this.uploadMerchantImage(fileData);
+
+    }
 
     uploadMerchantImage(fileData){
         proxy.postes({
@@ -292,9 +372,10 @@ class Myinfo extends Component {
 
             } else {
                 alert("头像上传成功");
-                this.props.getSupnuevoMerchantInfo();
 
             }
+            // this.getSupnuevoMerchantInfo();
+            this.setState({attachDataUrl:json.urlAddress})
         }).catch((err) => {
             alert(err);
         });

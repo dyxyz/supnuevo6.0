@@ -61,7 +61,8 @@ class UnionRule extends Component {
     render() {
         var mini=this.state.orderMinLimit;
         var discount=this.state.discountScale;
-        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl;
+        var ts=new Date().getTime();
+        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl+"?"+ts;
         return (
             <View style={{flex: 1}}>
                 {/* header bar */}
@@ -174,10 +175,10 @@ class UnionRule extends Component {
                                     this.testButton(1);
                                     //this.selectPic(1);
                                 }}
-                                onLongPress={() => {
-                                    // this.onLongPress(1);
-                                    this.deleteButton(1);
-                                }}
+                                // onLongPress={() => {
+                                //     // this.onLongPress(1);
+                                //     this.deleteButton(1);
+                                // }}
                             >
                                 <View style={styles.picstyle}>
                                     {this.state.attachDataUrl === null ?
@@ -317,7 +318,18 @@ class UnionRule extends Component {
     }
 
     setPicture() {
-        this.setState({cameraModalVisible: true});
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible:true});
+                    });
+            }
+        }
     }
 
     //获取用户相册权限，用来保存照片

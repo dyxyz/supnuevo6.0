@@ -40,6 +40,7 @@ var Dimensions = require('Dimensions');
 var {height, width} = Dimensions.get('window');
 var proxy = require('../proxy/Proxy');
 var head="https://supnuevo.s3.sa-east-1.amazonaws.com/";
+var ts=new Date().getTime();
 
 class GoodAdd extends Component {
 
@@ -278,6 +279,7 @@ class GoodAdd extends Component {
             picNum: null,//目前选择的第几个图片
             pictureUri: null,//查看大图的base64或者uri
             bigPicUrl:null,
+            currentNum:null,  //当前那张图片作为大图
         };
         this._startAnimation = this._startAnimation.bind(this);
     }
@@ -427,7 +429,7 @@ class GoodAdd extends Component {
                             marginBottom: 0, borderRadius: 4, backgroundColor: 'rgba(17, 17, 17, 0.6)'
                         }}
                                           onPress={() => {
-                                              this.setState({codigoCameraModalVisible: true})
+                                              this.startCodigo();
                                           }}>
 
                             <View>
@@ -749,7 +751,7 @@ class GoodAdd extends Component {
                                     width: 200,
                                     height: height*0.2,
                                 }}
-                                       source={{uri: head+this.state.bigPicUrl}}
+                                       source={{uri: head+this.state.bigPicUrl+"?"+ts}}
                                 />
 
                             }
@@ -796,7 +798,7 @@ class GoodAdd extends Component {
                                             width: 100,
                                             height: 100,
                                         }}
-                                               source={{uri: head+this.state.picUrl1}}
+                                               source={{uri: head+this.state.picUrl1+"?"+ts}}
                                         />
 
                                     }
@@ -820,7 +822,7 @@ class GoodAdd extends Component {
                                         width: 100,
                                         height: 100,
                                     }}
-                                           source={{uri: head+this.state.picUrl2}}
+                                           source={{uri: head+this.state.picUrl2+"?"+ts}}
                                     />
                                 }
                             </TouchableOpacity>
@@ -841,7 +843,7 @@ class GoodAdd extends Component {
                                         width: 100,
                                         height: 100,
                                     }}
-                                           source={{uri: head+this.state.picUrl3}}
+                                           source={{uri: head+this.state.picUrl3+"?"+ts}}
                                     />
                                 }
                             </TouchableOpacity>
@@ -864,7 +866,7 @@ class GoodAdd extends Component {
                                         width: 100,
                                         height: 100,
                                     }}
-                                           source={{uri: head+this.state.picUrl4}}
+                                           source={{uri: head+this.state.picUrl4+"?"+ts}}
                                     />
                                 }
                             </TouchableOpacity>
@@ -963,6 +965,7 @@ class GoodAdd extends Component {
             } else {
                 if(this.state.picUrl1 !=this.state.bigPicUrl)
                 {
+                    this.setState({currentNum:picturenum})
                     this.changeCommodityImage(picturenum)
                 }
             }
@@ -976,6 +979,7 @@ class GoodAdd extends Component {
             } else {
                 if(this.state.picUrl2 !=this.state.bigPicUrl)
                 {
+                    this.setState({currentNum:picturenum})
                     this.changeCommodityImage(picturenum)
                 }
             }
@@ -988,6 +992,7 @@ class GoodAdd extends Component {
             } else {
                 if(this.state.picUrl3 !=this.state.bigPicUrl)
                 {
+                    this.setState({currentNum:picturenum})
                     this.changeCommodityImage(picturenum)
                 }
             }
@@ -1000,6 +1005,7 @@ class GoodAdd extends Component {
             } else {
                 if(this.state.picUrl4 !=this.state.bigPicUrl)
                 {
+                    this.setState({currentNum:picturenum})
                     this.changeCommodityImage(picturenum)
                 }
             }
@@ -1013,9 +1019,36 @@ class GoodAdd extends Component {
         // }
     }
 
+    startCodigo(){
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({codigoCameraModalVisible:false})
+                        }
+                        else this.setState({codigoCameraModalVisible:true});
+                    });
+            }
+        }
+    }
+
     //开启相机
     setPicture(picturenum) {
-        this.setState({cameraModalVisible: true, picNum: picturenum});
+
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible: true, picNum: picturenum});
+                    });
+            }
+        }
     }
 
     // 拍照获取照片
@@ -1100,6 +1133,7 @@ class GoodAdd extends Component {
                 alert("图片上传成功");
 
             }
+            this.onCodigoSelect();
         }).catch((err) => {
             alert(err);
         });
@@ -1125,6 +1159,9 @@ class GoodAdd extends Component {
 
             } else {
                 alert("删除成功");
+                if(this.state.currentNum==picnum){
+                    this.setState({bigPicUrl:null})
+                }
                 this.onCodigoSelect();
             }
         }).catch((err) => {

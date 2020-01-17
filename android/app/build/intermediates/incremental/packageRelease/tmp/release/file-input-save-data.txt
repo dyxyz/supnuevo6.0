@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jan 15 16:36:12 CST 2020
+#Fri Jan 17 10:03:22 CST 2020
 5.base=/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/transforms/stripDebugSymbol/release/0
 42.base=/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/transforms/stripDebugSymbol/release/0
 22.path=classes.dex

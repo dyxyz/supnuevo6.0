@@ -120,7 +120,7 @@ class PricePublicity extends Component {
                     </View>
                 </View>
                 {/* body */}
-                <View >
+                <View style={{height:height*0.8}}>
                     <ScrollView>
                         {advertisementListView}
                     </ScrollView>
@@ -225,7 +225,18 @@ class PricePublicity extends Component {
 
 
     addPromotion(){
-        this.setState({cameraModalVisible: true});
+        if(Platform.OS === 'ios') {
+            if(Camera){
+                Camera.checkDeviceAuthorizationStatus()
+                    .then(access => {
+                        if(!access) {
+                            Alert.alert('相机权限没打开', '请在iPhone的设置选项中,允许访问您的摄像头')
+                            this.setState({cameraModalVisible:false})
+                        }
+                        else this.setState({cameraModalVisible:true});
+                    });
+            }
+        }
     }
 
     takePicture = async function () {
@@ -251,6 +262,7 @@ class PricePublicity extends Component {
                     });
                 // this.show("22");
                 this.saveAdvertisement(base64S);
+
                 // {this.state.advertisementNum}
 
 
@@ -311,7 +323,7 @@ class PricePublicity extends Component {
                 alert("上传成功");
 
             }
-            this.getAdvertisementList()
+
         }).catch((err) => {
             alert(err);
         });
@@ -340,6 +352,7 @@ class PricePublicity extends Component {
                 alert(errorMsg);
 
             }
+            this.getAdvertisementList();
         }).catch((err) => {
             alert(err);
         });
