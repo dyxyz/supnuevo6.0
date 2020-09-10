@@ -7,6 +7,8 @@
 export const AUTH_ACCESS__ACK = 'AUTH_ACCESS__ACK';
 export const SET_ANNOUNCEMENT = 'SET_ANNOUNCEMENT';
 export const SET_SESSIONID = 'SET_SESSIONID';
+export const SET_UNION_ID = 'SET_UNION_ID';
+
 
 //dashboard action
 export const SELECT_CUSTOMER_CAR = 'SELECT_CUSTOMER_CAR';

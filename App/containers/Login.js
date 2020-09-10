@@ -204,7 +204,9 @@ var Login = React.createClass({
                                             paddingRight: 10,
                                             paddingTop: 2,
                                             paddingBottom: 2,
-                                            fontSize: setSpText(16)
+                                            fontSize: setSpText(16),
+                                            backgroundColor:"white",
+                                            color:"black",
                                         }}
                                         onChangeText={(username) => {
 
@@ -249,7 +251,9 @@ var Login = React.createClass({
                                             paddingRight: 10,
                                             paddingTop: 2,
                                             paddingBottom: 2,
-                                            fontSize: setSpText(16)
+                                            fontSize: setSpText(16),
+                                            backgroundColor:"white",
+                                            color:"black",
                                         }}
                                         onChangeText={(password) => {
                                             this.state.user.password = password;
@@ -382,7 +386,9 @@ var Login = React.createClass({
                                                 paddingRight: 10,
                                                 paddingTop: 2,
                                                 paddingBottom: 2,
-                                                fontSize: setSpText(16)
+                                                fontSize: setSpText(16),
+                                                backgroundColor:"white",
+                                                color:"black",
                                             }}
                                             onChangeText={(username) => {
 
@@ -434,7 +440,9 @@ var Login = React.createClass({
                                                 paddingRight: 10,
                                                 paddingTop: 2,
                                                 paddingBottom: 2,
-                                                fontSize: setSpText(16)
+                                                fontSize: setSpText(16),
+                                                backgroundColor:"white",
+                                                color:"black",
                                             }}
                                             onChangeText={(password) => {
                                                 this.state.user.password = password;

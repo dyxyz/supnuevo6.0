@@ -441,6 +441,8 @@ class MyOffer extends Component {
                                     paddingTop: 2,
                                     paddingBottom: 2,
                                     fontSize: setSpText(16),
+                                    backgroundColor:"white",
+                                    color:"black",
                                 }}
                                 onChangeText={(companyinfo) => {
                                     this.setState({companyinfo: companyinfo});
@@ -543,7 +545,7 @@ class MyOffer extends Component {
                     >
                     <View style={{flex: 1, backgroundColor: '#CAE1FF'}}>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="商品种类"
                                        onChangeText={(zhonglei) => {
                                            if (zhonglei !== null) {
@@ -573,7 +575,7 @@ class MyOffer extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="省"
                                        onChangeText={(province) => {
                                            if (province !== null) {
@@ -603,7 +605,7 @@ class MyOffer extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="市"
                                        onChangeText={(city) => {
                                            if (city !== null) {
@@ -634,7 +636,7 @@ class MyOffer extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 4, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 4, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        underlineColorAndroid="transparent"
                                        placeholder="条码尾数"
                                 />

@@ -597,7 +597,7 @@ class GroupMaintain extends Component{
                         <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                             <TextInput
                                 style={{height:40,flex:5,backgroundColor:'#fff',paddingLeft:5,borderRadius:4,
-                                        fontSize:setSpText(13),flexDirection:'row',alignItems:'center'}}
+                                        fontSize:setSpText(13),flexDirection:'row',alignItems:'center', color:"black"}}
                                 onChangeText={(groupName) => {
                                             if(groupName.toString().length==4)
                                             {
@@ -738,7 +738,7 @@ class GroupMaintain extends Component{
                         <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                             <TextInput
                                 style={{height:40,width:width*2/4,backgroundColor:'#fff',paddingLeft:15,borderRadius:4,
-                                                flexDirection:'row',alignItems:'center'}}
+                                                flexDirection:'row',alignItems:'center',color:"black"}}
                                 onChangeText={(groupName) => {
                                             this.state.groupName=groupName;
                                             this.setState({groupName:this.state.groupName});

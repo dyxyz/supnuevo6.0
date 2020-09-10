@@ -127,6 +127,7 @@ class CommodityPrice extends Component {
     }
 
     renderRow(rowData) {
+        var dRatio=rowData.ratio*100
         if(this.props.unionMemberType==2) {
             var row =
                 <TouchableOpacity onPress={() => {
@@ -147,8 +148,8 @@ class CommodityPrice extends Component {
                                 <View><Text style={[styles.renderText,{fontSize:18}]}>建议价 - </Text></View>
                                 <View>
                                     <TextInput
-                                        style={{height:height*0.07,width:width*0.08}}
-                                        defaultValue={rowData.ratio.toString()}
+                                        style={{height:height*0.07,width:width*0.08,color:"black",}}
+                                        defaultValue={dRatio.toString()}
                                         onChangeText={(value) => {
                                             this.setState({ratio:value})
                                         }}
@@ -223,6 +224,7 @@ class CommodityPrice extends Component {
         }).catch((err)=>{alert(err);});
     }
     updateSupnuevoBuyerUnionPriceRatio(taxId){
+        console.log(parseFloat(this.state.ratio))
         if(this.state.ratio==null || this.state.ratio==undefined){
             Alert.alert("请输入建议价")
         }
@@ -235,9 +237,13 @@ class CommodityPrice extends Component {
                 body: {
                     unionId: this.props.unionId,
                     taxId: taxId,
-                    ratio: parseFloat(this.state.ratio),
+                    // ratio: parseFloat(this.state.ratio),
+                    ratio:this.state.ratio,
+
                 }
+
             }).then((json) => {
+
                 if (json.re === 1) {
                     alert('修改成功');
                     this.getSupnuevoBuyerUnionPriceClass();

@@ -26,7 +26,7 @@ export let loginAction = function (username, password, cb) {
 
     return dispatch => {
         return new Promise((resolve, reject) => {
-            var versionName = "5.2";
+            var versionName = "6.0";
 
             CookieManager.clearAll().then(function (res) {
                 console.log('CookieManager.clearAll =>', res);
@@ -62,6 +62,7 @@ export let loginAction = function (username, password, cb) {
                         },
                         body: {}
                     }).then((json) => {
+                        console.log(json)
                         var errorMsg = json.message;
                         if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
                             dispatch(getSession(null));
@@ -104,6 +105,9 @@ export let loginAction = function (username, password, cb) {
                                                         password: password,
                                                         unionId: json.data.unionId,
                                                         unionMemberType:json.data.unionMemberType,
+                                                        shopName:json.data.shopName,
+                                                        root:json.data.root,
+                                                        unionNum:json.data.unionNum
                                                     }
                                                 ));
                                                 dispatch(setJisuanPrice(json.data.addPriceMap));
@@ -135,6 +139,9 @@ export let loginAction = function (username, password, cb) {
                                             password: password,
                                             unionId: json.data.unionId,
                                             unionMemberType:json.data.unionMemberType,
+                                            shopName:json.data.shopName,
+                                            root:json.data.root,
+                                            unionNum:json.data.unionNum
                                         }
                                     ));
                                     dispatch(setJisuanPrice(json.data.addPriceMap));
@@ -292,6 +299,9 @@ export let getSession = (ob) => {
             password: ob.password,
             unionId: ob.unionId,
             unionMemberType:ob.unionMemberType,
+            shopName:ob.shopName,
+            root:ob.root,
+            unionNum:ob.unionNum
         };
     else
         return {
@@ -323,6 +333,17 @@ export let setPictureUrl = function (pictureUrl) {
         dispatch({
             type: types.SET_PICTURE_URL,
             pictureUrl: pictureUrl
+        })
+    };
+}
+
+export let setUnionId = function (union) {
+    console.log(union)
+    return dispatch => {
+        dispatch({
+            type: types.SET_UNION_ID,
+            unionId: union.unionId,
+            unionNum:union.unionNum
         })
     };
 }

@@ -6,7 +6,10 @@ module.exports = {
 
     // server:'http://211.87.224.41:8080/supnuevo',
     // server:'http://142.4.194.0',//supnuevo远程测试服务器
+    // server:'http://192.168.1.103:8080/supnuevo', //legion111
+    // server:'http://172.20.10.8:8080/supnuevo', //legion
     server:'http://union.supnuevo.com.ar',//supnuevo正式服务器
+    // server:'http://www.supnuevo.com.ar',//supnuevo正式服务器
     // server2: 'http://202.194.14.72',
     // server: 'http://142.4.194.0',
     // server2: 'http://192.168.1.106:8080/supnuevo_ventas',

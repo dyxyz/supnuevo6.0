@@ -105,6 +105,9 @@ class Query extends Component {
                     });
             }
         }
+        else{
+            this.setState({cameraModalVisible:true});
+        }
     }
 
     closePopover() {
@@ -244,6 +247,7 @@ class Query extends Component {
                 return ;
             }
             else {
+                console.log(json)
                 var goodInfo = json.object;
 
                 if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
@@ -1222,11 +1226,13 @@ class Query extends Component {
                                 <TextInput
                                     style={{
                                         flex: 8,
-                                        height: 50,
+                                        height: 48,
                                         paddingLeft: 10,
                                         paddingRight: 10,
                                         paddingTop: 6,
-                                        paddingBottom: 6
+                                        paddingBottom: 6,
+                                        backgroundColor:"white",
+                                        color:"black",
                                     }}
                                     onChangeText={(codeNum) => {
                                         if (codeNum.toString().length == 13 || codeNum.toString().length == 12 || codeNum.toString().length == 8) {
@@ -1533,7 +1539,8 @@ class Query extends Component {
                             borderColor: '#aaa',
                             borderBottomColor: '#aaa',
                             paddingLeft: 8,
-                            paddingRight: 12
+                            paddingRight: 12,
+                            alignItems: 'center'
                         }]}>
 
                             <View
@@ -1550,7 +1557,13 @@ class Query extends Component {
                                 ref="gengxingaijia"
                                 keyboardType='numeric'
                                 selectTextOnFocus={true}
-                                style={{height: 50, alignItems: 'center', flex: 7}}
+                                style={{
+                                    height: 48,
+                                    alignItems: 'center',
+                                    flex: 7,
+                                    backgroundColor:"white",
+                                    color:"black",
+                                }}
                                 onChangeText={(priceShow) => {
                                     this.state.selectedCodeInfo.priceShow = priceShow;
                                     this.state.inputPrice = priceShow;
@@ -1568,6 +1581,7 @@ class Query extends Component {
                                 // value={'' + (this.state.inputPrice !== undefined && this.state.inputPrice !== null ? this.state.inputPrice.toString() : '')}
                                 value={''+this.state.gengxingaijiaInput.toString()}
                                 underlineColorAndroid="transparent"
+                                // selectionColor={'green'}
                             />
                         </View>
 
@@ -2151,6 +2165,8 @@ class Query extends Component {
                                         paddingLeft: 10,
                                         height: 40,
                                         width: 60,
+                                        backgroundColor:"white",
+                                        color:"black",
                                     }}
                                     value={scanTime + ""}
                                     onChangeText={(tim) => {

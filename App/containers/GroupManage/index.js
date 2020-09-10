@@ -559,7 +559,7 @@ class GroupManage extends Component{
                 <View style={[styles.row,{borderBottomWidth:0}]}>
                     <View style={{flex:1,borderWidth:1,backgroundColor:'#fff',borderColor:'#ddd',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <TextInput
-                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6,backgroundColor:'#fff',}}
+                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6,backgroundColor:'#fff', color:"black",}}
                             onChangeText={(groupNum) => {
                                             if(groupNum.toString().length==7)
                                             {
@@ -635,7 +635,7 @@ class GroupManage extends Component{
                         <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                             <TextInput
                                 style={{height:40,width:width*2/4,backgroundColor:'#fff',paddingLeft:15,borderRadius:4,
-                                                flexDirection:'row',alignItems:'center'}}
+                                                flexDirection:'row',alignItems:'center', color:"black",}}
                                 onChangeText={(groupNum) => {
                                             if(groupNum.toString().length==7)
                                             {
@@ -672,7 +672,7 @@ class GroupManage extends Component{
                         <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                             <TextInput
                                 style={{height:40,width:width*2/4,backgroundColor:'#fff',paddingLeft:15,borderRadius:4,
-                                                flexDirection:'row',alignItems:'center'}}
+                                                flexDirection:'row',alignItems:'center',color:"black"}}
                                 onChangeText={(groupName) => {
                                             if(groupName.toString().length==4)
                                             {
@@ -868,7 +868,7 @@ class GroupManage extends Component{
                         <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                             <TextInput
                                 style={{height:40,width:width*2/4,backgroundColor:'#fff',paddingLeft:15,borderRadius:4,
-                                                flexDirection:'row',alignItems:'center'}}
+                                                flexDirection:'row',alignItems:'center',color:"black"}}
                                 onChangeText={(groupName) => {
                                             this.state.groupName=groupName;
                                             this.setState({groupName:this.state.groupName});

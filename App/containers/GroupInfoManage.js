@@ -508,11 +508,12 @@ class GroupInfoManage extends Component {
                                         style={{
                                             height: 40,
                                             width: width * 2 / 4,
-                                            backgroundColor: '#fff',
                                             paddingLeft: 15,
                                             borderRadius: 4,
                                             flexDirection: 'row',
-                                            alignItems: 'center'
+                                            alignItems: 'center',
+                                            backgroundColor:"white",
+                                            color:"black",
                                         }}
                                         onChangeText={(codigo) => {
                                             this.state.selectedCodeInfo.codigo = codigo;
@@ -693,7 +694,8 @@ class GroupInfoManage extends Component {
                                     paddingLeft: 15,
                                     borderRadius: 4,
                                     flexDirection: 'row',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    color:"black",
                                 }}
                                 onChangeText={(groupName) => {
                                     this.state.groupName = groupName;

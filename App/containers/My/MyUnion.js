@@ -15,6 +15,7 @@ import {
     Modal,
     TouchableOpacity,
     Platform,
+    ActivityIndicator
 } from 'react-native';
 import {connect} from 'react-redux';
 import Config from '../../../config';
@@ -23,12 +24,14 @@ const Dimensions = require('Dimensions');
 const {height, width} = Dimensions.get('window');
 const proxy = require('../../proxy/Proxy');
 import Icon from 'react-native-vector-icons/FontAwesome';
+import UnionList from "../Stock/UnionList";
 
 class MyUnion extends Component {
     componentDidMount(): void {
         // 获取联盟价格种类表
 
-        this.getSupnuevoBuyerUnionPriceClassList();
+        // this.getSupnuevoBuyerUnionPriceClassList();
+
 
     }
 
@@ -44,11 +47,20 @@ class MyUnion extends Component {
         this.state = {
             priceClassList:this.props.priceClassList,
             selectedIdx:this.props.selectedIdx,
+            showProgress:false
         }
 
     }
 
 
+    navigatorUnionList() {
+        var UnionList = require('../Stock/UnionList');
+        this.props.navigator.push({
+            name: 'UnionList',
+            component: UnionList,
+            params: {}
+        })
+    }
 
     navigateUnionRule() {
         var unionRule = require('./union/UnionRule');
@@ -62,17 +74,17 @@ class MyUnion extends Component {
     navigateCommodityCategory() {
         let _this = this;
         var commodityCategory = require('./union/CommodityCategory');
-        this.getSupnuevoBuyerUnionPriceClassList();
+        // this.getSupnuevoBuyerUnionPriceClassList();
         this.props.navigator.push({
             name: 'commodityCategory',
             component: commodityCategory,
             params: {
-                getUser: function(priceClassList) {
-                    _this.setState({
-                        priceClassList: priceClassList
-                    })
-                },
-                priceClassList:this.state.priceClassList,
+                // getUser: function(priceClassList) {
+                //     _this.setState({
+                //         priceClassList: priceClassList
+                //     })
+                // },
+                // priceClassList:this.state.priceClassList,
                 // selectedIdx:this.state.selectedIdx,
             }
         })
@@ -122,6 +134,15 @@ class MyUnion extends Component {
             params: {}
         })
     }
+
+    navigateLackCommodity() {
+        var LackCommodity = require('./union/LackCommodity');
+        this.props.navigator.push({
+            name: 'LackCommodity',
+            component: LackCommodity,
+            params: {}
+        })
+    }
     navigateAuditCustomer() {
         var auditCustomer = require('./union/AuditCustomer');
         this.props.navigator.push({
@@ -131,7 +152,39 @@ class MyUnion extends Component {
         })
     }
 
+    navigateIncompleteCommodity() {
+        var IncompleteCommodity = require('./union/IncompleteCommodity');
+        this.props.navigator.push({
+            name: 'IncompleteCommodity',
+            component: IncompleteCommodity,
+            params: {}
+        })
+    }
+
+    navigateCodigoRelation() {
+        var CodigoRelation = require('./union/CodigoRelation');
+        this.props.navigator.push({
+            name: 'CodigoRelation',
+            component: CodigoRelation,
+            params: {}
+        })
+    }
+
+    navigateModifyTime() {
+        var ModifyTime = require('./union/ModifyTime');
+        this.props.navigator.push({
+            name: 'ModifyTime',
+            component: ModifyTime,
+            params: {}
+        })
+    }
+
+
+
+
+
     updatePriceList(){
+        this.setState({showProgress:true})
         proxy.postes({
             url: Config.server + "/func/union/updateSupnuevoBuyerUnionAllPriceInfo",
             headers: {
@@ -141,32 +194,20 @@ class MyUnion extends Component {
                 unionId: this.props.unionId,
             }
         }).then((json)=> {
+            console.log(json)
+            this.setState({showProgress:false})
             if(json.re == 1){
                 Alert.alert("更新成功")
             }
+
+
         }).catch((err)=>{alert(err);});
     }
 
-    getSupnuevoBuyerUnionPriceClassList(){
-        proxy.postes({
-            url: Config.server + "/func/union/getSupnuevoBuyerUnionPriceClassList",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: {
-                unionId: this.props.unionId,
-            }
-        }).then((json)=> {
-            if(json.re === 1){
-                var dataList = json.data;
-                // this.setState({priceClassList:this._transformPriceClassToArray(dataList)})
-                this.setState({priceClassList:dataList})
-            }
-        }).catch((err)=>{alert(err);});
-    }
+
 
     render() {
-
+        // this.refs.modal.close();
         return (
             <ScrollView>
                 <View style={{flex: 1}}>
@@ -239,25 +280,94 @@ class MyUnion extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.touch}
                                               onPress={() => {
-                                                  this.navigateAuditCustomer()
+                                                  this.navigateLackCommodity()
                                               }}>
-                                <Text style={styles.text}>审核注册用户</Text>
+                                <Text style={styles.text}>缺货商品</Text>
                             </TouchableOpacity>
+                            {/*<TouchableOpacity style={styles.touch}*/}
+                                              {/*onPress={() => {*/}
+                                                  {/*this.navigateAuditCustomer()*/}
+                                              {/*}}>*/}
+                                {/*<Text style={styles.text}>审核注册用户</Text>*/}
+                            {/*</TouchableOpacity>*/}
+                            {this.props.unionMemberType == 2?
+                                <TouchableOpacity style={styles.touch}
+                                                  onPress={() => {
+                                                      this.navigateIncompleteCommodity()
+                                                  }}>
+                                    <Text style={styles.text}>信息不完整商品</Text>
+
+                                </TouchableOpacity>
+                                :
+                                null
+                            }
+                            {this.props.unionMemberType == 2?
+                                <TouchableOpacity style={styles.touch}
+                                                  onPress={() => {
+                                                      this.navigateCodigoRelation()
+                                                  }}>
+                                    <Text style={styles.text}>条码级联</Text>
+
+                                </TouchableOpacity>
+                                :
+                                null
+                            }
+                            {this.props.root?
+                                <TouchableOpacity style={styles.touch}
+                                                  onPress={() => {
+                                                      this.navigateModifyTime()
+                                                  }}>
+                                    <Text style={styles.text}>商品改价时间</Text>
+
+                                </TouchableOpacity>
+                                :
+                                null
+                            }
                             {this.props.unionMemberType == 2?
                                 <TouchableOpacity style={styles.touch}
                                                   onPress={() => {
                                                       this.updatePriceList()
                                                   }}>
                                     <Text style={styles.text}>更新价格表</Text>
+
                                 </TouchableOpacity>
                                 :
                                 null
                             }
+                            {this.state.showProgress==true?
+                                <View style={[styles.touch,{justifyContent:'center',borderBottomWidth:0}]}>
+                                    <ActivityIndicator
+                                        animating={this.state.showProgress}
+                                        style={[{height: 80}]}
+                                        size="large"
+                                        color="red"
+                                    />
+                                    <View style={{flexDirection: 'row', justifyContent: 'center',alignItems:'center'}}>
+                                        <Text style={{color: 'red', fontSize: 22, alignItems: 'center'}}>
+                                            更新中...
+                                        </Text>
+                                    </View>
+                                </View>
+                                :
+                                null
+                            }
+
 
                             <View style={{flex: 1}}/>
                         </View>
                     </View>
                 </View>
+                {/*<Modal*/}
+                    {/*animationType={"fade"}*/}
+                    {/*transparent={true}*/}
+                    {/*ref={"modal"}*/}
+                    {/*visible={this.state.showProgress}*/}
+                    {/*onRequestClose={() => {*/}
+                        {/*this.setState({showProgress: false})*/}
+                    {/*}}*/}
+                {/*>*/}
+
+                {/*</Modal>*/}
             </ScrollView>)
     }
 }
@@ -325,6 +435,14 @@ var styles = StyleSheet.create
         backgroundColor: 'white',
         borderRadius: 40,
     },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 8,
+    },
+    modalBackgroundStyle: {
+        backgroundColor: 'rgba(0,0,0,0.3)'
+    },
 
 });
 
@@ -336,6 +454,7 @@ module.exports = connect(state => ({
         supnuevoMerchantId: state.user.supnuevoMerchantId,
         sessionId: state.user.sessionId,
         unionMemberType:state.user.unionMemberType,
+        root: state.user.root,
     })
 )(MyUnion);
 

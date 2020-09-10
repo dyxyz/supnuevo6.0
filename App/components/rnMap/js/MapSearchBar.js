@@ -97,6 +97,8 @@ const styles = StyleSheet.create({
     height: 30,
     padding: 0,
     margin: 0,
+    backgroundColor:"white",
+    color:"black",
   },
   searchInputLeftTxt: {
     fontSize: 16,

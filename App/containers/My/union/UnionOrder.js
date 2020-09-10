@@ -64,13 +64,15 @@ class UnionOrder extends Component {
         this.state = {
             orderDate:null,
             orderList:[],
-            select:0,
+            robList:[],
+            select:-1,
             deliver:0,
         };
     }
 
     componentDidMount(): void {
         this.getOrderListOfDate(null,0);
+        this.getOrderRobList();
     }
 
     render() {
@@ -121,9 +123,96 @@ class UnionOrder extends Component {
     }
 
     renderBody(){
-        if(this.state.select==0) {
+        if(this.state.select==-1){
+
+            const headBody=<View style={{height:height*0.82}}>
+                <View style={{flexDirection: "row", width: width}}>
+                    <TouchableOpacity
+                        style={[styles.select, {backgroundColor: "#39c7c8", borderLeftWidth: 2,borderRightWidth:2}]}
+                        onPress={() => {
+                            this.displayCanRob()
+                        }}>
+                        <View>
+
+
+                            <Text style={{color: '#fff'}}>可抢订单</Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.select,{borderRightWidth:2}]}
+                        onPress={() => {
+                            this.displayUnDone()
+                        }}>
+                        <View>
+
+
+                            <Text>未确认订单</Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.select,{borderRightWidth:2}]}
+                        onPress={() => {
+                            this.displayConfirm()
+                        }}>
+                        <View>
+
+
+                            <Text>已确认订单</Text>
+
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.select}
+                        onPress={() => {
+                            this.displayOver()
+                        }}>
+                        <View>
+
+
+                            <Text>已完成订单</Text>
+
+
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+
+
+
+                <ScrollView>
+                    {this.state.robList.length==0?
+                        <View style={[styles.scrollViewContanier,{marginTop:15}]}>
+                            <Text style={{fontSize:18,fontWeight:'bold'}}>暂无相关订单</Text>
+                        </View>
+                        :
+                        <View style={styles.scrollViewContanier}>
+                            {this._renderOrderList(this.state.robList)}
+                        </View>
+
+                    }
+
+                </ScrollView>
+            </View>;
+            return headBody;
+        }
+        else if(this.state.select==0) {
              const body=<View style={{height:height*0.82}}>
                 <View style={{flexDirection: "row", width: width}}>
+                    <TouchableOpacity
+                        style={[styles.select,{borderRightWidth:2}]}
+                        onPress={() => {
+                            this.displayCanRob()
+                        }}>
+                        <View>
+
+
+                            <Text>可抢订单</Text>
+
+                        </View>
+                    </TouchableOpacity>
                     <TouchableOpacity
                         style={[styles.select, {backgroundColor: "#39c7c8", borderRightWidth: 2}]}
                         onPress={() => {
@@ -132,7 +221,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                                <Text style={{color: '#fff'}}>未被接单订单</Text>
+                                <Text style={{color: '#fff'}}>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -205,9 +294,15 @@ class UnionOrder extends Component {
                          </View>
                  }
                 <ScrollView>
-                    <View style={styles.scrollViewContanier}>
-                        {this._renderOrderList(this.state.orderList)}
-                    </View>
+                    {this.state.orderList.length == 0 ?
+                        <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
+                            <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
+                        </View>
+                        :
+                        <View style={styles.scrollViewContanier}>
+                            {this._renderOrderList(this.state.orderList)}
+                        </View>
+                    }
                 </ScrollView>
 
 
@@ -221,6 +316,18 @@ class UnionOrder extends Component {
              const elsebody=<View style={{height:height*0.82}}>
                 <View style={{flexDirection: "row", width: width}}>
                     <TouchableOpacity
+                        style={[styles.select,{borderRightWidth:2}]}
+                        onPress={() => {
+                            this.displayCanRob()
+                        }}>
+                        <View>
+
+
+                            <Text>可抢订单</Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
                         style={styles.select}
                         onPress={() => {
                         this.displayUnDone()
@@ -228,7 +335,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                                <Text>未被接单订单</Text>
+                                <Text>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -264,9 +371,15 @@ class UnionOrder extends Component {
 
 
                  <ScrollView>
-                     <View style={styles.scrollViewContanier}>
-                         {this._renderOrderList(this.state.orderList)}
-                     </View>
+                     {this.state.orderList.length == 0 ?
+                         <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
+                             <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
+                         </View>
+                         :
+                         <View style={styles.scrollViewContanier}>
+                             {this._renderOrderList(this.state.orderList)}
+                         </View>
+                     }
                  </ScrollView>
             </View>;
             return elsebody;
@@ -277,12 +390,24 @@ class UnionOrder extends Component {
                     <TouchableOpacity
                         style={[styles.select,{borderRightWidth:2}]}
                         onPress={() => {
+                            this.displayCanRob()
+                        }}>
+                        <View>
+
+
+                            <Text>可抢订单</Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.select,{borderRightWidth:2}]}
+                        onPress={() => {
                             this.displayUnDone()
                         }}>
                         <View>
 
 
-                            <Text>未被接单订单</Text>
+                            <Text>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -322,7 +447,13 @@ class UnionOrder extends Component {
                                 this.setState({orderDate: value});
                                 this.getOrderListOfDate(value, 1);
                             }}/>
-                        {this._renderOrderList(this.state.orderList)}
+                        {this.state.orderList.length == 0 ?
+                            <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
+                                <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
+                            </View>
+                            :
+                            this._renderOrderList(this.state.orderList)
+                        }
                     </View>
                 </ScrollView>
             </View>;
@@ -338,32 +469,59 @@ class UnionOrder extends Component {
             orderList.map((order,i)=>{
                 const telephone = order.mobilePhone;
                 const orderInfo = order.order;
+                if(this.state.select==-1){
+                    orderListView.push([
+                        <View style={styles.container}>
+                            <Text style={styles.text}>订单编号：{order.orderNum}</Text>
+                        </View>,
+                            <View style={styles.basicInfoContainer}>
+                                {/*<InformationItem key={0} type={TYPE_TEXT} title="订单类型" content={"商家送货"}/>*/}
+                                <InformationItem key={1} type={TYPE_TEXT} title="送货地址"
+                                                 content={order.receiverAddr}/>
+                                {/*<InformationItem key={2} type={TYPE_TEXT} title="接货人电话" content={order.receiverPhone}/>*/}
+                                <InformationItem key={3} type={TYPE_TEXT} title="订单总价"
+                                                 content={order.totalFeeFinal}/>
+                            </View>,
+
+                            <View style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                marginTop: height * 0.02,
+                                marginBottom: height * 0.02
+                            }}>
+                                <TouchableOpacity onPress={() => {
+                                    this.affirmCustomerOrder(order.orderId)
+                                }}>
+                                    <View style={styles.button}>
+                                        <Text style={{color: '#fff'}}>抢单</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>,
+                            <View style={{height:5,backgroundColor:'gray',width:width}}/>
+
+                        ]
+                    );
+                }
                 //未确认的配送订单
-                if(this.state.select==0 && this.state.deliver==1) {
+                else if(this.state.select==0 && this.state.deliver==1) {
                     if (orderInfo.deliveryType == 0) {
                         orderListView.push([
                                 <View style={styles.container}>
                                     <Text style={styles.text}>订单编号：{orderInfo.orderNum}</Text>
                                 </View>,
                                 <View style={styles.basicInfoContainer}>
-                                    <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
-                                    <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"商家送货"}/>
-                                    <InformationItem key={2} type={TYPE_TEXT} title="送货地址"
+                                    {/*<InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>*/}
+                                    {/*<InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"商家送货"}/>*/}
+                                    <InformationItem key={0} type={TYPE_TEXT} title="送货地址"
                                                      content={orderInfo.receiverAddr}/>
-                                    <InformationItem key={3} type={TYPE_TEXT} title="接货人电话"
-                                                     content={orderInfo.receiverPhone}/>
-                                    <InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>
-                                    <InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>
+                                    <InformationItem key={1} type={TYPE_TEXT} title="订单总价"
+                                                     content={orderInfo.totalFeeFinal}/>
+                                    {/*<InformationItem key={3} type={TYPE_TEXT} title="接货人电话"*/}
+                                                     {/*content={orderInfo.receiverPhone}/>*/}
+                                    {/*<InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>*/}
+                                    {/*<InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>*/}
                                 </View>,
-                                <View style={styles.tableInfoCard}>
-                                    <View style={styles.containers}>
-                                        {this._renderTitle("订单内容")}
-                                        {this._renderHeader(orderHead)}
-                                        {this._renderInfoList(orderInfo.itemList)}
-                                        {this._renderFooter(orderInfo.totalAmount,orderInfo.totalFee,orderInfo.discountFee,orderInfo.totalFeeFinal)}
-                                        {/*{this.props.renderAux?this.props.renderAux():null}*/}
-                                    </View>
-                                </View>,
+
                                 <View style={{
                                     alignItems: "center",
                                     justifyContent: "center",
@@ -374,7 +532,7 @@ class UnionOrder extends Component {
                                         this.affirmCustomerOrder(orderInfo.orderId)
                                     }}>
                                         <View style={styles.button}>
-                                            <Text style={{color: '#fff'}}>抢单</Text>
+                                            <Text style={{color: '#fff'}}>接单</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </View>
@@ -392,36 +550,26 @@ class UnionOrder extends Component {
                                     <Text style={styles.text}>订单编号：{orderInfo.orderNum}</Text>
                                 </View>,
                                 <View style={styles.basicInfoContainer}>
-                                    <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
-                                    <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
-                                    <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
-                                    {/*<InformationItem key={1} type={TYPE_TEXT} title="送货地址" content={orderInfo.receiverAddr}/>*/}
-                                    {/*<InformationItem key={2} type={TYPE_TEXT} title="接货人电话" content={orderInfo.receiverPhone}/>*/}
-                                    {/*<InformationItem key={3} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>*/}
+                                    {/*<InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>*/}
+                                    {/*<InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>*/}
+                                    <InformationItem key={0} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
+                                    <InformationItem key={1} type={TYPE_TEXT} title="订单总价" content={orderInfo.totalFeeFinal}/>
                                 </View>,
-                                <View style={styles.tableInfoCard}>
-                                    <View style={styles.containers}>
-                                        {this._renderTitle("订单内容")}
-                                        {this._renderHeader(orderHead)}
-                                        {this._renderInfoList(orderInfo.itemList)}
-                                        {this._renderFooter(orderInfo.totalAmount,orderInfo.totalFee,orderInfo.discountFee,orderInfo.totalFeeFinal)}
-                                        {/*{this.props.renderAux?this.props.renderAux():null}*/}
-                                    </View>
-                                </View>,
-                                <View style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    marginTop: height * 0.02,
-                                    marginBottom: height * 0.02
+                            <View style={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                marginTop: height * 0.02,
+                                marginBottom: height * 0.02
+                            }}>
+                                <TouchableOpacity onPress={() => {
+                                    this.affirmCustomerOrder(orderInfo.orderId)
                                 }}>
-                                    <TouchableOpacity onPress={() => {
-                                        this.affirmCustomerOrder(orderInfo.orderId)
-                                    }}>
-                                        <View style={styles.button}>
-                                            <Text style={{color: '#fff'}}>确认</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
+                                    <View style={styles.button}>
+                                        <Text style={{color: '#fff'}}>接单</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>,
+
                             ]
                         );
                     }
@@ -626,6 +774,11 @@ class UnionOrder extends Component {
         return array;
     }
 
+    displayCanRob(){
+        this.setState({select:-1});
+        this.getOrderRobList();
+    }
+
     displayUnDone(){
         this.setState({select:0});
         this.getOrderListOfDate(null,0);
@@ -652,6 +805,24 @@ class UnionOrder extends Component {
         this.getOrderListOfDate(null,0);
     }
 
+    getOrderRobList(){
+        proxy.postes({
+            url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfUnionCanGrab",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                unionId: this.props.unionId,
+            }
+        }).then((json)=> {
+            console.log(json)
+            if(json.re === 1){
+                var data = json.data;
+                this.setState({robList:data})
+            }
+        }).catch((err)=>{alert(err);});
+    }
+
     getOrderListOfDate(orderDate,orderState){
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfDateByUnion",
@@ -662,8 +833,10 @@ class UnionOrder extends Component {
                 orderDate: orderDate,
                 unionId: this.props.unionId,
                 orderState:orderState,
+                merchantId:this.props.merchantId,
             }
         }).then((json)=> {
+            console.log(json)
             if(json.re === 1){
                 var data = json.data;
                 this.setState({orderList:data})
@@ -686,11 +859,14 @@ class UnionOrder extends Component {
             if(json.re === 1){
                 if(this.state.deliver==1) {
                     Alert.alert("抢单成功");
+                    this.getOrderListOfDate(null,0);
+                    this.getOrderRobList()
                 }
                 else{
                     Alert.alert("确认自提订单成功");
+                    this.getOrderListOfDate(null,0);
                 }
-                this.getOrderListOfDate(null,0);
+
             }
         }).catch((err)=>{alert(err);});
     }

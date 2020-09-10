@@ -11,7 +11,8 @@ import  {
     View,
     Alert,
     Modal,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
     } from 'react-native';
 import {connect} from 'react-redux';
 import Config from '../../../config';
@@ -70,14 +71,7 @@ class MySuggestion extends Component {
         return (
             <View style={{flex: 1}}>
                 {/* header bar */}
-                <View style={{
-                    backgroundColor: '#387ef5',
-                    height: 55,
-                    padding: 12,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'row'
-                }}>
+                <View style={[{backgroundColor:'#387ef5',padding: 4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
                     <TouchableOpacity style={{
                         flex: 1,
                         height: 45,
@@ -105,6 +99,8 @@ class MySuggestion extends Component {
                         marginLeft:10,
                         marginRight:10,
                         marginTop:30,
+                        backgroundColor:"white",
+                        color:"black",
                                         height: 150,
                                         paddingLeft: 10,
                                         paddingRight: 10,

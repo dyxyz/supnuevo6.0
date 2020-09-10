@@ -251,6 +251,9 @@ class Sale extends Component {
                     });
             }
         }
+        else{
+            this.setState({cameraModalVisible:true});
+        }
     }
 
     navigateCommodityClass() {
@@ -632,7 +635,9 @@ class Sale extends Component {
                                 height: 40,
                                 marginHorizontal: 5,
                                 paddingLeft: 10,
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                backgroundColor:"white",
+                                color:"black",
                             }}
                             onFocus={() => this.setState({usertextinput: ''})}
                             value={this.state.usertextinput}

@@ -15,6 +15,9 @@ import {Navigator} from 'react-native-deprecated-custom-components';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome.js';
 
+var proxy = require('../proxy/Proxy');
+import Config from "../../config";
+
 import ScrollableTabView, {DefaultTabBar, ScrollableTabBar} from 'react-native-scrollable-tab-view';
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -43,7 +46,88 @@ class App extends React.Component {
             tab: '进货',
             selectedTab: '进货',
             isConnected: null,
+            number:0,
         }
+    }
+
+    componentDidMount(){
+        NetInfo.addEventListener(
+            'change',
+            this._handleConnectionInfoChange.bind(this)
+        );
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid.bind(this));
+        }
+
+        this.getOrderListOfDate(null,0);
+        this.getOrderRobList();
+
+
+
+    }
+
+    componentDidUpdate(){
+        clearInterval(this.timer);
+        console.log(this.props.auth)
+        let auth = this.props.auth;
+        if (auth == true) {
+            if(this.props.unionId){
+                this.startTImer();
+            }
+            console.log(this.props.unionId)
+        }
+
+    }
+
+    startTImer(){
+
+            this.timer=setInterval(()=>{
+                this.setState({number:0})
+                this.getOrderListOfDate(null,0);
+                this.getOrderRobList();
+            },10000);
+
+
+
+    }
+
+    getOrderRobList(){
+        proxy.postes({
+            url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfUnionCanGrab",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                unionId: this.props.unionId,
+            }
+        }).then((json)=> {
+            console.log(json)
+            if(json.re === 1){
+                var data = json.data;
+                this.setState({number:this.state.number+data.length})
+            }
+        }).catch((err)=>{alert(err);});
+    }
+
+    getOrderListOfDate(orderDate,orderState){
+        proxy.postes({
+            url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfDateByUnion",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                orderDate: orderDate,
+                unionId: this.props.unionId,
+                orderState:orderState,
+                merchantId:this.props.merchantId,
+            }
+        }).then((json)=> {
+            console.log(json)
+            if(json.re === 1){
+                var data = json.data;
+                this.setState({number:this.state.number+data.length})
+            }
+        }).catch((err)=>{alert(err);});
     }
 
     _createNavigatorItem(route, icon) {
@@ -71,44 +155,86 @@ class App extends React.Component {
             default:
                 break;
         }
+        if(route=='我的'){
+            return(
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === route}
+                    title={route}
+                    titleStyle={{color: '#C6C5CA', fontSize: setSpText(13)}}
+                    renderIcon={() => <Icon name={icon} size={setSpText(20)}/>}
+                    renderSelectedIcon={() => <Icon name={icon} size={setSpText(20)} color='#387ef5'/>}
+                    badgeText={this.state.number}
+                    onPress={() => {
+                        this.setState({selectedTab: route});
+                    }}
+                    tabStyle={{backgroundColor: 'transparent',}}
+                    onSelectedStyle={{backgroundColor: '#eeecf3',}}
+                >
+                    <View style={{flex: 1,height:42}}>
+                        <Navigator
+                            ref="navigator"
+                            initialRoute={{name: route, component: component}}
+                            configureScene={(route) => {
+                                return ({
+                                    ...Navigator.SceneConfigs.PushFromRight,
+                                    gestures: null
+                                });
+                            }}
+                            renderScene={(route, navigator) => {
+                                let Component = route.component;
+                                //this.props.dispatch(updateNavigator({route:route.name,navigator:navigator}))
+                                return (<Component {...route.params} navigator={navigator}/>);
 
-        return (
+                            }}
 
-            <TabNavigator.Item
-                selected={this.state.selectedTab === route}
-                title={route}
-                titleStyle={{color: '#C6C5CA', fontSize: setSpText(13)}}
-                renderIcon={() => <Icon name={icon} size={setSpText(25)}/>}
-                renderSelectedIcon={() => <Icon name={icon} size={setSpText(25)} color='#387ef5'/>}
-                onPress={() => {
-                    this.setState({selectedTab: route});
-                }}
-                tabStyle={{backgroundColor: 'transparent',}}
-                onSelectedStyle={{backgroundColor: '#eeecf3',}}
-            >
-                <View style={{flex: 1,}}>
-                    <Navigator
-                        ref="navigator"
-                        initialRoute={{name: route, component: component}}
-                        configureScene={(route) => {
-                            return ({
-                                ...Navigator.SceneConfigs.PushFromRight,
-                                gestures: null
-                            });
-                        }}
-                        renderScene={(route, navigator) => {
-                            let Component = route.component;
-                            //this.props.dispatch(updateNavigator({route:route.name,navigator:navigator}))
-                            return (<Component {...route.params} navigator={navigator}/>);
-
-                        }}
-
-                    />
+                        />
 
 
-                </View>
-            </TabNavigator.Item>
-        );
+                    </View>
+                </TabNavigator.Item>
+            )
+        }
+        else{
+            return (
+
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === route}
+                    title={route}
+                    titleStyle={{color: '#C6C5CA', fontSize: setSpText(13)}}
+                    renderIcon={() => <Icon name={icon} size={setSpText(20)}/>}
+                    renderSelectedIcon={() => <Icon name={icon} size={setSpText(20)} color='#387ef5'/>}
+                    onPress={() => {
+                        this.setState({selectedTab: route});
+                    }}
+                    tabStyle={{backgroundColor: 'transparent',}}
+                    onSelectedStyle={{backgroundColor: '#eeecf3',}}
+                >
+                    <View style={{flex: 1,height:42}}>
+                        <Navigator
+                            ref="navigator"
+                            initialRoute={{name: route, component: component}}
+                            configureScene={(route) => {
+                                return ({
+                                    ...Navigator.SceneConfigs.PushFromRight,
+                                    gestures: null
+                                });
+                            }}
+                            renderScene={(route, navigator) => {
+                                let Component = route.component;
+                                //this.props.dispatch(updateNavigator({route:route.name,navigator:navigator}))
+                                return (<Component {...route.params} navigator={navigator}/>);
+
+                            }}
+
+                        />
+
+
+                    </View>
+                </TabNavigator.Item>
+            );
+        }
+
+
     }
 
     render() {
@@ -119,7 +245,7 @@ class App extends React.Component {
                 backgroundColor: '#eeecf3',
                 paddingBottom: 5,
                 paddingTop: 5,
-                height: 60
+                height: 70
             }
 
             var defaultSceneStyle = {}
@@ -165,16 +291,7 @@ class App extends React.Component {
 
     }
 
-    componentDidMount() {
-        NetInfo.addEventListener(
-            'change',
-            this._handleConnectionInfoChange.bind(this)
-        );
-        if (Platform.OS === 'android') {
-            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid.bind(this));
-        }
 
-    }
 
     _handleConnectionInfoChange(connectionInfo) {
         const connectionInfoHistory = this.props.connectionInfoHistory.slice();
@@ -288,6 +405,8 @@ var styles = StyleSheet.create({
 
 export default connect(
     (state) => ({
+        unionId: state.user.unionId,
+        merchantId: state.user.supnuevoMerchantId,
         auth: state.user.auth,
         connectionInfoHistory: state.netInfo.connectionInfoHistory,
     })

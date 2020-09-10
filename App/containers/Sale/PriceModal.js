@@ -66,7 +66,7 @@ class PriceModal extends Component{
                     </View>
                     <View style={{flexDirection:'row',alignItems:'center',padding:4,paddingTop:15,borderBottomWidth:1,borderColor:'#387ef5'}}>
                         <TextInput
-                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6}}
+                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6,backgroundColor:"white", color:"black"}}
                             onChangeText={(price) => {
                                 this.setState({price:price});
                                 }}

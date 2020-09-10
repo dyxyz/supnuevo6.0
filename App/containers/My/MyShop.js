@@ -13,7 +13,8 @@ import {
     View,
     Alert,
     Modal,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 import {connect} from 'react-redux';
 import Config from '../../../config';
@@ -266,11 +267,13 @@ class MyShop extends Component {
             <View style={{flex: 1}}>
                 {/* header bar */}
                 <View style={{
-                    backgroundColor: '#387ef5',
-                    height: 65,
+                    backgroundColor:'#387ef5',
+                    padding: 4,
+                    paddingTop:Platform.OS=='ios'?40:15,
+                    justifyContent: 'center',
                     alignItems: 'center',
-                    flexDirection: 'row'
-                }}>
+                    flexDirection:'row'}}
+                >
                     <TouchableOpacity style={{
                         height: 45,
                         marginRight: 10,
@@ -364,7 +367,9 @@ class MyShop extends Component {
                                         paddingRight: 10,
                                         paddingTop: 2,
                                         paddingBottom: 2,
-                                        fontSize: setSpText(16)
+                                        fontSize: setSpText(16),
+                                        backgroundColor:"white",
+                                        color:"black",
                                     }}
                                     onChangeText={(username) => {
                                         this.setState({username: username})
@@ -400,7 +405,9 @@ class MyShop extends Component {
                                         paddingRight: 10,
                                         paddingTop: 2,
                                         paddingBottom: 2,
-                                        fontSize: setSpText(16)
+                                        fontSize: setSpText(16),
+                                        backgroundColor:"white",
+                                        color:"black",
                                     }}
                                     onChangeText={(note) => {
                                         this.setState({note: note})

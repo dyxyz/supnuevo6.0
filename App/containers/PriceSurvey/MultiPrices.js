@@ -336,7 +336,7 @@ class MultiPrices extends Component{
                                 </View>
                                 <View style={{flex:10,borderWidth:1,borderColor:'#aaa',marginLeft:8,padding:5,justifyContent:'center'}}>
                                     <TextInput
-                                        style={{height:28,fontSize:setSpText(14)}}
+                                        style={{height:28,fontSize:setSpText(14),backgroundColor:"white", color:"black",}}
                                         onChangeText={(price) => {
                                             this.state.price = price;
                                             this.setState({price:price,price1:price,modifyType:1})
@@ -466,7 +466,7 @@ class MultiPrices extends Component{
                                 </View>
                                 <View style={{flex:10,borderWidth:1,borderColor:'#aaa',marginLeft:8,padding:5,justifyContent:'center'}}>
                                     <TextInput
-                                        style={{height:28,fontSize:setSpText(16)}}
+                                        style={{height:28,fontSize:setSpText(16),backgroundColor:"white", color:"black",}}
                                         onChangeText={(price) => {
                                             this.state.price = price;
                                             this.setState({price:price,price2:price,modifyType:1})
@@ -594,7 +594,7 @@ class MultiPrices extends Component{
                                 </View>
                                 <View style={{flex:10,borderWidth:1,borderColor:'#aaa',marginLeft:8,padding:5,justifyContent:'center'}}>
                                     <TextInput
-                                        style={{height:28,fontSize:setSpText(16)}}
+                                        style={{height:28,fontSize:setSpText(16),backgroundColor:"white", color:"black",}}
                                         onChangeText={(price) => {
                                             this.state.price = price;
                                             this.setState({price:price,price3:price,modifyType:1})

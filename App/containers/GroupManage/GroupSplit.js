@@ -639,7 +639,7 @@ class GroupSplit extends Component{
                     <View style={{flex:5,flexDirection:'row',alignItems:'center',padding:4}}>
                         <TextInput
                             style={{flex:8,height:40,backgroundColor:'#fff',paddingLeft:10,paddingRight:10,borderRadius:4,
-                                                flexDirection:'row',alignItems:'center',fontSize:setSpText(13)}}
+                                                flexDirection:'row',alignItems:'center',fontSize:setSpText(13),color:"black"}}
                                 onChangeText={(groupName) => {
                                             if(groupName.toString().length==4)
                                             {

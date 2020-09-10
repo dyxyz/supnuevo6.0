@@ -81,9 +81,27 @@ class OrderDiscount extends Component {
                     </View>
 
                     <View style={{flex: 1}}>
-                        {this._renderDiscountSelector()}
-                        {this._renderDateSelector()}
+                        {/*{this._renderDiscountSelector()}*/}
+                        {/*{this._renderDateSelector()}*/}
                         {this._renderWeightPercent()}
+                        {this.props.unionMemberType == 2?
+                            <View style={{marginTop:30,width:width,alignItems:'center'}}>
+                                <TouchableOpacity
+
+                                    onPress={()=>{
+                                        this.saveSupnuevoBuyerUnionOrderDiscount()
+                                    }}
+                                >
+                                    <View style={{alignItems:'center',padding:10,paddingHorizontal:8,borderRadius:10,backgroundColor:'#8bb3f4',width:width*0.4,height:"auto"}}>
+                                        <Text>保存折扣</Text>
+                                    </View>
+
+                                </TouchableOpacity>
+                            </View>
+                            :
+                            null
+                        }
+
                     </View>
 
                 </View>
@@ -362,14 +380,15 @@ class OrderDiscount extends Component {
                 unionId: this.props.unionId,
             }
         }).then((json)=> {
+            console.log(json)
             if(json.re === 1){
                 var discount = json.data;
                 this.setState({
-                    discountName:discount.discountName,
-                    startDate:discount.startDateStr,endDate:discount.endDateStr,
-                    total1:discount.total1+"",scale1:discount.scale1+"",
-                    total2:discount.total2+"",scale2:discount.scale2+"",
-                    total3:discount.total3+"",scale3:discount.scale3+""})
+                    // discountName:discount.discountName,
+                    // startDate:discount.startDateStr,endDate:discount.endDateStr,
+                    total1:discount.total1+"",scale1:discount.scale1*100+"",
+                    total2:discount.total2+"",scale2:discount.scale2*100+"",
+                    total3:discount.total3+"",scale3:discount.scale3*100+""})
             }
         }).catch((err)=>{alert(err);});
     }
@@ -393,6 +412,45 @@ class OrderDiscount extends Component {
     }
 
     saveSupnuevoBuyerUnionOrderDiscount(){
+        const total1=parseFloat(this.state.total1)
+        const total2=parseFloat(this.state.total2)
+        const total3=parseFloat(this.state.total3)
+        const scale1=parseFloat(this.state.scale1)
+        const scale2=parseFloat(this.state.scale2)
+        const scale3=parseFloat(this.state.scale3)
+        if(total3==0){
+            if(total2!=0){
+                if(total1<=total2){
+                    alert('总价1须大于总价2')
+                    return
+                }
+            }
+        }
+        else{
+            if(total2<=total3){
+                alert('总价2须大于总价3')
+                return
+            }
+            else{
+                if(total2!=0){
+                    if(total1<=total2){
+                        alert('总价1须大于总价2')
+                        return
+                    }
+                }
+            }
+        }
+        if(scale1<=scale2){
+            alert('折扣1须大于折扣2')
+            return
+        }
+        else {
+            if(scale2<=scale3){
+                alert('折扣2须大于折扣3')
+                return
+            }
+        }
+
         proxy.postes({
             url: Config.server + "/func/union/updateSupnuevoBuyerUnionOrderDiscount",
             headers: {
@@ -405,11 +463,11 @@ class OrderDiscount extends Component {
                 startDateStr: this.state.startDate,
                 endDateStr: this.state.endDate,
                 total1: parseFloat(this.state.total1),
-                scale1: parseFloat(this.state.scale1),
+                scale1: parseFloat(this.state.scale1)/100,
                 total2: parseFloat(this.state.total2),
-                scale2: parseFloat(this.state.scale2),
+                scale2: parseFloat(this.state.scale2)/100,
                 total3: parseFloat(this.state.total3),
-                scale3: parseFloat(this.state.scale3),
+                scale3: parseFloat(this.state.scale3)/100,
             }
         }).then((json)=> {
             if(json.re === 1){
@@ -488,6 +546,7 @@ var styles = StyleSheet.create
         alignItems:'center',
         textAlign:'center',
         width:width*0.2,
+        color:"black",
     },
     textstyle: {
         fontSize: 13,

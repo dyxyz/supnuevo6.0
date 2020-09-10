@@ -6,6 +6,7 @@ import android.util.Log;
 import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.rnfs.RNFSPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
 import com.psykar.cookiemanager.CookieManagerPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
                     new RCTCameraPackage(),
                     new RNSensitiveInfoPackage(),
                     new CookieManagerPackage(),
+                    new ImagePickerPackage(),
                     new HttpUtilsPackage()
             );
         }

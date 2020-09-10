@@ -33,6 +33,8 @@ import CompanyInfo from './CompanyInfo';
 import PreferenceStore from '../../utils/PreferenceStore';
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view'
 import VentasDetail from './VentasDetail'
+import UnionList from './UnionList'
+import MyUnion from '../My/MyUnion'
 import {setSpText} from '../../utils/ScreenUtil'
 var Dimensions = require('Dimensions');
 var {height, width} = Dimensions.get('window');
@@ -96,12 +98,72 @@ class Stock extends Component {
 
     }
 
+    componentDidMount() {
+        if(this.props.root){
+            this.navigatorUnionList()
+        }
+        else{
+            this.navigatorVentasInfoModal()
+        }
+
+
+
+        //这个页面在打开的时候直接调用这个方法
+        // let userInput;
+        // let stockSearchType;
+        // PreferenceStore.get('stockSearch').then((val) => {
+        //     userInput = val;
+        //     return PreferenceStore.get('stockSearchType');
+        // }).then((val) => {
+        //     stockSearchType = val;
+        //     if (userInput !== undefined && userInput !== null && userInput != ''
+        //         && stockSearchType !== undefined && stockSearchType !== null && stockSearchType != '') {
+        //         //TODO:auto-login
+        //         this.setState({
+        //             companyinfo: userInput, showProgress: true
+        //         });
+        //         //这里把showProgress置成true
+        //         if (stockSearchType == 1) {
+        //             this.state.companyinfo = userInput;
+        //             this.fetchData_commodity();
+        //         } else if (stockSearchType == 2) {
+        //             this.state.companyinfo = userInput;
+        //             this.fetchData_ventas();
+        //         }
+        //     }
+        // })
+    }
+
     showpopupDialog() {
         this.popupDialog.show();
     }
 
     dismisspopupDialog() {
         this.popupDialog.dismiss();
+    }
+
+    navigatorUnionList() {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.push({
+                name: 'UnionList',
+                component: UnionList,
+                params: {
+                }
+            })
+        }
+    }
+
+    navigatorMyUnion() {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.push({
+                name: 'MyUnion',
+                component: MyUnion,
+                params: {
+                }
+            })
+        }
     }
 
     navigatorVentasInfoModal() {
@@ -575,35 +637,7 @@ class Stock extends Component {
         });
     }
 
-    componentDidMount() {
 
-        this.navigatorVentasInfoModal()
-
-        //这个页面在打开的时候直接调用这个方法
-        // let userInput;
-        // let stockSearchType;
-        // PreferenceStore.get('stockSearch').then((val) => {
-        //     userInput = val;
-        //     return PreferenceStore.get('stockSearchType');
-        // }).then((val) => {
-        //     stockSearchType = val;
-        //     if (userInput !== undefined && userInput !== null && userInput != ''
-        //         && stockSearchType !== undefined && stockSearchType !== null && stockSearchType != '') {
-        //         //TODO:auto-login
-        //         this.setState({
-        //             companyinfo: userInput, showProgress: true
-        //         });
-        //         //这里把showProgress置成true
-        //         if (stockSearchType == 1) {
-        //             this.state.companyinfo = userInput;
-        //             this.fetchData_commodity();
-        //         } else if (stockSearchType == 2) {
-        //             this.state.companyinfo = userInput;
-        //             this.fetchData_ventas();
-        //         }
-        //     }
-        // })
-    }
 
     surequary() {
         this.dismisspopupDialog();
@@ -697,6 +731,8 @@ class Stock extends Component {
                                     paddingTop: 2,
                                     paddingBottom: 2,
                                     fontSize: setSpText(16),
+                                    backgroundColor:"white",
+                                    color:"black",
                                 }}
                                 onChangeText={(companyinfo) => {
                                     this.setState({companyinfo: companyinfo});
@@ -751,7 +787,7 @@ class Stock extends Component {
                     }}>
                     <View style={{flex: 1, backgroundColor: '#CAE1FF'}}>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="商品种类"
                                        onChangeText={(zhonglei) => {
                                            if (zhonglei !== null) {
@@ -770,7 +806,7 @@ class Stock extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="省"
                                        onChangeText={(province) => {
                                            if (province !== null) {
@@ -789,7 +825,7 @@ class Stock extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 8, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 8, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        placeholder="市"
                                        onChangeText={(city) => {
                                            if (city !== null) {
@@ -809,7 +845,7 @@ class Stock extends Component {
                             </ModalDropdown>
                         </View>
                         <View style={styles.table}>
-                            <TextInput style={{flex: 4, height: 50, marginLeft: 10}}
+                            <TextInput style={{flex: 4, height: 50, marginLeft: 10,backgroundColor:"white", color:"black",}}
                                        underlineColorAndroid="transparent"
                                        placeholder="条码尾数"
                             />
@@ -1020,6 +1056,7 @@ var styles = StyleSheet.create({
 
 module.exports = connect(state => ({
         merchantId: state.user.supnuevoMerchantId,
+        root: state.user.root,
         username: state.user.username,
         commodityClassList: state.sale.commodityClassList,
         weightService: state.sale.weightService,

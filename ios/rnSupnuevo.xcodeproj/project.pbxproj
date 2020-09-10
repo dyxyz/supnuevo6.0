@@ -31,6 +31,7 @@
 		4ACF713A21E72F6D008E5193 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A40B34121DC354C0076646B /* libRCTCamera.a */; };
 		4ACF713C21E72F74008E5193 /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A401764217825BE0072F642 /* libRNCookieManagerIOS.a */; };
 		4ACF713D21E72F74008E5193 /* libRNSensitiveInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ADC6F281F2C193500F08E84 /* libRNSensitiveInfo.a */; };
+		50A24132247FA8010007EDC1 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A2412E247FA7BE0007EDC1 /* libRNImagePicker.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		92C5F1F98ED04D3EABC87F1D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C023BBCA14216B90F7AA6 /* FontAwesome.ttf */; };
@@ -247,6 +248,13 @@
 			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
 			remoteInfo = "RNVectorIcons-tvOS";
 		};
+		50A2412D247FA7BE0007EDC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50A2410C247FA7BD0007EDC1 /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -305,6 +313,7 @@
 		3D5C023BBCA14216B90F7AA6 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		41B151F9B2584CB887BBC1CC /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		4A726E6E23CEAFBA0099A4A7 /* RCTRootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTRootView.m; path = "../node_modules/react-native/React/Base/RCTRootView.m"; sourceTree = "<group>"; };
+		50A2410C247FA7BD0007EDC1 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		712A7645DBD04E22BD667882 /* RNFS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
 		77D135DA35A54D0093281447 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -334,6 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A24132247FA8010007EDC1 /* libRNImagePicker.a in Frameworks */,
 				4A726E7023CEAFBA0099A4A7 /* RCTRootView.m in Frameworks */,
 				4ACF713C21E72F74008E5193 /* libRNCookieManagerIOS.a in Frameworks */,
 				4ACF713D21E72F74008E5193 /* libRNSensitiveInfo.a in Frameworks */,
@@ -540,6 +550,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		50A2410D247FA7BD0007EDC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50A2412E247FA7BE0007EDC1 /* libRNImagePicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +579,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				50A2410C247FA7BD0007EDC1 /* RNImagePicker.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -742,6 +761,10 @@
 				{
 					ProductGroup = 4A38224D237160760056BC4A /* Products */;
 					ProjectRef = 712A7645DBD04E22BD667882 /* RNFS.xcodeproj */;
+				},
+				{
+					ProductGroup = 50A2410D247FA7BD0007EDC1 /* Products */;
+					ProjectRef = 50A2410C247FA7BD0007EDC1 /* RNImagePicker.xcodeproj */;
 				},
 				{
 					ProductGroup = 2ADC6F0A1F2C193400F08E84 /* Products */;
@@ -957,6 +980,13 @@
 			remoteRef = 4AE4C3DE23C481BC0075DAF9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		50A2412E247FA7BE0007EDC1 /* libRNImagePicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNImagePicker.a;
+			remoteRef = 50A2412D247FA7BE0007EDC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1132,7 +1162,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BY3A7B54BR;
 				ENABLE_BITCODE = NO;
@@ -1143,6 +1173,7 @@
 				INFOPLIST_FILE = rnSupnuevo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 6.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1164,7 +1195,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = BY3A7B54BR;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1174,6 +1205,7 @@
 				INFOPLIST_FILE = rnSupnuevo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 6.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

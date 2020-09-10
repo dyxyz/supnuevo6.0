@@ -27,6 +27,7 @@ import {setSpText} from "../../../utils/ScreenUtil";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Camera from 'react-native-camera';
 import RNFS from 'react-native-fs';
+import ImagePicker from 'react-native-image-picker';
 import goods from "../../../test/goods";
 import Config from "../../../../config";
 var Dimensions = require('Dimensions');
@@ -35,6 +36,20 @@ var proxy = require('../../../proxy/Proxy');
 
 const is_not_alive_icon = <Ionicons name={"md-radio-button-off"} size={25}/>;
 const is_alive_icon = <Ionicons name={"md-checkmark-circle-outline"} size={25}/>;
+
+var photoOptions={
+    title:'请选择',
+    cancelButtonTitle:'取消',
+    takePhotoButtonTitle:'拍照',
+    chooseFromLibraryButtonTitle:'从相册选取',
+    quality:0.75,
+    allowsEditing:true,
+    noData:false,
+    storageOptions:{
+        skipBackup:true,
+        path:'images',
+    }
+}
 
 class PricePublicity extends Component {
 
@@ -95,24 +110,25 @@ class PricePublicity extends Component {
                             Supnuevo(6.0)-{this.props.username}
                         </Text>
                     </View>
-                    {this.props.unionMemberType==2?
-                        <TouchableOpacity
-                            style={{position:"absolute",
-                                    right:15,
-                                    top:38,
-                                    height: 30,}}
-                            onPress={
-                                ()=>{
-                                    this.addPromotion();
-                                }
-                            }>
-                            <IconI name="ios-add-circle-outline" size={30} color="#fff" />
-                        </TouchableOpacity>
+                    {/*{this.props.unionMemberType==2?*/}
+                        {/*<TouchableOpacity*/}
+                            {/*style={{position:"absolute",*/}
+                                    {/*right:15,*/}
+                                    {/*top:38,*/}
+                                    {/*height: 30,}}*/}
+                            {/*onPress={*/}
+                                {/*()=>{*/}
+                                    {/*this.openMyCamera()*/}
+                                {/*}*/}
 
-                        :
-                        null
+                            {/*}>*/}
+                            {/*<IconI name="ios-add-circle-outline" size={30} color="#fff" />*/}
+                        {/*</TouchableOpacity>*/}
 
-                    }
+                        {/*:*/}
+                        {/*null*/}
+
+                    {/*}*/}
 
 
                     <View style={{flex:1}}>
@@ -190,31 +206,56 @@ class PricePublicity extends Component {
         if(this.props.unionMemberType==2){
             var row =
                 <TouchableOpacity
-                    onPress={()=>this.checkAlive(rowData.isAlive,rowData.advertisementId)}
-                    onLongPress={()=>{this.deleteAdvertisement(rowData.advertisementId)}}
+                    onPress={()=>this.openMyCamera(rowData.advertisementNum,rowData.advertisementId)}
+                    // onPress={()=>this.checkAlive(rowData.isAlive,rowData.advertisementId)}
+                    // onLongPress={()=>{this.deleteAdvertisement(rowData.advertisementId)}}
+                    onLongPress={() => {
+                        Alert.alert('提示', '是否删除该广告',
+                            [
+                                {
+                                    text: "确定",
+                                    onPress: () => this.deleteAdvertisement(rowData.advertisementId)
+                                },
+                                {text: "取消"},
+                            ]
+                        );
+                    }}
                 >
-                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>
-                        {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end',marginRight:10}}>
+                        {/*{rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}*/}
+                        <Text style={{fontSize:18}}>{rowData.advertisementNum}</Text>
                     </View>
                     <View style={{
                         flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
-                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width
+                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width,alignItems:'center'
                     }}>
-                        <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                        {rowData.urlAddress && rowData.urlAddress!==undefined?
+                            <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                            :
+                            <IconI name="ios-add-circle-outline" size={80} color="gray" />
+
+                        }
+
                     </View>
                 </TouchableOpacity>;
         }
         else{
             var row=
                 <View>
-                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end'}}>
-                        {rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}
+                    <View style={{paddingTop: 5, flexDirection: 'row',alignItems:"flex-end",justifyContent:'flex-end',marginRight:10}}>
+                        {/*{rowData.isAlive === 1?is_alive_icon:is_not_alive_icon}*/}
+                        <Text style={{fontSize:18}}>{rowData.advertisementNum}</Text>
                     </View>
                     <View style={{
                         flex: 1, padding: 10, borderBottomWidth: 1, borderColor: '#ddd',
-                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width
+                        justifyContent: 'flex-start', backgroundColor: '#fff',width:width,alignItems:'center'
                     }}>
-                        <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                        {rowData.urlAddress && rowData.urlAddress!==undefined?
+                            <Image source={{uri:imageuri}} resizeMode={"contain"} style={styles.image}/>
+                            :
+                            <Icon name="photo" size={100} color="gray" />
+
+                        }
                     </View>
                 </View>
         }
@@ -222,7 +263,25 @@ class PricePublicity extends Component {
         return row;
     }
 
+    openMyCamera(advertisementNum,advertisementId){
+        ImagePicker.showImagePicker(photoOptions,(response)=>{
+            console.log(response)
+            if(response.didCancel){
+                return
+            }
+            else if(response.error){
+                alert(response.error)
+            }
+            else{
+                this.bridge(response.data,advertisementNum,advertisementId)
+            }
+        })
+    }
 
+    bridge(fileData,advertisementNum,advertisementId){
+        this.saveAdvertisement(fileData,advertisementNum,advertisementId);
+
+    }
 
     addPromotion(){
         if(Platform.OS === 'ios') {
@@ -236,6 +295,9 @@ class PricePublicity extends Component {
                         else this.setState({cameraModalVisible:true});
                     });
             }
+        }
+        else{
+            this.setState({cameraModalVisible:true});
         }
     }
 
@@ -293,40 +355,48 @@ class PricePublicity extends Component {
             }
 
         }).then((json)=> {
+            console.log(json)
             if(json.re == 1){
                 this.setState({advertisements:json.data})
             }
         }).catch((err)=>{alert(err);});
     }
 
-    saveAdvertisement(base64S){
-        proxy.postes({
-            url: Config.server + '/func/union/createSupnuevoBuyerUnionAdvertisement',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: {
-                unionId: this.props.unionId,
-                // advertisementId:advertisementId,
-            }
-        }).then((json) => {
-            var advertisementNum=json.data.advertisementNum
-            var advertisementId=json.data.advertisementId
-            // this.setState({advertisementNum:advertisementNum})
-            // this.setState({advertisementId:json.data.advertisementId})
+    saveAdvertisement(base64S,advertisementNum,advertisementId){
+        if(advertisementId==null || advertisementId==undefined || advertisementId==''){
+            proxy.postes({
+                url: Config.server + '/func/union/createSupnuevoBuyerUnionAdvertisement',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: {
+                    unionId: this.props.unionId,
+                    advertisementNum:advertisementNum,
+                }
+            }).then((json) => {
+                // var advertisementNum=json.data.advertisementNum
+                var advertisementId=json.data.advertisementId
+                // this.setState({advertisementNum:advertisementNum})
+                // this.setState({advertisementId:json.data.advertisementId})
+                this.uploadAdvertisementImage(base64S,advertisementNum,advertisementId);
+                var errorMsg = json.errorMsg;
+                if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+                    alert(errorMsg);
+
+                } else {
+                    alert("上传成功");
+
+                }
+
+            }).catch((err) => {
+                alert(err);
+            });
+        }
+        else{
             this.uploadAdvertisementImage(base64S,advertisementNum,advertisementId);
-            var errorMsg = json.errorMsg;
-            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-                alert(errorMsg);
+            alert("上传成功");
+        }
 
-            } else {
-                alert("上传成功");
-
-            }
-
-        }).catch((err) => {
-            alert(err);
-        });
     }
 
     uploadAdvertisementImage(fileData,advertisementNum,advertisementId){
@@ -343,8 +413,8 @@ class PricePublicity extends Component {
                 fileName:this.props.unionId+'/'+advertisementNum+".jpg",
                 remark:"supnuevo",
                 attachType:"97",
-                imageWidth:200,
-                imageHeight:100,
+                imageWidth:480,
+                imageHeight:640,
             }
         }).then((json) => {
             var errorMsg = json.errorMsg;

@@ -44,6 +44,17 @@ var ts=new Date().getTime();
 
 class GoodAdd extends Component {
 
+    componentDidMount(){
+        this._startAnimation(false);
+        console.log(this.state.newGoodInfo.codigo)
+        console.log('1')
+        if(this.state.newGoodInfo.codigo!==null && this.state.newGoodInfo.codigo!==undefined && this.state.newGoodInfo.codigo!==''){
+            this.onCodigoSelect();
+        }
+
+    }
+
+
     cancel() {
         const {navigator} = this.props;
         if (navigator) {
@@ -78,10 +89,10 @@ class GoodAdd extends Component {
                 return false;
             }
         }
-        if (this.state.newGoodInfo.taxId === null || this.state.newGoodInfo.taxId === undefined || this.state.newGoodInfo.taxId === '') {
-            alert("商品税类不能为空");
-            return false;
-        }
+        // if (this.state.newGoodInfo.taxId === null || this.state.newGoodInfo.taxId === undefined || this.state.newGoodInfo.taxId === '') {
+        //     alert("商品税类不能为空");
+        //     return false;
+        // }
         if (this.state.newGoodInfo.nombre === null || this.state.newGoodInfo.nombre === undefined || this.state.newGoodInfo.nombre === '') {
             alert("商品名称不能为空");
             return false;
@@ -203,7 +214,7 @@ class GoodAdd extends Component {
 
     _handlePress3(index) {
         if(index>0) {
-            this.state.newGoodInfo.taxId = index - 1;
+            this.state.newGoodInfo.taxId = parseInt(this.state.taxArr[index-1].value);
             var newGoodInfo = this.state.newGoodInfo;
             this.setState({newGoodInfo: newGoodInfo});
         }
@@ -234,12 +245,12 @@ class GoodAdd extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            commodityId:null,
+            commodityId:this.props.commodityId,
             onCodigoSelect: props.onCodigoSelect,
             merchantId: props.merchantId,
             wait: false,
             newGoodInfo: {
-                codigo: '',
+                codigo: this.props.codigo,
                 nombre: '',
                 commodityName:'',
                 setSizeValue: '',
@@ -284,9 +295,7 @@ class GoodAdd extends Component {
         this._startAnimation = this._startAnimation.bind(this);
     }
 
-    componentDidMount() {
-        this._startAnimation(false);
-    }
+
     //开始动画，循环播放
     _startAnimation(isEnd) {
         Animated.timing(this.state.fadeInOpacity, {
@@ -336,7 +345,7 @@ class GoodAdd extends Component {
         })
         this.state.taxArr.map(function (index, i) {
             taxButtons.push(index.label);
-            if ((index.value - 1) == newGoodInfo.taxId) {
+            if ((index.value) == newGoodInfo.taxId) {
                 selectTax = index.label;
             }
         })
@@ -366,9 +375,21 @@ class GoodAdd extends Component {
                             <Icon name="chevron-left" color="#fff" size={25}></Icon>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{fontSize: setSpText(17), flex: 3, textAlign: 'center', color: '#fff'}}>
-                        添加商品
-                    </Text>
+                    {this.state.newGoodInfo.codigo==null || this.state.newGoodInfo.codigo==undefined || this.state.newGoodInfo.codigo==''?
+                        <View>
+                            <Text style={{fontSize: setSpText(17), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                添加商品
+                            </Text>
+                        </View>
+                        :
+                        <View>
+                            <Text style={{fontSize: setSpText(17), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                完善商品
+                            </Text>
+                        </View>
+
+                    }
+
                     <View style={{flex: 1, marginRight: 10, flexDirection: 'row', justifyContent: 'center'}}>
                     </View>
                 </View>
@@ -410,13 +431,13 @@ class GoodAdd extends Component {
                         </View>
                         <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
                             <TextInput
-                                style={{height: 40}}
+                                style={{height: 40,backgroundColor:"white", color:"black",}}
                                 onChangeText={(codigo) => {
                                     this.state.newGoodInfo.codigo = codigo;
                                     var newGoodInfo = this.state.newGoodInfo;
                                     this.setState({newGoodInfo: newGoodInfo});
                                 }}
-                                value={this.state.newGoodInfo.codigo}
+                                value={codigo}
                                 placeholder=''
                                 placeholderTextColor="#aaa"
                                 underlineColorAndroid="transparent"
@@ -520,7 +541,7 @@ class GoodAdd extends Component {
                         <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
 
                             <TextInput
-                                style={{height: 40}}
+                                style={{height: 40,backgroundColor:"white", color:"black",}}
                                 onChangeText={(nombre) => {
                                     this.state.newGoodInfo.nombre = nombre;
                                     var newGoodInfo = this.state.newGoodInfo;
@@ -533,38 +554,45 @@ class GoodAdd extends Component {
                             />
                         </View>
                     </View>
+                    {this.props.root?
+                        <View style={[styles.row, {
+                            borderTopWidth: 1,
+                            borderLeftWidth: 1,
+                            borderRightWidth: 1,
+                            borderBottomWidth: 0,
+                            borderColor: '#aaa',
+                            borderBottomColor: '#aaa'
+                            ,
+                            paddingLeft: 12,
+                            paddingRight: 12
+                        }]}>
 
-                    <View style={[styles.row, {
-                        borderTopWidth: 1,
-                        borderLeftWidth: 1,
-                        borderRightWidth: 1,
-                        borderBottomWidth: 0,
-                        borderColor: '#aaa',
-                        borderBottomColor: '#aaa'
-                        ,
-                        paddingLeft: 12,
-                        paddingRight: 12
-                    }]}>
+                            <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                <Text>商品全名:</Text>
+                            </View>
+                            <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
 
-                        <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                            <Text>商品全名:</Text>
+                                <TextInput
+                                    style={{height: 40,color:"black",}}
+                                    onChangeText={(commodityName) => {
+                                        this.state.newGoodInfo.commodityName = commodityName;
+                                        var newGoodInfo = this.state.newGoodInfo;
+                                        this.setState({newGoodInfo: newGoodInfo});
+                                    }}
+                                    value={this.state.newGoodInfo.commodityName}
+                                    placeholder=''
+                                    placeholderTextColor="#aaa"
+                                    underlineColorAndroid="transparent"
+                                />
+                            </View>
                         </View>
-                        <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
+                        :
+                        null
 
-                            <TextInput
-                                style={{height: 40}}
-                                onChangeText={(commodityName) => {
-                                    this.state.newGoodInfo.commodityName = commodityName;
-                                    var newGoodInfo = this.state.newGoodInfo;
-                                    this.setState({newGoodInfo: newGoodInfo});
-                                }}
-                                value={this.state.newGoodInfo.commodityName}
-                                placeholder=''
-                                placeholderTextColor="#aaa"
-                                underlineColorAndroid="transparent"
-                            />
-                        </View>
-                    </View>
+
+                    }
+
+
 
                     <View style={[styles.row, {
                         borderTopWidth: 1,
@@ -583,7 +611,7 @@ class GoodAdd extends Component {
                         </View>
                         <View style={{flex: 6, padding: 5, justifyContent: 'center'}}>
                             <TextInput
-                                style={{height: 40}}
+                                style={{height: 40,backgroundColor:"white", color:"black",}}
                                 onChangeText={(sizeValue) => {
                                     this.state.newGoodInfo.setSizeValue = sizeValue;
                                     var newGoodInfo = this.state.newGoodInfo;
@@ -684,49 +712,55 @@ class GoodAdd extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
+                    {this.props.root?
+                        <View style={[styles.row, {
+                            borderTopWidth: 1,
+                            borderLeftWidth: 1,
+                            borderRightWidth: 1,
+                            borderBottomWidth: 1,
+                            borderColor: '#aaa',
+                            borderBottomColor: '#aaa'
+                            ,
+                            paddingLeft: 12,
+                            paddingRight: 12
+                        }]}>
 
-                    <View style={[styles.row, {
-                        borderTopWidth: 1,
-                        borderLeftWidth: 1,
-                        borderRightWidth: 1,
-                        borderBottomWidth: 1,
-                        borderColor: '#aaa',
-                        borderBottomColor: '#aaa'
-                        ,
-                        paddingLeft: 12,
-                        paddingRight: 12
-                    }]}>
+                            <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                <Text>商品税类:</Text>
+                            </View>
+                            <View
+                                style={{flex: 3, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
+                                <Text>{selectTax}</Text>
+                            </View>
+                            <View style={{flex: 3, padding: 5}}>
 
-                        <View style={{flex: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                            <Text>商品税类:</Text>
-                        </View>
-                        <View
-                            style={{flex: 3, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
-                            <Text>{selectTax}</Text>
-                        </View>
-                        <View style={{flex: 3, padding: 5}}>
-
-                            <TouchableOpacity style={{justifyContent: 'center'}}
-                                              onPress={
-                                                  () => {
-                                                      this.show('actionSheet3');
-                                                  }}>
-                                <Icon name="chevron-circle-down" color="#aaa" size={30}></Icon>
-                                <ActionSheet
-                                    ref={(q) => this.actionSheet3 = q}
-                                    title="请选择商品税类"
-                                    options={taxButtons}
-                                    cancelButtonIndex={CANCEL_INDEX}
-                                    destructiveButtonIndex={DESTRUCTIVE_INDEX}
-                                    onPress={
-                                        (data) => {
-                                            this._handlePress3(data);
+                                <TouchableOpacity style={{justifyContent: 'center'}}
+                                                  onPress={
+                                                      () => {
+                                                          this.show('actionSheet3');
+                                                      }}>
+                                    <Icon name="chevron-circle-down" color="#aaa" size={30}></Icon>
+                                    <ActionSheet
+                                        ref={(q) => this.actionSheet3 = q}
+                                        title="请选择商品税类"
+                                        options={taxButtons}
+                                        cancelButtonIndex={CANCEL_INDEX}
+                                        destructiveButtonIndex={DESTRUCTIVE_INDEX}
+                                        onPress={
+                                            (data) => {
+                                                this._handlePress3(data);
+                                            }
                                         }
-                                    }
-                                />
-                            </TouchableOpacity>
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
+                        :
+                        null
+
+                    }
+
+
 
                     {/*店铺已选商品图片*/}
                     <View style={{
@@ -956,6 +990,10 @@ class GoodAdd extends Component {
             </View>);
     }
     selectPic(picturenum) {//点击图片
+        if(this.state.commodityId==null){
+            alert("请先保存商品基本信息")
+            return
+        }
         var flag=this.checkGoodsBaseInfo();
         if (picturenum === 1) {
             if (this.state.picUrl1 == null) {
@@ -1032,6 +1070,9 @@ class GoodAdd extends Component {
                     });
             }
         }
+        else{
+            this.setState({cameraModalVisible:true});
+        }
     }
 
     //开启相机
@@ -1048,6 +1089,9 @@ class GoodAdd extends Component {
                         else this.setState({cameraModalVisible: true, picNum: picturenum});
                     });
             }
+        }
+        else{
+            this.setState({cameraModalVisible:true, picNum: picturenum});
         }
     }
 
@@ -1229,12 +1273,13 @@ class GoodAdd extends Component {
                 return ;
             }
             else {
+                console.log(json)
                 var goodInfo = json.object;
 
 
                 this.setState({
                     picUrl1:goodInfo.attachDataUrl1,picUrl2:goodInfo.attachDataUrl2,picUrl3:goodInfo.attachDataUrl3,picUrl4:goodInfo.attachDataUrl4,
-                    attachDataUrl:goodInfo.attachDataUrl
+                    attachDataUrl:goodInfo.attachDataUrl,newGoodInfo:goodInfo
                 });
 
 
@@ -1435,6 +1480,7 @@ module.exports = connect(state => ({
         merchantId: state.user.supnuevoMerchantId,
         sessionId: state.user.sessionId,
         unionMemberType:state.user.unionMemberType,
+        root: state.user.root,
     })
 )(GoodAdd);
 

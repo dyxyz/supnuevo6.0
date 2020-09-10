@@ -13,7 +13,8 @@ import  {
     ListView,
     Alert,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Platform
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -51,7 +52,7 @@ class QrcodeModal extends Component{
 
             <View style={{flex:1}}>
                 {/* header bar */}
-                <View style={[{backgroundColor:'#387ef5',height:55,padding: 12,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                <View style={[{backgroundColor:'#387ef5',padding: 4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
                     <TouchableOpacity ref="menu" style={{flex:1,marginRight:2,flexDirection:'row',justifyContent:'center',alignItems: 'flex-end'}}
                                       onPress={()=>{
                                               this.close();

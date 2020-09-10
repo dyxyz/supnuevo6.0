@@ -33,12 +33,25 @@ import {setSpText} from "../../utils/ScreenUtil";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Camera from 'react-native-camera';
 import RNFS from 'react-native-fs';
+import ImagePicker from 'react-native-image-picker';
 import Config from "../../../config";
 var Dimensions = require('Dimensions');
 var {height, width} = Dimensions.get('window');
 var proxy = require('../../proxy/Proxy');
 
-
+var photoOptions={
+    title:'请选择',
+    cancelButtonTitle:'取消',
+    takePhotoButtonTitle:'拍照',
+    chooseFromLibraryButtonTitle:'从相册选取',
+    quality:0.75,
+    allowsEditing:true,
+    noData:false,
+    storageOptions:{
+        skipBackup:true,
+        path:'images',
+    }
+}
 class Myinfo extends Component {
 
     goBack() {
@@ -66,6 +79,7 @@ class Myinfo extends Component {
             pictureUri:null,
             attachDataUrl:null,
             isLoading:true,
+            shopName:null,
         };
     }
 
@@ -81,8 +95,7 @@ class Myinfo extends Component {
                 merchantId:this.props.merchantId,
             }
         }).then((json) => {
-
-
+            console.log(json);
             var errMessage = json.errMessage;
             if (errMessage !== null && errMessage !== undefined && errMessage !== "") {
                 alert(errMessage);
@@ -90,6 +103,7 @@ class Myinfo extends Component {
             }
             else {
                 var nickName = json.nickName;
+                var shopName = json.shopName;
                 var attachDataUrl = json.urlAddress;
                 var nubre = json.nubre;
                 var cuit = json.cuit;
@@ -97,13 +111,14 @@ class Myinfo extends Component {
                 var nomroDeTelePhono = json.nomroDeTelePhono;
                 var info = {
                     nickName: nickName,
+                    shopName: shopName,
                     nubre: nubre,
                     cuit: cuit,
                     direccion: direccion,
                     nomroDeTelePhono: nomroDeTelePhono,
 
                 };
-                this.setState({info:info,attachDataUrl: attachDataUrl,isLoading:false})
+                this.setState({info:info,attachDataUrl: attachDataUrl,isLoading:false,shopName:shopName})
             }
         }).catch((err) => {
             alert(err);
@@ -113,41 +128,30 @@ class Myinfo extends Component {
     render() {
         // var info = this.state.info;
         var ts=new Date().getTime();
-        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl+"?"+ts;
+        var imageurl ="https://supnuevo.s3.sa-east-1.amazonaws.com/"+ this.state.attachDataUrl;
+        console.log(imageurl)
         return (
                 <View style={{flex: 1}}>
                     {/* header bar */}
 
-                    <View style={{
-                        backgroundColor: '#387ef5',
-                        height: 55,
-                        padding: 12,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'row'
-                    }}>
-                        <TouchableOpacity style={{
-                            flex: 1,
-                            height: 45,
-                            marginRight: 10,
-                            marginTop: 10
-                        }}
-                                          onPress={() => {
-                                              this.goBack();
-                                          }}>
-                            <Icon name="angle-left" color="#fff" size={40}></Icon>
-                        </TouchableOpacity>
-                        <Text style={{
-                            fontSize: setSpText(22),
-                            marginTop: 7,
-                            flex: 3,
-                            textAlign: 'center',
-                            color: '#fff'
-                        }}>
-                            {this.props.username}
-                        </Text>
-                        <View style={{flex: 1}}>
-
+                    <View style={[{backgroundColor:'#387ef5',padding:4,paddingTop:Platform.OS=='ios'?40:15,justifyContent: 'center',alignItems: 'center',flexDirection:'row'},styles.card]}>
+                        <View style={{flex:1,paddingLeft:10}}>
+                            <TouchableOpacity
+                                style={{flexDirection:'row',height:40,paddingTop:3}}
+                                onPress={
+                                    ()=>{
+                                        this.goBack();
+                                    }
+                                }>
+                                <Icon name="arrow-left" size={20} color="#fff" />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                {this.props.username}
+                            </Text>
+                        </View>
+                        <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                         </View>
                     </View>
 
@@ -203,6 +207,7 @@ class Myinfo extends Component {
                     </Modal>
 
                     {/* body */}
+                    <ScrollView>
                     {this.state.isLoading == true ?
                         null
                         :
@@ -222,6 +227,31 @@ class Myinfo extends Component {
                                 </View>
                                 <View style={{flex:2}}>
                                     <Text style={styles.popoverText}>{this.state.info.nubre}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <View style={{flex:1}}>
+                                    <Text style={styles.popoverText}>超市招牌：</Text>
+                                </View>
+                                <View style={{flex:2}}>
+                                    <TextInput
+                                        style={{
+                                            flex: 1,
+                                            height: 40,
+                                            marginLeft: 5,
+                                            paddingTop: 2,
+                                            paddingBottom: 2,
+                                            fontSize: setSpText(20),
+                                            backgroundColor:"white",
+                                            color:"black",
+
+                                        }}
+                                        onChangeText={(shopName) => {
+                                            this.setState({shopName: shopName});
+                                        }}
+                                        defaultValue={this.state.shopName}
+                                        underlineColorAndroid="transparent"
+                                    />
                                 </View>
                             </View>
                             <View style={styles.row}>
@@ -255,9 +285,10 @@ class Myinfo extends Component {
                                 <View style={{flex:2}}>
                                     <TouchableOpacity
                                         //ref="picture1"
-                                        onPress={() => {
-                                            this.startCamera();
-                                        }}
+                                        onPress={() =>
+                                            // {this.startCamera();}
+                                            this.openMyCamera()
+                                        }
                                     >
                                         <View style={styles.picstyle}>
                                             {this.state.attachDataUrl == null ?
@@ -275,8 +306,21 @@ class Myinfo extends Component {
                                     </TouchableOpacity>
                                 </View>
                             </View>
+                            <View style={[styles.row,{height:80,borderWidth:0,justifyContent:"center",alignItems:"flex-end"}]}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.updateInfo();
+                                    }}
+                                >
+                                    <View style={{width:width*0.6,height:45,borderRadius:width*0.1,backgroundColor:'#387ef5',justifyContent:"center",alignItems:"center"}}>
+                                        <Text style={{color:'white',fontSize:16}}>修改</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     }
+                    </ScrollView>
+
 
                 </View>
 
@@ -284,7 +328,20 @@ class Myinfo extends Component {
         )
     }
 
-
+    openMyCamera=()=>{
+        ImagePicker.showImagePicker(photoOptions,(response)=>{
+            console.log(response)
+            if(response.didCancel){
+                return
+            }
+            else if(response.error){
+                alert(response.error)
+            }
+            else{
+                this.bridge(response.data)
+            }
+        })
+    }
 
     startCamera(){
         if(Platform.OS === 'ios') {
@@ -298,6 +355,9 @@ class Myinfo extends Component {
                         else this.setState({cameraModalVisible:true});
                     });
             }
+        }
+        else{
+            this.setState({cameraModalVisible:true});
         }
     }
 
@@ -315,6 +375,7 @@ class Myinfo extends Component {
                     })
                     .catch(err => this.show(err));
                 // this.show("33");
+                console.log(path)
                 let base64S = await RNFS.readFile(path, 'base64')
                     .then((content) => {
                         return content;
@@ -322,6 +383,7 @@ class Myinfo extends Component {
                     .catch((err) => {
                         alert("unloading error: " + err);
                     });
+                console.log(base64S)
                 // this.show("22");
                 this.bridge(base64S);
 
@@ -362,8 +424,8 @@ class Myinfo extends Component {
                 fileName:this.props.merchantId+".jpg",
                 // remark:"",
                 attachType:"91",
-                imageWidth:100,
-                imageHeight:200,
+                imageWidth:480,
+                imageHeight:640,
             }
         }).then((json) => {
             var errorMsg = json.errorMsg;
@@ -380,16 +442,46 @@ class Myinfo extends Component {
             alert(err);
         });
     }
+
+    updateInfo(){
+        proxy.postes({
+            url: Config.server + '/func/merchant/updateMerchantShopNameMobile',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                ownerId: this.props.merchantId,
+                shopName:this.state.shopName,
+            }
+        }).then((json) => {
+            var errorMsg = json.errorMsg;
+            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+                alert(errorMsg);
+
+            } else {
+                alert("修改成功");
+
+            }
+        }).catch((err) => {
+            alert(err);
+        });
+    }
 }
 
 
 var styles = StyleSheet.create({
+    card: {
+        borderTopWidth: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(0,0,0,0.1)',
+        shadowColor: '#ccc',
+        shadowOffset: {width: 2, height: 2,},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
     row: {
         height:65,
-        borderBottomWidth: 1,
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
+        borderWidth:1,
         borderColor: '#aaa',
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -431,6 +523,7 @@ module.exports = connect(state => ({
 
         username: state.user.username,
         merchantId: state.user.supnuevoMerchantId,
+        shopName:state.user.shopName,
 
     })
 )(Myinfo);

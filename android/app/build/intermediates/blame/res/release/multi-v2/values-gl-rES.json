@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/values-gl-rES/values-gl-rES.xml",
+            "outputFile": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/values-gl-rES/values-gl-rES.xml",
             "map": [
                 {
                     "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/values-gl-rES/values-gl-rES.xml",
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "outputFile": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-gl-rES/values-gl-rES.xml",
+            "outputFile": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-gl-rES/values-gl-rES.xml",
             "map": [
                 {
                     "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/values-gl-rES/values-gl-rES.xml",

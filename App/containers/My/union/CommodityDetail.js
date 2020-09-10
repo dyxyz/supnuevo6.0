@@ -40,7 +40,7 @@ class CommodityDetailInfo extends Component{
     constructor(props){
         super(props);
             this.state={
-                ratioOnly:this.props.ratio1,
+                ratioOnly:this.props.ratio1*100,
             };
         }
 
@@ -106,7 +106,7 @@ class CommodityDetailInfo extends Component{
                                         :
                                         <TextInput
                                             style={{height:height*0.05,width:width*0.13,paddingLeft:width*0.05}}
-                                            placeholder={this.state.ratioOnly.toString()}
+                                            defaultValue={this.state.ratioOnly.toString()}
                                             placeholderTextColor={"black"}
                                             underlineColorAndroid={"transparent"}
                                             onChangeText={(value) => {
@@ -147,8 +147,8 @@ class CommodityDetailInfo extends Component{
             body: {
                 unionId: this.props.unionId,
                 priceId:this.props.priceId,
-                // ratio1:this.state.ratioOnly,
-                ratio1:parseFloat(this.state.ratioOnly),
+                ratio1:this.state.ratioOnly,
+                // ratio1:parseFloat(this.state.ratioOnly),
             }
         }).then((json)=> {
             if(json.re === 1){

@@ -25,6 +25,7 @@ import Config from "../../../../config";
 import {setSpText} from '../../../utils/ScreenUtil'
 let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 var proxy = require('../../../proxy/Proxy');
+const mnapImg = require('../../../img/map.png');
 
 class MemberList extends Component {
 
@@ -48,6 +49,8 @@ class MemberList extends Component {
     }
 
     render() {
+        var ts=new Date().getTime();
+        const mapUrl={uri:"https://supnuevo.s3.sa-east-1.amazonaws.com/"+'supnuevo/map/'+this.props.unionNum+'.jpg'+'?'+ts}
 
         const {edgeList,memberList } = this.state;
 
@@ -77,7 +80,12 @@ class MemberList extends Component {
                 </View>
                 {/* body */}
                 <View style={{flex:1}}>
-                    <MicrosoftMap edges={edgeList} merchants={memberList}/>
+                    {Platform.OS=='ios'?
+                        <Image source={mapUrl} style={{flex:1,width:width}} resizeMode={"contain"}/>
+                        :
+                        <MicrosoftMap edges={edgeList} merchants={memberList}/>
+                    }
+
                     <View style={styles.listViewWrapper}>
                         <ListView
                             style={styles.listView}
@@ -187,7 +195,9 @@ var styles = StyleSheet.create({
 
 
 module.exports = connect(state => ({
+
         unionId: state.user.unionId,
+        unionNum: state.user.unionNum,
         username: state.user.username,
     })
 )(MemberList);

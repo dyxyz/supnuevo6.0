@@ -1,66 +1,66 @@
 [
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/slide_up.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/slide_up.xml"
-    },
-    {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/catalyst_push_up_out.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/catalyst_push_up_out.xml"
-    },
-    {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_fade_out.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_out_bottom.xml",
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_out_bottom.xml",
         "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_popup_enter.xml",
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_popup_enter.xml",
         "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_in_top.xml",
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_in_top.xml",
         "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_slide_in_top.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/catalyst_push_up_in.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/catalyst_push_up_in.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_popup_exit.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_popup_exit.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/slide_up.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/slide_up.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_fade_in.xml",
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/catalyst_push_up_out.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_fade_in.xml",
         "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_fade_in.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_out_top.xml",
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/fade_in.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/fade_in.xml"
+    },
+    {
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_slide_out_top.xml",
         "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_slide_out_top.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/slide_down.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/slide_down.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/fade_out.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/fade_out.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/fade_out.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/fade_out.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_fade_out.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/catalyst_push_up_in.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/catalyst_push_up_in.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_popup_exit.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_popup_exit.xml"
     },
     {
-        "merged": "/Users/lli/Documents/newspace/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/fade_in.xml",
-        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/ab11a8f7a8aff6fe07aea0a5c3508148/res/anim/fade_in.xml"
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/slide_down.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/res/anim/slide_down.xml"
+    },
+    {
+        "merged": "/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/res/merged/release/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/lli/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/b6a216b0e1144810be1bc977ed20f972/res/anim/abc_shrink_fade_out_from_bottom.xml"
     }
 ]

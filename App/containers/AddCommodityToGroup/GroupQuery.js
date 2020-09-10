@@ -382,7 +382,7 @@ class GroupQuery extends Component{
                 <View style={[styles.row,{borderBottomWidth:0}]}>
                     <View style={{flex:1,borderWidth:1,backgroundColor:'#fff',borderColor:'#ddd',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <TextInput
-                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6,backgroundColor:'#fff',}}
+                            style={{flex:8,height: 50,paddingLeft:10,paddingRight:10,paddingTop:6,paddingBottom:6,backgroundColor:'#fff',color:"black"}}
                             onChangeText={(codeNum) => {
                                 if(codeNum.toString().length==13)
                                     {

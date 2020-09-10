@@ -371,7 +371,9 @@ class PriceSurvey extends Component {
                                     paddingLeft: 10,
                                     paddingRight: 10,
                                     paddingTop: 6,
-                                    paddingBottom: 6
+                                    paddingBottom: 6,
+                                    backgroundColor:"white",
+                                    color:"black",
                                 }}
                                 onChangeText={(codeNum) => {
                                     if (codeNum.toString().length == 13) {

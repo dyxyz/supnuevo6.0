@@ -35,7 +35,7 @@ var proxy = require('../../../proxy/Proxy');
 var primaryGray = "#666";
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-const merchantsHead = ["选中","商户数","商品数"];
+const merchantsHead = ["选中","层级","商品数"];
 const is_not_alive_icon = <Ionicons name={"md-radio-button-off"} size={25}/>;
 const is_alive_icon = <Ionicons name={"md-checkmark-circle-outline"} size={25}/>;
 
@@ -66,9 +66,9 @@ class CommodityCategory extends Component {
 
     goBack() {
         const {navigator} = this.props;
-        if(this.props.getUser) {
-            this.props.getUser(this.state.priceClassList);
-        }
+        // if(this.props.getUser) {
+        //     this.props.getUser(this.state.priceClassList);
+        // }
         if (navigator) {
             navigator.pop();
 
@@ -79,7 +79,8 @@ class CommodityCategory extends Component {
         super(props);
         this.state = {
             // 类列表
-            priceClassList: this.props.priceClassList,
+            // priceClassList: this.props.priceClassList,
+            priceClassList:[],
             // 扫码搜索
             goods: [],
             goodsList: [],
@@ -94,7 +95,8 @@ class CommodityCategory extends Component {
             isAlive:true,
             commodityList:[true],
             selected:null,
-            selectedIdx:this.props.selectedIdx,
+            // selectedIdx:this.props.selectedIdx,
+            selectedIdx:null,
             currentRow:0,
 
         };
@@ -394,7 +396,7 @@ class CommodityCategory extends Component {
         return dataListView;
     }
 
-    renderRow=({item})=> {
+    renderRow=({item,index})=> {
         if(this.props.unionMemberType==2) {
             var row =
                 <TouchableOpacity onPress={() => {
@@ -413,7 +415,7 @@ class CommodityCategory extends Component {
                     }}>
                         <View style={{flex: 6, justifyContent: "center"}}>
                             <View style={{flexDirection: 'row'}}>
-                                <Text style={styles.renderText}>codigo：</Text>
+                                <Text style={styles.renderText}>{index}、codigo：</Text>
                                 <Text style={styles.renderText}>{item.codigo}</Text>
                             </View>
                             <View style={{flexDirection: 'row'}}>
@@ -449,11 +451,11 @@ class CommodityCategory extends Component {
                         <View style={{flex: 6, justifyContent: "center"}}>
                             <View style={{flexDirection: 'row'}}>
                                 <Text style={styles.renderText}>codigo：</Text>
-                                <Text style={styles.renderText}>{rowData.codigo}</Text>
+                                <Text style={styles.renderText}>{item.codigo}</Text>
                             </View>
                             <View style={{flexDirection: 'row'}}>
                                 <Text style={styles.renderText}>descripcion：</Text>
-                                <Text style={styles.renderText}>{rowData.nombre}</Text>
+                                <Text style={styles.renderText}>{item.nombre}</Text>
                             </View>
                         </View>
                         <View style={{
@@ -463,7 +465,7 @@ class CommodityCategory extends Component {
                             alignItems: "center",
                             justifyContent: 'center'
                         }}>
-                            {rowData.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
+                            {item.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
                         </View>
                     </View>
                 </View>;
@@ -491,7 +493,8 @@ class CommodityCategory extends Component {
                                 paddingLeft: 10,
                                 paddingRight: 10,
                                 paddingTop: 6,
-                                paddingBottom: 6
+                                paddingBottom: 6,
+                                color:"black",
                             }}
                             onChangeText={(codeNum) => {
                                 if (codeNum.toString().length == 13 || codeNum.toString().length == 12 || codeNum.toString().length == 8) {
@@ -617,6 +620,7 @@ class CommodityCategory extends Component {
         this.setState({cameraModalVisible: false});
     }
 
+
     getSupnuevoBuyerUnionPriceClassList(){
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoBuyerUnionPriceClassList",
@@ -627,10 +631,14 @@ class CommodityCategory extends Component {
                 unionId: this.props.unionId,
             }
         }).then((json)=> {
+            console.log(json)
             if(json.re === 1){
                 var dataList = json.data;
                 // this.setState({priceClassList:this._transformPriceClassToArray(dataList)})
                 this.setState({priceClassList:dataList})
+                if(this.state.priceClassList.length!=0){
+                    this.checkSelect()
+                }
             }
         }).catch((err)=>{alert(err);});
     }
@@ -681,11 +689,13 @@ class CommodityCategory extends Component {
                 priceCount:priceCount,
             }
         }).then((json)=> {
+            this.setState({showProgress:false})
+            console.log(json)
             if(json.re === 1){
-                this.setState({showProgress:false})
                 var goodsList = json.data;
                 this.setState({goodsList: goodsList});
             }
+
         }).catch((err)=>{alert(err);});
     }
 

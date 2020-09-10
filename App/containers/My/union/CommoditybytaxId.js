@@ -201,7 +201,9 @@ class AllCommoditybyTax extends Component{
             body: {
                 unionId: this.props.unionId,
                 taxId:this.props.taxId,
-                ratio:parseFloat(this.state.ratio),
+                ratio:this.state.ratio,
+
+                // ratio:parseFloat(this.state.ratio),
             }
         }).then((json)=> {
             if(json.re === 1){

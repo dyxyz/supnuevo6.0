@@ -12,6 +12,9 @@ const initialState = {
     password: null,
     unionId: null,
     unionMemberType:null,
+    shopName:null,
+    root:false,
+    unionNum:null
 };
 
 let user = (state = initialState, action) => {
@@ -29,6 +32,9 @@ let user = (state = initialState, action) => {
                 password: action.password,
                 unionId: action.unionId,
                 unionMemberType:action.unionMemberType,
+                shopName:action.shopName,
+                root:action.root,
+                unionNum:action.unionNum
             });
             break;
 
@@ -40,6 +46,12 @@ let user = (state = initialState, action) => {
         case types.SET_SESSIONID:
             return Object.assign({}, state, {
                 sessionId: action.sessionId,
+            });
+            break;
+        case types.SET_UNION_ID:
+            return Object.assign({}, state, {
+                unionId: action.unionId,
+                unionNum:action.unionNum
             });
             break;
         case types.LOGINOUT:

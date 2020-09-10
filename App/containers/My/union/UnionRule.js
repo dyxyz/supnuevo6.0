@@ -20,6 +20,7 @@ import  {
 import {connect} from 'react-redux';
 
 import Camera from 'react-native-camera';
+import ImagePicker from 'react-native-image-picker';
 import IconE from 'react-native-vector-icons/Entypo';
 import IconI from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -30,6 +31,20 @@ var Dimensions = require('Dimensions');
 var {height, width} = Dimensions.get('window');
 var proxy = require('../../../proxy/Proxy');
 var count=0;
+
+var photoOptions={
+    title:'请选择',
+    cancelButtonTitle:'取消',
+    takePhotoButtonTitle:'拍照',
+    chooseFromLibraryButtonTitle:'从相册选取',
+    quality:0.75,
+    allowsEditing:true,
+    noData:false,
+    storageOptions:{
+        skipBackup:true,
+        path:'images',
+    }
+}
 
 class UnionRule extends Component {
 
@@ -171,10 +186,17 @@ class UnionRule extends Component {
                             <View style={styles.headphoto}><Text style={{fontSize:setSpText(20)}}>联盟头像</Text></View>
                             <TouchableOpacity
                                 //ref="picture1"
-                                onPress={() => {
-                                    this.testButton(1);
-                                    //this.selectPic(1);
-                                }}
+                                // onPress={() => {
+                                //     this.testButton(1);
+                                //     //this.selectPic(1);
+                                // }}
+                                onPress={
+                                    ()=>{
+                                        // this.addPromotion();
+                                        this.openMyCamera()
+                                    }
+
+                                }
                                 // onLongPress={() => {
                                 //     // this.onLongPress(1);
                                 //     this.deleteButton(1);
@@ -292,6 +314,26 @@ class UnionRule extends Component {
         )
     }
 
+    openMyCamera=()=>{
+        ImagePicker.showImagePicker(photoOptions,(response)=>{
+            console.log(response)
+            if(response.didCancel){
+                return
+            }
+            else if(response.error){
+                alert(response.error)
+            }
+            else{
+                this.bridge(response.data)
+            }
+        })
+    }
+
+    bridge(fileData){
+        this.uploadCommodityImage(fileData);
+
+    }
+
     testButton(){
         count++;
         this.timer = setTimeout(() => {
@@ -329,6 +371,9 @@ class UnionRule extends Component {
                         else this.setState({cameraModalVisible:true});
                     });
             }
+        }
+        else{
+            this.setState({cameraModalVisible:true});
         }
     }
 
@@ -567,6 +612,7 @@ var styles = StyleSheet.create({
         // paddingTop:15,
         paddingLeft:20,
         fontSize: setSpText(20),
+        color:"black",
     },
     change:{
         flexDirection:"row",
@@ -584,6 +630,7 @@ var styles = StyleSheet.create({
         // borderWidth:1,
         // borderColor:"red",
         fontSize: setSpText(20),
+        color:"black",
     },
     headphoto:{
         width:width,

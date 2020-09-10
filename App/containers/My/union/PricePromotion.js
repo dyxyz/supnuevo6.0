@@ -23,6 +23,7 @@ const {height, width} = Dimensions.get('window');
 import Icon from 'react-native-vector-icons/FontAwesome';
 import OrderDiscount from './OrderDiscount';
 import CommodityDiscount from './CommodityDiscount';
+import FreeDiscount from './FreeDiscount';
 import AllCommodityDiscount from "./CommodityDiscoutList.js"
 
 class PricePromotion extends Component {
@@ -67,8 +68,8 @@ class PricePromotion extends Component {
         const {navigator} = this.props;
         if (navigator) {
             navigator.push({
-                name: 'CommodityDiscount',
-                component: CommodityDiscount,
+                name: 'FreeDiscount',
+                component: FreeDiscount,
                 params: {
                 }
             })
