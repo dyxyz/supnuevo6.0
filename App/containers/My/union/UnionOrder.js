@@ -18,6 +18,7 @@ import  {
     ListView,
     WebView,
     Platform,
+    ActivityIndicator
 } from 'react-native';
 import {connect} from 'react-redux';
 import InputWithCalendar from '../../../components/InputWithCalendar';
@@ -65,8 +66,12 @@ class UnionOrder extends Component {
             orderDate:null,
             orderList:[],
             robList:[],
+            notDealList:[],
+            dealList:[],
+            finishedList:[],
             select:-1,
             deliver:0,
+            showProgress: false,
         };
     }
 
@@ -100,6 +105,28 @@ class UnionOrder extends Component {
                     <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                     </View>
                 </View>
+                <Modal
+                    animationType={"fade"}
+                    transparent={true}
+                    visible={this.state.showProgress}
+                    onRequestClose={() => {
+                        this.setState({showProgress: false})
+                    }}
+                >
+                    <View style={[styles.modalContainer, styles.modalBackgroundStyle]}>
+                        <ActivityIndicator
+                            animating={true}
+                            style={[{height: 80}]}
+                            size="large"
+                            color="black"
+                        />
+                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <Text style={{color: '#000', fontSize: 22, alignItems: 'center'}}>
+                                请稍候...
+                            </Text>
+                        </View>
+                    </View>
+                </Modal>
                 {/* body */}
 
                     {this.renderBody()}
@@ -135,7 +162,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text style={{color: '#fff'}}>可抢订单</Text>
+                            <Text style={{color: '#fff',textAlign:'center'}} allowFontScaling={false}>可抢订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -147,7 +174,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>未确认订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -159,7 +186,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>已确认订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>已确认订单</Text>
 
 
                         </View>
@@ -172,7 +199,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>已完成订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>已完成订单</Text>
 
 
                         </View>
@@ -209,7 +236,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>可抢订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>可抢订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -221,7 +248,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                                <Text style={{color: '#fff'}}>未确认订单</Text>
+                                <Text style={{color: '#fff',textAlign:'center'}} allowFontScaling={false}>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -232,7 +259,7 @@ class UnionOrder extends Component {
                         }}>
                         <View>
 
-                            <Text>已确认订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>已确认订单</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -242,7 +269,7 @@ class UnionOrder extends Component {
                     }}>
                         <View>
 
-                                <Text>已完成订单</Text>
+                                <Text style={styles.headText} allowFontScaling={false}>已完成订单</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -258,7 +285,7 @@ class UnionOrder extends Component {
                                      style={[styles.selected,{backgroundColor:'rgb(114, 135, 191)'}]}
                                  >
                                      <View>
-                                         <Text>自提订单</Text>
+                                         <Text allowFontScaling={false}>自提订单</Text>
                                      </View>
                                  </TouchableOpacity>
                                  <TouchableOpacity
@@ -266,7 +293,7 @@ class UnionOrder extends Component {
                                      style={styles.selected}
                                  >
                                      <View>
-                                         <Text>配送订单</Text>
+                                         <Text allowFontScaling={false}>配送订单</Text>
                                      </View>
                                  </TouchableOpacity>
                              </View>
@@ -279,7 +306,7 @@ class UnionOrder extends Component {
                                      style={styles.selected}
                                  >
                                      <View>
-                                         <Text>自提订单</Text>
+                                         <Text allowFontScaling={false}>自提订单</Text>
                                      </View>
                                  </TouchableOpacity>
                                  <TouchableOpacity
@@ -287,20 +314,20 @@ class UnionOrder extends Component {
                                      style={[styles.selected,{backgroundColor:'rgb(114, 135, 191)'}]}
                                  >
                                      <View>
-                                         <Text>配送订单</Text>
+                                         <Text allowFontScaling={false}>配送订单</Text>
                                      </View>
                                  </TouchableOpacity>
                              </View>
                          </View>
                  }
                 <ScrollView>
-                    {this.state.orderList.length == 0 ?
+                    {this.state.notDealList.length == 0 ?
                         <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
                             <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
                         </View>
                         :
                         <View style={styles.scrollViewContanier}>
-                            {this._renderOrderList(this.state.orderList)}
+                            {this._renderOrderList(this.state.notDealList)}
                         </View>
                     }
                 </ScrollView>
@@ -323,7 +350,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>可抢订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>可抢订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -335,7 +362,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                                <Text>未确认订单</Text>
+                                <Text style={styles.headText} allowFontScaling={false}>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -347,7 +374,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                                <Text style={{color: '#fff'}}>已确认订单</Text>
+                                <Text style={{color: '#fff',textAlign:'center'}} allowFontScaling={false}>已确认订单</Text>
 
 
                         </View>
@@ -360,7 +387,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>已完成订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>已完成订单</Text>
 
 
                         </View>
@@ -371,13 +398,13 @@ class UnionOrder extends Component {
 
 
                  <ScrollView>
-                     {this.state.orderList.length == 0 ?
+                     {this.state.dealList.length == 0 ?
                          <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
                              <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
                          </View>
                          :
                          <View style={styles.scrollViewContanier}>
-                             {this._renderOrderList(this.state.orderList)}
+                             {this._renderOrderList(this.state.dealList)}
                          </View>
                      }
                  </ScrollView>
@@ -395,7 +422,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>可抢订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>可抢订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -407,7 +434,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>未确认订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>未确认订单</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -419,7 +446,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text>已确认订单</Text>
+                            <Text style={styles.headText} allowFontScaling={false}>已确认订单</Text>
 
 
                         </View>
@@ -432,7 +459,7 @@ class UnionOrder extends Component {
                         <View>
 
 
-                            <Text style={{color: '#fff'}}>已完成订单</Text>
+                            <Text style={{color: '#fff',textAlign:'center'}} allowFontScaling={false}>已完成订单</Text>
 
 
                         </View>
@@ -447,12 +474,12 @@ class UnionOrder extends Component {
                                 this.setState({orderDate: value});
                                 this.getOrderListOfDate(value, 1);
                             }}/>
-                        {this.state.orderList.length == 0 ?
+                        {this.state.finishedList.length == 0 ?
                             <View style={[styles.scrollViewContanier, {marginTop: 15}]}>
                                 <Text style={{fontSize: 18, fontWeight: 'bold'}}>暂无相关订单</Text>
                             </View>
                             :
-                            this._renderOrderList(this.state.orderList)
+                            this._renderOrderList(this.state.finishedList)
                         }
                     </View>
                 </ScrollView>
@@ -781,31 +808,32 @@ class UnionOrder extends Component {
 
     displayUnDone(){
         this.setState({select:0});
-        this.getOrderListOfDate(null,0);
+        this.getOrderListOfDate(null,0,1);
     }
 
     displayConfirm(){
         this.setState({select:1});
-        this.getOrderListOfDate(null,1);
+        this.getOrderListOfDate(null,1,2);
 
     }
 
     displayOver(){
         this.setState({select:2});
-        this.getOrderListOfDate(this.state.orderDate,2);
+        this.getOrderListOfDate(this.state.orderDate,2,3);
     }
 
     changeToSelf(){
         this.setState({deliver:0});
-        this.getOrderListOfDate(null,0);
+        this.getOrderListOfDate(null,0,1);
     }
 
     changeToDeliver(){
         this.setState({deliver:1});
-        this.getOrderListOfDate(null,0);
+        this.getOrderListOfDate(null,0,1);
     }
 
     getOrderRobList(){
+        this.setState({showProgress:true})
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfUnionCanGrab",
             headers: {
@@ -820,10 +848,12 @@ class UnionOrder extends Component {
                 var data = json.data;
                 this.setState({robList:data})
             }
+            this.setState({showProgress:false})
         }).catch((err)=>{alert(err);});
     }
 
-    getOrderListOfDate(orderDate,orderState){
+    getOrderListOfDate(orderDate,orderState,orderType){
+        this.setState({showProgress:true})
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfDateByUnion",
             headers: {
@@ -839,8 +869,18 @@ class UnionOrder extends Component {
             console.log(json)
             if(json.re === 1){
                 var data = json.data;
-                this.setState({orderList:data})
+                if(orderType==1){
+                    this.setState({notDealList:data})
+                }
+                else if(orderType==2){
+                    this.setState({dealList:data})
+                }
+                else{
+                    this.setState({finishedList:data})
+                }
+
             }
+            this.setState({showProgress:false})
         }).catch((err)=>{alert(err);});
     }
 
@@ -859,12 +899,12 @@ class UnionOrder extends Component {
             if(json.re === 1){
                 if(this.state.deliver==1) {
                     Alert.alert("抢单成功");
-                    this.getOrderListOfDate(null,0);
+                    this.getOrderListOfDate(null,0,1);
                     this.getOrderRobList()
                 }
                 else{
                     Alert.alert("确认自提订单成功");
-                    this.getOrderListOfDate(null,0);
+                    this.getOrderListOfDate(null,0,1);
                 }
 
             }
@@ -886,7 +926,7 @@ class UnionOrder extends Component {
             if(json.re === 1){
                 Alert.alert("订单已完成")
             }
-            this.getOrderListOfDate(null,1);
+            this.getOrderListOfDate(null,1,2);
         }).catch((err)=>{alert(err);});
     }
 }
@@ -951,6 +991,9 @@ var styles = StyleSheet.create({
         backgroundColor:'#eee',
         paddingHorizontal:10
     },
+    headText:{
+        textAlign:'center'
+    },
     text: {
         color:'#666',
         fontSize:13
@@ -963,7 +1006,9 @@ var styles = StyleSheet.create({
         borderColor:'#9e9ca3',
         alignItems:"center",
         justifyContent:"center",
-        height:height*0.05,
+        height:'auto',
+        paddingTop:height*0.015,
+        paddingBottom:height*0.015
     },
     button:{
         borderWidth:1,
@@ -1009,6 +1054,14 @@ var styles = StyleSheet.create({
     dataItemTextStyle:{
         fontSize:14,
         color:'#888'
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 8,
+    },
+    modalBackgroundStyle: {
+        backgroundColor: 'rgba(0,0,0,0.3)'
     },
 });
 

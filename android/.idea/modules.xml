@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/965967571/android-react-native-camera.iml" filepath="$PROJECT_DIR$/.idea/modules/965967571/android-react-native-camera.iml" group="rnSupnuevo/react-native-camera" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1813455713/android-react-native-cookies.iml" filepath="$PROJECT_DIR$/.idea/modules/1813455713/android-react-native-cookies.iml" group="rnSupnuevo/react-native-cookies" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-611813509/android-react-native-fs.iml" filepath="$PROJECT_DIR$/.idea/modules/-611813509/android-react-native-fs.iml" group="rnSupnuevo/react-native-fs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2133585101/android-react-native-sensitive-info.iml" filepath="$PROJECT_DIR$/.idea/modules/-2133585101/android-react-native-sensitive-info.iml" group="rnSupnuevo/react-native-sensitive-info" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/205060158/android-react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/205060158/android-react-native-vector-icons.iml" group="rnSupnuevo/react-native-vector-icons" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="rnSupnuevo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1509310621/jcore-react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/-1509310621/jcore-react-native.iml" group="rnSupnuevo/jcore-react-native" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/575261384/jpush-react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/575261384/jpush-react-native.iml" group="rnSupnuevo/jpush-react-native" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-camera/android/react-native-camera.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-camera/android/react-native-camera.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-cookies/android/react-native-cookies.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-cookies/android/react-native-cookies.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fs/android/react-native-fs.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fs/android/react-native-fs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" group="rnSupnuevo/react-native-image-picker" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-sensitive-info/android/react-native-sensitive-info.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-sensitive-info/android/react-native-sensitive-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1738236319/react-native-sound.iml" filepath="$PROJECT_DIR$/.idea/modules/-1738236319/react-native-sound.iml" group="rnSupnuevo/react-native-sound" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rnSupnuevo.iml" filepath="$PROJECT_DIR$/rnSupnuevo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rnSupnuevo.iml" filepath="$PROJECT_DIR$/rnSupnuevo.iml" group="rnSupnuevo" />
     </modules>
   </component>
 </project>

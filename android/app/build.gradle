@@ -99,6 +99,10 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [
+             JPUSH_APPKEY: "d3419b75dbf1b9b39564c17a", //在此替换你极光官网上申请的 APPKey
+             APP_CHANNEL: "developer-default"    //应用渠道号, 默认即可
+        ]
     }
     signingConfigs {
         release {
@@ -139,6 +143,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sound')
     compile project(':react-native-vector-icons')
     compile project(':react-native-fs')
     compile project(':react-native-image-picker')

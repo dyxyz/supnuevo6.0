@@ -9,7 +9,8 @@ import {
     TabBarIOS,
     BackAndroid,
     Platform,
-    ToastAndroid
+    ToastAndroid,
+    Vibration
 } from 'react-native';
 import {Navigator} from 'react-native-deprecated-custom-components';
 import {connect} from 'react-redux';
@@ -47,6 +48,7 @@ class App extends React.Component {
             selectedTab: '进货',
             isConnected: null,
             number:0,
+            oldNumber:0
         }
     }
 
@@ -82,6 +84,7 @@ class App extends React.Component {
     startTImer(){
 
             this.timer=setInterval(()=>{
+                this.setState({oldNumber:this.state.number})
                 this.setState({number:0})
                 this.getOrderListOfDate(null,0);
                 this.getOrderRobList();
@@ -105,6 +108,9 @@ class App extends React.Component {
             if(json.re === 1){
                 var data = json.data;
                 this.setState({number:this.state.number+data.length})
+                if(this.state.number>this.state.oldNumber){
+                    Vibration.vibrate(4000, false)
+                }
             }
         }).catch((err)=>{alert(err);});
     }
@@ -126,6 +132,9 @@ class App extends React.Component {
             if(json.re === 1){
                 var data = json.data;
                 this.setState({number:this.state.number+data.length})
+                if(this.state.number>this.state.oldNumber){
+                    Vibration.vibrate(4000, false)
+                }
             }
         }).catch((err)=>{alert(err);});
     }

@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+MERGED from [:react-native-sound] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-vector-icons] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-fs] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-image-picker] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-23:12
@@ -22,9 +23,9 @@ MERGED from [com.facebook.fresco:drawee:1.0.1] /Users/lli/.gradle/caches/transfo
 MERGED from [com.facebook.fresco:imagepipeline:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.0.1.aar/2e1bd8d22882beb509ecd738e11569d0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.0.1.aar/4f0a8c17245bdc7e37b63371f6cdb011/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fbcore:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/fbcore-1.0.1.aar/35c93a902e1f15dead2c29b1ce39e555/AndroidManifest.xml:2:1-9:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12
 	package
 		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:2:5-29
 		INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml
@@ -64,9 +65,11 @@ ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/mai
 	android:name
 		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:10:22-63
 uses-sdk
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:12:5-14:41
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:12:5-14:41
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:12:5-14:41
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:5-15:41
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:5-15:41
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:5-15:41
+MERGED from [:react-native-sound] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
+MERGED from [:react-native-sound] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-sound/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:react-native-vector-icons] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-vector-icons] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-fs] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
@@ -101,18 +104,18 @@ MERGED from [com.facebook.fresco:imagepipeline-base:1.0.1] /Users/lli/.gradle/ca
 MERGED from [com.facebook.fresco:imagepipeline-base:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.0.1.aar/4f0a8c17245bdc7e37b63371f6cdb011/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/fbcore-1.0.1.aar/35c93a902e1f15dead2c29b1ce39e555/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.0.1] /Users/lli/.gradle/caches/transforms-1/files-1.1/fbcore-1.0.1.aar/35c93a902e1f15dead2c29b1ce39e555/AndroidManifest.xml:5:5-7:41
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:12:5-14:41
-INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:12:5-14:41
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:5-15:41
+INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:5-15:41
 	android:targetSdkVersion
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:14:9-38
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:15:9-38
 		INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:13:9-35
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:14:9-35
 		INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:16:5-34:19
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:17:5-35:19
 MERGED from [:react-native-image-picker] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
 MERGED from [:react-native-image-picker] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
 MERGED from [com.facebook.react:react-native:0.44.0] /Users/lli/.gradle/caches/transforms-1/files-1.1/react-native-0.44.0.aar/eb7b3443fb0693de878a56682eef6f31/AndroidManifest.xml:13:5-20
@@ -126,47 +129,47 @@ MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/lli/.gradle/caches/tra
 MERGED from [org.webkit:android-jsc:r174650] /Users/lli/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/500a4e98e17087f534755112406f44fd/AndroidManifest.xml:2:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/lli/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/500a4e98e17087f534755112406f44fd/AndroidManifest.xml:2:3-17
 	android:label
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:20:9-41
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:21:9-41
 	android:largeHeap
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:22:9-33
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:23:9-33
 	android:icon
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:19:9-43
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:20:9-43
 	android:allowBackup
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:18:9-35
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:19:9-35
 	android:theme
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:21:9-40
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:22:9-40
 	android:name
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:17:9-40
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:18:9-40
 activity#com.rnsupnuevo.MainActivity
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:23:9-32:20
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:24:9-33:20
 	android:label
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:26:13-45
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:27:13-45
 	android:windowSoftInputMode
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:27:13-64
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:28:13-64
 	android:configChanges
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:25:13-83
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:26:13-83
 	android:name
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:24:13-41
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:25:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:28:13-31:29
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:29:13-32:29
 action#android.intent.action.MAIN
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:29:17-69
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:30:17-69
 	android:name
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:29:25-66
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:30:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:30:17-77
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:30:27-74
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:31:27-74
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:33:9-86
+ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:34:9-86
 	android:name
-		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:33:19-83
+		ADDED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:34:19-83
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from [:react-native-fs] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-81
 	android:name
 		ADDED from [:react-native-fs] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: com.rnfs requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12 reason: com.rnfs requested WRITE_EXTERNAL_STORAGE
 provider#android.support.v4.content.FileProvider
 ADDED from [:react-native-image-picker] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:9-20:20
 	android:grantUriPermissions
@@ -196,4 +199,4 @@ ADDED from [:react-native-camera] /Users/lli/Documents/supnuevoDownload/supnuevo
 	android:name
 		ADDED from [:react-native-camera] /Users/lli/Documents/supnuevoDownload/supnuevo6.0/node_modules/react-native-camera/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:9-57
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-36:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/src/main/AndroidManifest.xml:1:1-37:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4

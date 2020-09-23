@@ -15,8 +15,10 @@ import {
     Modal,
     TouchableOpacity,
     Platform,
-    ActivityIndicator
+    ActivityIndicator,
+    Vibration
 } from 'react-native';
+import Sound from 'react-native-sound';
 import {connect} from 'react-redux';
 import Config from '../../../config';
 import {setSpText} from '../../utils/ScreenUtil'
@@ -25,6 +27,14 @@ const {height, width} = Dimensions.get('window');
 const proxy = require('../../proxy/Proxy');
 import Icon from 'react-native-vector-icons/FontAwesome';
 import UnionList from "../Stock/UnionList";
+
+
+let musicPath = require('../../sound/bingo.mp3');
+var music = new Sound('https://languagezenstorage.blob.core.windows.net/media0/xgcUXjHhP8.mp3',null, (error)=>{
+    if(error){
+        console.log("播放失败。。。");
+    }
+});
 
 class MyUnion extends Component {
     componentDidMount(): void {
@@ -351,6 +361,16 @@ class MyUnion extends Component {
                                 :
                                 null
                             }
+                            <TouchableOpacity style={styles.touch}
+                                onPress={() => Vibration.vibrate(4000, false)}
+                            >
+                                <Text style={styles.text}>震动</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.touch}
+                                 onPress={()=>{music.play()}}
+                            >
+                                <Text style={styles.text}>drop that beat</Text>
+                            </TouchableOpacity>
 
 
                             <View style={{flex: 1}}/>
