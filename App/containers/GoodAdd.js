@@ -152,17 +152,17 @@ class GoodAdd extends Component {
                     this.setState({commodityId: json.commodityId})
                     if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
                         alert(errorMsg);
-                        // this.goBack();
+                        this.goBack();
                     }
                     if (message !== null && message !== undefined && message !== "") {
                         alert(message);
-                        // this.goBack();
+                        this.goBack();
                     }
                     this.setState({wait: false, bgColor: '#11c1f3'});
                 }).catch((err) => {
                     this.setState({wait: false, bgColor: '#11c1f3'});
                     alert(err);
-                    // this.goBack();
+                    this.goBack();
                 });
             }
         }
@@ -356,7 +356,7 @@ class GoodAdd extends Component {
         var openFlash = this.state.openFlash;
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1,marginBottom:height*0.06}}>
                 <ScrollView>
                 {/* header bar */}
                 <View style={[{
@@ -1071,7 +1071,7 @@ class GoodAdd extends Component {
             }
         }
         else{
-            this.setState({cameraModalVisible:true});
+            this.setState({codigoCameraModalVisible:true});
         }
     }
 

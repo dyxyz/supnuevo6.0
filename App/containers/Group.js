@@ -17,7 +17,8 @@ import {
     Modal,
     TouchableOpacity,
     FlatList,
-    Platform
+    Platform,
+    ActivityIndicator
 } from 'react-native';
 
 import {connect} from 'react-redux';
@@ -64,6 +65,7 @@ class Group extends Component {
     }
 
     getCommoditiesByPriceId(commodityId) {
+        this.setState({showProgress:true})
 
         var merchantId = this.props.merchantId;
         var sessionId = this.props.sessionId;
@@ -84,6 +86,7 @@ class Group extends Component {
                 updatePrice:updatePrice.toString()
             }
         }).then((json) => {
+            console.log(json)
             var errorMsg = json.errorMessage;
             if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
                 alert(errorMsg);
@@ -144,6 +147,8 @@ class Group extends Component {
                 this.setState({
                     relatedGoods0: relatedGoods0, relatedGoods1: relatedGoods1,goodIndex:goodIndex
                 });
+                console.log(this.state.relatedGoods0)
+                this.setState({showProgress:false})
 
                 setTimeout(() => {
                     var goodIndex = this.state.goodIndex-1
@@ -172,7 +177,8 @@ class Group extends Component {
                 borderRightWidth: 1,
                 borderColor: '#ddd',
                 justifyContent: 'flex-start',
-                backgroundColor: '#C4D9FF'
+                backgroundColor: '#C4D9FF',
+                showProgress:false,
             };
         } else {
             lineStyle = {
@@ -520,6 +526,18 @@ class Group extends Component {
 
 
     }
+    componentDidMount(): void {
+        const {username} = this.props;
+        const {goodInfo} = this.props;
+
+        if (this.state.relatedGoods0 == undefined || this.state.relatedGoods0 == null) {
+
+            this.getCommoditiesByPriceId(goodInfo.commodityId);
+        }
+
+
+    }
+
 
     constructor(props) {
         super(props);
@@ -542,26 +560,27 @@ class Group extends Component {
         const {username} = this.props;
         const {goodInfo} = this.props;
 
-        var relatedGoods0 = [];
-        if (this.state.relatedGoods0 !== undefined && this.state.relatedGoods0 !== null) {
-            relatedGoods0 = this.state.relatedGoods0;
-        } else {
-            this.getCommoditiesByPriceId(goodInfo.commodityId);
-        }
+        // var relatedGoods0 = [];
+        // if (this.state.relatedGoods0 !== undefined && this.state.relatedGoods0 !== null) {
+        //     relatedGoods0 = this.state.relatedGoods0;
+        // } else {
+        //     this.getCommoditiesByPriceId(goodInfo.commodityId);
+        // }
+        //
+        // var relatedGoods1 = [];
+        // if (this.state.relatedGoods1 !== undefined && this.state.relatedGoods1 !== null) {
+        //     relatedGoods1 = this.state.relatedGoods1;
+        // }
 
-        var relatedGoods1 = [];
-        if (this.state.relatedGoods1 !== undefined && this.state.relatedGoods1 !== null) {
-            relatedGoods1 = this.state.relatedGoods1;
-        }
 
         var listView0 = null;
         var listView1 = null;
-        if (relatedGoods0.length > 0) {
+        if (this.state.relatedGoods0) {
 
             listView0 =
                 <FlatList
                     ref={(flatList0) => this._flatList0 = flatList0}
-                    data={relatedGoods0}
+                    data={this.state.relatedGoods0}
                     renderItem={({item,index}) => this.renderRow0(item,index)}
                     getItemLayout={(data, index) => (
                             { length: item_height, offset: (item_height + 2) * index, index }) }
@@ -571,12 +590,12 @@ class Group extends Component {
         } else {
         }
 
-        if (relatedGoods1.length > 0) {
+        if (this.state.relatedGoods1) {
 
             listView1 =
                 <FlatList
                     ref={(flatList1) => this._flatList1 = flatList1}
-                    data={relatedGoods1}
+                    data={this.state.relatedGoods1}
                     renderItem={({item,index}) => this.renderRow1(item,index)}
                     getItemLayout={(data, index) => (
                             { length: item_height, offset: (item_height + 2) * index, index }) }
@@ -684,7 +703,31 @@ class Group extends Component {
 
                     </View>
                 </View>
-            </View>);
+                <Modal
+                    animationType={"fade"}
+                    transparent={true}
+                    visible={this.state.showProgress}
+                    onRequestClose={() => {
+                        this.setState({showProgress: false})
+                    }}
+                >
+                    <View style={[styles.modalContainer, styles.modalBackgroundStyle]}>
+                        <ActivityIndicator
+                            animating={true}
+                            style={[{height: 80}]}
+                            size="large"
+                            color="black"
+                        />
+                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <Text style={{color: '#000', fontSize: 22, alignItems: 'center'}}>
+                                请求中。。。
+                            </Text>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+
+        );
     }
 }
 
@@ -712,7 +755,15 @@ var styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 1,
         borderBottomColor: '#222'
-    }
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 8,
+    },
+    modalBackgroundStyle: {
+        backgroundColor: 'rgba(0,0,0,0.3)'
+    },
 });
 
 

@@ -1,4 +1,4 @@
-#Wed Sep 23 15:13:08 CST 2020
+#Thu Sep 24 21:43:33 CST 2020
 base.0=/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

@@ -361,16 +361,16 @@ class MyUnion extends Component {
                                 :
                                 null
                             }
-                            <TouchableOpacity style={styles.touch}
-                                onPress={() => Vibration.vibrate(4000, false)}
-                            >
-                                <Text style={styles.text}>震动</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.touch}
-                                 onPress={()=>{music.play()}}
-                            >
-                                <Text style={styles.text}>drop that beat</Text>
-                            </TouchableOpacity>
+                            {/*<TouchableOpacity style={styles.touch}*/}
+                                {/*onPress={() => Vibration.vibrate(4000, false)}*/}
+                            {/*>*/}
+                                {/*<Text style={styles.text}>震动</Text>*/}
+                            {/*</TouchableOpacity>*/}
+                            {/*<TouchableOpacity style={styles.touch}*/}
+                                 {/*onPress={()=>{music.play()}}*/}
+                            {/*>*/}
+                                {/*<Text style={styles.text}>drop that beat</Text>*/}
+                            {/*</TouchableOpacity>*/}
 
 
                             <View style={{flex: 1}}/>

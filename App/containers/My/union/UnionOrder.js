@@ -48,6 +48,7 @@ class UnionOrder extends Component {
                 component: orderDetail,
                 params: {
                     row:row,
+                    order:true,
                 }
             })
         }
@@ -549,20 +550,24 @@ class UnionOrder extends Component {
                                     {/*<InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>*/}
                                 </View>,
 
-                                <View style={{
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    marginTop: height * 0.02,
-                                    marginBottom: height * 0.02
-                                }}>
-                                    <TouchableOpacity onPress={() => {
-                                        this.affirmCustomerOrder(orderInfo.orderId)
+                                this.props.root?
+                                    null
+                                    :
+                                    <View style={{
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        marginTop: height * 0.02,
+                                        marginBottom: height * 0.02
                                     }}>
-                                        <View style={styles.button}>
-                                            <Text style={{color: '#fff'}}>接单</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
+                                        <TouchableOpacity onPress={() => {
+                                            this.affirmCustomerOrder(orderInfo.orderId)
+                                        }}>
+                                            <View style={styles.button}>
+                                                <Text style={{color: '#fff'}}>接单</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+
 
                             ]
                         );
@@ -582,20 +587,24 @@ class UnionOrder extends Component {
                                     <InformationItem key={0} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
                                     <InformationItem key={1} type={TYPE_TEXT} title="订单总价" content={orderInfo.totalFeeFinal}/>
                                 </View>,
-                            <View style={{
-                                alignItems: "center",
-                                justifyContent: "center",
-                                marginTop: height * 0.02,
-                                marginBottom: height * 0.02
-                            }}>
-                                <TouchableOpacity onPress={() => {
-                                    this.affirmCustomerOrder(orderInfo.orderId)
+                            this.props.root?
+                                null
+                                :
+                                <View style={{
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    marginTop: height * 0.02,
+                                    marginBottom: height * 0.02
                                 }}>
-                                    <View style={styles.button}>
-                                        <Text style={{color: '#fff'}}>接单</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>,
+                                    <TouchableOpacity onPress={() => {
+                                        this.affirmCustomerOrder(orderInfo.orderId)
+                                    }}>
+                                        <View style={styles.button}>
+                                            <Text style={{color: '#fff'}}>接单</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            ,
 
                             ]
                         );
@@ -608,6 +617,7 @@ class UnionOrder extends Component {
                             <View style={styles.container}>
                                 <Text style={styles.text}>订单编号：{orderInfo.orderNum}</Text>
                             </View>,
+                            this.props.root?
                             <View style={styles.basicInfoContainer}>
                                 <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
                                 <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"商家送货"}/>
@@ -617,7 +627,20 @@ class UnionOrder extends Component {
                                                  content={orderInfo.receiverPhone}/>
                                 <InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>
                                 <InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>
-                            </View>,
+                                <InformationItem key={6} type={TYPE_TEXT} title="订单所属超市地址" content={orderInfo.direccion}/>
+                            </View>
+                            :
+                                <View style={styles.basicInfoContainer}>
+                                    <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
+                                    <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"商家送货"}/>
+                                    <InformationItem key={2} type={TYPE_TEXT} title="送货地址"
+                                                     content={orderInfo.receiverAddr}/>
+                                    <InformationItem key={3} type={TYPE_TEXT} title="接货人电话"
+                                                     content={orderInfo.receiverPhone}/>
+                                    <InformationItem key={4} type={TYPE_TEXT} title="接货人" content={orderInfo.receiverName}/>
+                                    <InformationItem key={5} type={TYPE_TEXT} title="送货时间" content={orderInfo.wiseSaleTime}/>
+                                </View>
+                            ,
                             <View style={styles.tableInfoCard}>
                                 <View style={styles.containers}>
                                     {this._renderTitle("订单内容")}
@@ -627,13 +650,17 @@ class UnionOrder extends Component {
                                     {/*{this.props.renderAux?this.props.renderAux():null}*/}
                                 </View>
                             </View>,
-                            <View style={{alignItems:"center",justifyContent:"center",marginTop:height*0.02,marginBottom:height*0.02}}>
-                                <TouchableOpacity onPress={()=>{this.finishCustomerOrder(orderInfo.orderId)}}>
-                                    <View style={styles.button}>
-                                        <Text style={{color:'#fff'}}>结束订单</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
+                            this.props.root?
+                                null
+                                :
+                                <View style={{alignItems:"center",justifyContent:"center",marginTop:height*0.02,marginBottom:height*0.02}}>
+                                    <TouchableOpacity onPress={()=>{this.finishCustomerOrder(orderInfo.orderId)}}>
+                                        <View style={styles.button}>
+                                            <Text style={{color:'#fff'}}>结束订单</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+
                         ]);
                     }
                     if(orderInfo.deliveryType==1){
@@ -641,11 +668,20 @@ class UnionOrder extends Component {
                                 <View style={styles.container}>
                                     <Text style={styles.text}>订单编号：{orderInfo.orderNum}</Text>
                                 </View>,
-                                <View style={styles.basicInfoContainer}>
-                                    <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
-                                    <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
-                                    <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
-                                </View>,
+                                this.props.root?
+                                    <View style={styles.basicInfoContainer}>
+                                        <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
+                                        <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
+                                        <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
+                                        <InformationItem key={3} type={TYPE_TEXT} title="订单所属超市地址" content={orderInfo.direccion}/>
+                                    </View>
+                                    :
+                                    <View style={styles.basicInfoContainer}>
+                                        <InformationItem key={0} type={TYPE_TEXT} title="客户手机号码" content={telephone}/>
+                                        <InformationItem key={1} type={TYPE_TEXT} title="订单类型" content={"自提"}/>
+                                        <InformationItem key={2} type={TYPE_TEXT} title="提货时间" content={orderInfo.wiseSaleTime}/>
+                                    </View>
+                                     ,
                                 <View style={styles.tableInfoCard}>
                                     <View style={styles.containers}>
                                         {this._renderTitle("订单内容")}
@@ -655,6 +691,9 @@ class UnionOrder extends Component {
                                         {/*{this.props.renderAux?this.props.renderAux():null}*/}
                                     </View>
                                 </View>,
+                            this.props.root?
+                                null
+                                :
                                 <View style={{alignItems:"center",justifyContent:"center",marginTop:height*0.02,marginBottom:height*0.02}}>
                                     <TouchableOpacity onPress={()=>{this.finishCustomerOrder(orderInfo.orderId)}}>
                                         <View style={styles.button}>
@@ -854,6 +893,10 @@ class UnionOrder extends Component {
 
     getOrderListOfDate(orderDate,orderState,orderType){
         this.setState({showProgress:true})
+        var merchantId=null
+        if(!this.props.root){
+            merchantId=this.props.merchantId
+        }
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfDateByUnion",
             headers: {
@@ -863,7 +906,7 @@ class UnionOrder extends Component {
                 orderDate: orderDate,
                 unionId: this.props.unionId,
                 orderState:orderState,
-                merchantId:this.props.merchantId,
+                merchantId:merchantId,
             }
         }).then((json)=> {
             console.log(json)
@@ -1067,6 +1110,7 @@ var styles = StyleSheet.create({
 
 
 module.exports = connect(state => ({
+        root: state.user.root,
         unionId: state.user.unionId,
         username: state.user.username,
         unionMemberType:state.user.unionMemberType,

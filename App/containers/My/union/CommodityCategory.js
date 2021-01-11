@@ -26,6 +26,7 @@ import Config from "../../../../config";
 import {loginAction} from "../../../action/actionCreator";
 import JumpMode from '../../../components/modal/JumpFront';
 import RNCamera from "react-native-camera";
+import orderDetail from './OrderDetail'
 
 import MyUnion from '../MyUnion.js';
 
@@ -72,6 +73,20 @@ class CommodityCategory extends Component {
         if (navigator) {
             navigator.pop();
 
+        }
+    }
+
+    navigatorToDetail(row) {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.push({
+                name: 'orderDetail',
+                component: orderDetail,
+                params: {
+                    row:row,
+                    order:false,
+                }
+            })
         }
     }
 
@@ -154,7 +169,19 @@ class CommodityCategory extends Component {
                             Supnuevo(6.0)-{this.props.username}
                         </Text>
                     </View>
-                    <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
+                    <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'flex-end'}}>
+                        <TouchableOpacity
+                            style={{flexDirection:'row',height:40,paddingTop:3}}
+                            onPress={
+                                ()=>{
+                                    this.setState({goods:[]})
+                                    this.getSupnuevoBuyerUnionPriceClassList();
+                                    this.checkSelect();
+                                }
+                            }>
+                            <Icon name="repeat" size={20} color="#fff" />
+                        </TouchableOpacity>
+
                     </View>
                 </View>
                 {/* body */}
@@ -173,13 +200,51 @@ class CommodityCategory extends Component {
                     </View>
                     {this._renderSearchBar()}
                     {this.props.unionMemberType==2?
-                        <View style={{flexDirection:"row"}}>
-                            <TouchableOpacity onPress={()=>{
-                                this.setState({showProgress:true});
-                                this.setAllCommodityIsAlive();
-                            }}>
+                        <View style={{flexDirection:"row",justifyContent:'space-around',width:width}}>
+                            <TouchableOpacity
+                                // onPress={()=>{
+                                // this.setState({showProgress:true});
+                                // this.setAllCommodityIsAlive();
+                                // }}
+                                              onPress={() => {
+                                                  Alert.alert('提示', '是否全部置为可用',
+                                                      [
+                                                          {
+                                                              text: "确定",
+                                                              onPress: () => {
+                                                                  this.setState({showProgress:true});
+                                                                  this.setAllCommodityIsAlive();}
+                                                          },
+                                                          {text: "取消"},
+                                                      ]
+                                                  );
+                                              }}
+                            >
                                 <View style={styles.button}>
-                                    <Text style={{fontSize:18, margin:15,}}>全部置为可用</Text>
+                                    <Text style={{fontSize:15, margin:15,color:'black'}}>全部置为可用</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                // onPress={()=>{
+                                // this.setState({showProgress:true});
+                                // this.setAllCommodityIsNotAlive();
+                                // }}
+                                onPress={() => {
+                                    Alert.alert('提示', '是否全部关闭',
+                                        [
+                                            {
+                                                text: "确定",
+                                                onPress: () => {
+                                                    this.setState({showProgress:true});
+                                                    this.setAllCommodityIsNotAlive();}
+                                            },
+                                            {text: "取消"},
+                                        ]
+                                    );
+                                }}
+                            >
+                                <View style={styles.button}>
+                                    <Text style={{fontSize:15, margin:15,color:'black'}}>全部关闭</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -187,6 +252,7 @@ class CommodityCategory extends Component {
                         :
                         null
                     }
+
                     {this.props.unionMemberType==2?
                         <View style={{marginTop:10,height:height*0.4,borderTopWidth:1, borderColor: '#ddd'}}>
                             {priceListView}
@@ -399,10 +465,9 @@ class CommodityCategory extends Component {
     renderRow=({item,index})=> {
         if(this.props.unionMemberType==2) {
             var row =
-                <TouchableOpacity onPress={() => {
-                    this.setState({showProgress: true})
-                    this.checkAlive(item.isAlive, item.commodityId)
-                }}>
+                <TouchableOpacity
+                    onPress={()=>{this.navigatorToDetail(item)}}
+                >
                     <View style={{
                         height: lacateBase,
                         flexDirection: "row",
@@ -423,21 +488,28 @@ class CommodityCategory extends Component {
                                 <Text style={styles.renderText}>{item.nombre}</Text>
                             </View>
                         </View>
-                        <View style={{
-                            flex: 1,
-                            paddingTop: 5,
-                            flexDirection: 'row',
-                            alignItems: "center",
-                            justifyContent: 'center'
+                        <TouchableOpacity onPress={() => {
+                            this.setState({showProgress: true})
+                            this.checkAlive(item.isAlive, item.commodityId)
                         }}>
-                            {item.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
-                        </View>
+                            <View style={{
+                                flex: 1,
+                                paddingTop: 5,
+                                flexDirection: 'row',
+                                alignItems: "center",
+                                justifyContent: 'center'
+                            }}>
+                                {item.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 </TouchableOpacity>;
         }
         else{
             var row=
-                <View>
+                <TouchableOpacity
+                    onPress={()=>{this.navigatorToDetail(item)}}
+                >
                     <View style={{
                         height: lacateBase,
                         flexDirection: "row",
@@ -468,7 +540,7 @@ class CommodityCategory extends Component {
                             {item.isAlive === 1 ? is_alive_icon : is_not_alive_icon}
                         </View>
                     </View>
-                </View>;
+                </TouchableOpacity>;
         }
         return row;
     }
@@ -760,6 +832,7 @@ class CommodityCategory extends Component {
                 codigo: codeNum,
                 merchantId: merchantId,
                 merchantCount:this.state.selectedIdx,
+                unionId: this.props.unionId,
             }
         }).then((json) => {
 
@@ -801,6 +874,7 @@ class CommodityCategory extends Component {
             }
         }).then((json) => {
             if(json.re === 1){
+                console.log(json.data)
                 var goodInfo = json.data;
                 var goodsList = [];
                 if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
@@ -877,6 +951,30 @@ class CommodityCategory extends Component {
         });
     }
 
+    //将所有商品全部置为不可用
+    setAllCommodityIsNotAlive(){
+        proxy.postes({
+            url: Config.server + '/func/union/setAllCommodityIsNotAlive',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                unionId:this.props.unionId,
+            }
+        }).then((json) => {
+            var errorMsg = json.errorMsg;
+            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+                alert(errorMsg);
+
+            } else {
+                alert("设置成功");
+                this.getSupnuevoBuyerUnionPriceListByPriceCount(this.state.selectedIdx);
+            }
+        }).catch((err) => {
+            alert(err);
+        });
+    }
+
 
     //确定所查商品的rowID
     confirmRowID(codigo){
@@ -932,7 +1030,7 @@ var styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.3)'
     },
     button:{
-        width:width*0.5,
+        width:width*0.35,
         height:height*0.05,
         backgroundColor:'#8bb3f4',
         borderWidth:1,

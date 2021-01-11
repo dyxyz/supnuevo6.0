@@ -50,7 +50,7 @@ class JumpMode extends Component{
                 <TouchableOpacity
                     onPress={()=>{
                         //TODO:close this modal
-                        this.confirmRowID(rowData);
+                        this.onCodigoSelect(rowData);
                     }}>
                     <View style={{flex:1,flexDirection:'row',padding:13,borderBottomWidth:1,borderColor:'#ddd',justifyContent:'flex-start'}}>
                         <Text style={{fontSize:setSpText(18),color:'#323232'}}>{rowData.codigo}</Text>

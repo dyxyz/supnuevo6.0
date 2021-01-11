@@ -33,7 +33,7 @@ import Stock from './Stock/Stock.js';
 import My from './My/My';
 
 
-import {getSession, setNetInfo} from '../action/actionCreator';
+import {getSession, setNetInfo,loginAction} from '../action/actionCreator';
 import {setSpText} from '../utils/ScreenUtil'
 const tabBarTintColor = '#f8f8f8';// 标签栏的背景颜色
 const tabTintColor = '#3393F2'; // 被选中图标颜色
@@ -74,7 +74,7 @@ class App extends React.Component {
         let auth = this.props.auth;
         if (auth == true) {
             if(this.props.unionId){
-                this.startTImer();
+                // this.startTImer();
             }
             console.log(this.props.unionId)
         }
@@ -116,6 +116,11 @@ class App extends React.Component {
     }
 
     getOrderListOfDate(orderDate,orderState){
+        var merchantId=null
+        if(!this.props.root){
+            merchantId=this.props.merchantId
+        }
+        console.log(this.props.root)
         proxy.postes({
             url: Config.server + "/func/union/getSupnuevoCustomerOrderListOfDateByUnion",
             headers: {
@@ -125,9 +130,12 @@ class App extends React.Component {
                 orderDate: orderDate,
                 unionId: this.props.unionId,
                 orderState:orderState,
-                merchantId:this.props.merchantId,
+                merchantId:merchantId,
             }
         }).then((json)=> {
+            if(json.re == -2){
+                this.props.dispatch(loginAction(username, password))
+            }
             console.log(json)
             if(json.re === 1){
                 var data = json.data;
@@ -414,6 +422,7 @@ var styles = StyleSheet.create({
 
 export default connect(
     (state) => ({
+        root: state.user.root,
         unionId: state.user.unionId,
         merchantId: state.user.supnuevoMerchantId,
         auth: state.user.auth,

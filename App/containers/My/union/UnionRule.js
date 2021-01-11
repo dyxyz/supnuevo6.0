@@ -15,10 +15,12 @@ import  {
     Modal,
     TouchableOpacity,
     Platform,
+    Switch
 } from 'react-native';
 
 import {connect} from 'react-redux';
 
+import DatePicker from 'react-native-datepicker'
 import Camera from 'react-native-camera';
 import ImagePicker from 'react-native-image-picker';
 import IconE from 'react-native-vector-icons/Entypo';
@@ -66,6 +68,16 @@ class UnionRule extends Component {
             pictureuri: null,
             attachId:null,
             attachDataUrl:null,
+            canDelivery:true,
+            canSelf:true,
+            deliveryAMStartTime:null,
+            deliveryAMEndTime:null,
+            deliveryPMStartTime:null,
+            deliveryPMEndTime:null,
+            selfAMStartTime:null,
+            selfAMEndTime:null,
+            selfPMStartTime:null,
+            selfPMEndTime:null,
         };
     }
 
@@ -179,6 +191,301 @@ class UnionRule extends Component {
                                 </View>
                             </View>
                         </View>
+
+                        <View style={[styles.touch,{borderTopWidth: 1,justifyContent:'space-between',flexDirection:'row',alignItems:'center'}]}>
+                            <View>
+                                <Text style={styles.text}>
+                                    是否可以配送
+                                </Text>
+                            </View>
+                            <View>
+                                <Switch
+                                    disabled={this.props.root?false:true}
+                                    onValueChange={()=>{
+                                        if(this.state.canDelivery && !this.state.canSelf){
+                                            this.setState({canSelf:true})
+                                        }
+                                        this.setState({canDelivery:!this.state.canDelivery})
+                                    }}
+                                    value={this.state.canDelivery}
+                                />
+                            </View>
+                        </View>
+
+                        <View style={[styles.touch,{borderTopWidth: 1,justifyContent:'space-between',flexDirection:'row',alignItems:'center'}]}>
+                            <View>
+                                <Text style={styles.text}>
+                                    是否可以自提
+                                </Text>
+                            </View>
+                            <View>
+                                <Switch
+                                    disabled={this.props.root?false:true}
+                                    onValueChange={()=>{
+                                        if(!this.state.canDelivery && this.state.canSelf){
+                                            this.setState({canDelivery:!this.state.canDelivery})
+                                        }
+                                        this.setState({canSelf:!this.state.canSelf})
+                                    }}
+                                    value={this.state.canSelf}
+                                />
+                            </View>
+                        </View>
+                        {this.state.canDelivery?
+                        <View style={[styles.touch,{borderTopWidth: 1}]}>
+                            <View>
+                                <Text style={styles.text}>配送时间</Text>
+                            </View>
+                            <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                <Text>AM:</Text>
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.deliveryAMStartTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({deliveryAMStartTime:time})}}
+                                />
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.deliveryAMEndTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({deliveryAMEndTime:time})}}
+                                />
+                            </View>
+                            <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                <Text>PM:</Text>
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.deliveryPMStartTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({deliveryPMStartTime:time})}}
+                                />
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.deliveryPMEndTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({deliveryPMEndTime:time})}}
+                                />
+                            </View>
+                        </View>
+                            :
+                            null
+                        }
+                        {this.state.canSelf?
+
+                        <View style={[styles.touch,{borderTopWidth: 1}]}>
+                            <View>
+                                <Text style={styles.text}>自提时间</Text>
+                            </View>
+                            <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                <Text>AM:</Text>
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.selfAMStartTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({selfAMStartTime:time})}}
+                                />
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.selfAMEndTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({selfAMEndTime:time})}}
+                                />
+                            </View>
+                            <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                <Text>PM:</Text>
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.selfPMStartTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({selfPMStartTime:time})}}
+                                />
+                                <DatePicker
+                                    disabled={!this.props.root}
+                                    style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                    date={this.state.selfPMEndTime}
+                                    mode="time"
+                                    format="HH:mm"
+                                    // confirmBtnText={strings.confirm}
+                                    // cancelBtnText={strings.cancel}
+                                    placeholder={"请选择时间"}
+                                    customStyles={{
+                                        // placeholderText:{
+                                        //     color:'#646464',
+                                        //     fontSize:12
+                                        // },
+                                        dateInput: {
+                                            borderWidth:0,
+                                            alignItems:"flex-start",
+                                            marginLeft:5,
+                                        },
+                                        dateIcon:{
+                                            marginRight:5,
+                                        }
+                                    }}
+                                    placeholderTextColor={"black"}
+                                    showIcon={true}
+                                    iconComponent={<Icon name='clock-o' size={30}/>}
+                                    onDateChange={(time) => {this.setState({selfPMEndTime:time})}}
+                                />
+                            </View>
+                        </View>
+                            :
+                            null
+                        }
 
                         {/*上传图片*/}
 
@@ -306,6 +613,301 @@ class UnionRule extends Component {
                                     </ScrollView>
 
                         </View>
+
+                        <View style={[styles.touch,{borderTopWidth: 1,justifyContent:'space-between',flexDirection:'row',alignItems:'center'}]}>
+                            <View>
+                                <Text style={styles.text}>
+                                    是否可以配送
+                                </Text>
+                            </View>
+                            <View>
+                                <Switch
+                                    disabled={this.props.root?false:true}
+                                    onValueChange={()=>{
+                                        if(this.state.canDelivery){
+                                            this.setState({canSelf:true})
+                                        }
+                                        this.setState({canDelivery:!this.state.canDelivery})
+                                    }}
+                                    value={this.state.canDelivery}
+                                />
+                            </View>
+                        </View>
+
+                        <View style={[styles.touch,{borderTopWidth: 1,justifyContent:'space-between',flexDirection:'row',alignItems:'center'}]}>
+                            <View>
+                                <Text style={styles.text}>
+                                    是否可以自提
+                                </Text>
+                            </View>
+                            <View>
+                                <Switch
+                                    disabled={this.props.root?false:true}
+                                    onValueChange={()=>{
+                                        if(!this.state.canDelivery && this.state.canSelf){
+                                            this.setState({canDelivery:!this.state.canDelivery})
+                                        }
+                                        this.setState({canSelf:!this.state.canSelf})
+                                    }}
+                                    value={this.state.canSelf}
+                                />
+                            </View>
+                        </View>
+                        {this.state.canDelivery?
+                            <View style={[styles.touch,{borderTopWidth: 1}]}>
+                                <View>
+                                    <Text style={styles.text}>配送时间</Text>
+                                </View>
+                                <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                    <Text>AM:</Text>
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.deliveryAMStartTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({deliveryAMStartTime:time})}}
+                                    />
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.deliveryAMEndTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({deliveryAMEndTime:time})}}
+                                    />
+                                </View>
+                                <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                    <Text>PM:</Text>
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.deliveryPMStartTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({deliveryPMStartTime:time})}}
+                                    />
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.deliveryPMEndTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({deliveryPMEndTime:time})}}
+                                    />
+                                </View>
+                            </View>
+                            :
+                            null
+                        }
+                        {this.state.canSelf?
+
+                            <View style={[styles.touch,{borderTopWidth: 1}]}>
+                                <View>
+                                    <Text style={styles.text}>自提时间</Text>
+                                </View>
+                                <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                    <Text>AM:</Text>
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.selfAMStartTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({selfAMStartTime:time})}}
+                                    />
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.selfAMEndTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({selfAMEndTime:time})}}
+                                    />
+                                </View>
+                                <View style={{justifyContent:'space-around',flexDirection:'row',alignItems:'center',width:width,marginTop:15}}>
+                                    <Text>PM:</Text>
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.selfPMStartTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({selfPMStartTime:time})}}
+                                    />
+                                    <DatePicker
+                                        disabled={!this.props.root}
+                                        style={{marginLeft:0,borderWidth:1,paddingRight:5}}
+                                        date={this.state.selfPMEndTime}
+                                        mode="time"
+                                        format="HH:mm"
+                                        // confirmBtnText={strings.confirm}
+                                        // cancelBtnText={strings.cancel}
+                                        placeholder={"请选择时间"}
+                                        customStyles={{
+                                            // placeholderText:{
+                                            //     color:'#646464',
+                                            //     fontSize:12
+                                            // },
+                                            dateInput: {
+                                                borderWidth:0,
+                                                alignItems:"flex-start",
+                                                marginLeft:5,
+                                            },
+                                            dateIcon:{
+                                                marginRight:5,
+                                            }
+                                        }}
+                                        placeholderTextColor={"black"}
+                                        showIcon={true}
+                                        iconComponent={<Icon name='clock-o' size={30}/>}
+                                        onDateChange={(time) => {this.setState({selfPMEndTime:time})}}
+                                    />
+                                </View>
+                            </View>
+                            :
+                            null
+                        }
 
                     </ScrollView>
                 }
@@ -485,19 +1087,53 @@ class UnionRule extends Component {
                 unionId: this.props.unionId,
             }
         }).then((json)=> {
+            console.log(json)
             if(json.re == 1){
                 var orderMinLimit = json.data.orderMinLimit;
                 var discountScale = json.data.discountScale;
                 var regulation = json.data.regulation;
                 var attachId=json.data.attachId;
                 var attachDataUrl=json.data.attachDataUrl;
-                this.setState({orderMinLimit:orderMinLimit, discountScale:discountScale, regulation:regulation,attachId:attachId,attachDataUrl:attachDataUrl})
+
+                var canDelivery = json.data.canDelivery;
+                var canSelf = json.data.canSelf;
+                var deliveryAMStartTime = json.data.deliveryAMStartTime;
+                var deliveryAMEndTime=json.data.deliveryAMEndTime;
+                var deliveryPMStartTime=json.data.deliveryPMStartTime;
+                var deliveryPMEndTime = json.data.deliveryPMEndTime;
+                var selfAMStartTime = json.data.selfAMStartTime;
+                var selfAMEndTime = json.data.selfAMEndTime;
+                var selfPMStartTime=json.data.selfPMStartTime;
+                var selfPMEndTime=json.data.selfPMEndTime;
+                if(canDelivery==1){
+                    this.setState({canDelivery:true})
+                }
+                else{
+                    this.setState({canDelivery:false})
+                }
+                if(canSelf==1){
+                    this.setState({canSelf:true})
+                }
+                else{
+                    this.setState({canSelf:false})
+                }
+                this.setState({orderMinLimit:orderMinLimit, discountScale:discountScale, regulation:regulation,attachId:attachId,attachDataUrl:attachDataUrl,
+                    deliveryAMStartTime:deliveryAMStartTime,deliveryAMEndTime:deliveryAMEndTime,deliveryPMStartTime:deliveryPMStartTime,
+                    deliveryPMEndTime:deliveryPMEndTime, selfAMStartTime:selfAMStartTime,selfAMEndTime:selfAMEndTime,selfPMStartTime:selfPMStartTime,selfPMEndTime:selfPMEndTime
+                })
             }
         }).catch((err)=>{alert(err);});
     }
 
     updateSupnuevoBuyerUnion(){
-
+        var canDelivery=1
+        var canSelf=1
+        if(!this.state.canDelivery){
+            canDelivery=0
+        }
+        if(!this.state.canSelf){
+            canSelf=0
+        }
 
         proxy.postes({
             url: Config.server + "/func/union/updateSupnuevoBuyerUnion",
@@ -509,6 +1145,16 @@ class UnionRule extends Component {
                 orderMinLimit:parseFloat(this.state.orderMinLimit),
                 discountScale:parseFloat(this.state.discountScale),
                 regulation: this.state.regulation,
+                canDelivery:canDelivery,
+                canSelf:canSelf,
+                deliveryAMStartTime:this.state.deliveryAMStartTime,
+                deliveryAMEndTime:this.state.deliveryAMEndTime,
+                deliveryPMStartTime:this.state.deliveryPMStartTime,
+                deliveryPMEndTime:this.state.deliveryPMEndTime,
+                selfAMStartTime:this.state.selfAMStartTime,
+                selfAMEndTime:this.state.selfAMEndTime,
+                selfPMStartTime:this.state.selfPMStartTime,
+                selfPMEndTime:this.state.selfPMEndTime
             }
         }).then((json)=> {
             if(json.re === 1){
@@ -638,10 +1284,23 @@ var styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
     },
+    dataTime:{
+        width:width*0.35,
+        // alignItems:'center',
+        // flexDirection:'row',
+        height:40,
+        borderColor:'#cdcdcd',
+        borderWidth:0.5,
+        marginLeft:10,
+        marginBottom:10,
+        fontSize:12,
+        color:'red'
+    },
 });
 
 
 module.exports = connect(state => ({
+        root: state.user.root,
         unionId: state.user.unionId,
         username: state.user.username,
         unionMemberType:state.user.unionMemberType,

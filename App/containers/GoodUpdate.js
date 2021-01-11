@@ -273,7 +273,7 @@ class GoodUpdate extends Component {
 
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1,marginBottom:height*0.06}}>
                 <ScrollView>
                 {/* header bar */}
                 <View style={[{

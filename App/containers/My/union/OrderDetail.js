@@ -63,11 +63,20 @@ class orderDetail extends Component{
                             <Icon name="arrow-left" size={20} color="#fff" />
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
-                            订单商品详情
-                        </Text>
-                    </View>
+                    {this.props.order?
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                订单商品详情
+                            </Text>
+                        </View>
+                        :
+                        <View>
+                            <Text style={{fontSize: setSpText(20), flex: 3, textAlign: 'center', color: '#fff'}}>
+                                商品详情
+                            </Text>
+                        </View>
+                    }
+
                     <View style={{flex:1,marginRight:10,flexDirection:'row',justifyContent:'center'}}>
                     </View>
                 </View>
@@ -95,9 +104,14 @@ class orderDetail extends Component{
                     <View style={styles.detail}>
                         <Text>商品全称：{this.props.row.commodityName}</Text>
                     </View>
-                    <View style={styles.detail}>
-                        <Text>配货数量：{this.props.row.amount}</Text>
-                    </View>
+                    {this.props.order?
+                        <View style={styles.detail}>
+                            <Text>配货数量：{this.props.row.amount}</Text>
+                        </View>
+                        :
+                        null
+                    }
+
                 </View>
 
 

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Sep 23 15:13:09 CST 2020
+#Thu Sep 24 21:43:33 CST 2020
 5.base=/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/assets/debug
 42.base=/Users/lli/Documents/supnuevoDownload/supnuevo6.0/android/app/build/intermediates/transforms/stripDebugSymbol/debug/0
 22.path=lib/x86/libjsc.so

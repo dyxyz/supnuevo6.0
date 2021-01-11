@@ -19,7 +19,7 @@
     "react-native-collapsible": "^1.5.3",
     "react-native-communications": "^2.2.1",
     "react-native-cookies": "^3.3.0",
-    "react-native-datepicker": "^1.4.3",
+    "react-native-datepicker": "^1.7.2",
     "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-fs": "^2.11.17",
     "react-native-grid-view": "^0.4.1",
